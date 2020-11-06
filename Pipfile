@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 jupyter-book = "*"
 cookiecutter = "*"
+tensorflow = "*"
+tensorflow-hub = "*"
 
 [requires]
 python_version = "3.8"
