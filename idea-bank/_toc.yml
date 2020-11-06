@@ -14,7 +14,7 @@
 - part: Machine learning
   chapters:
   - file: machine-learning/intro
-  - file: machine-learning/style_transfer
+  - file: machine-learning/style_transfer_20201106
 
 - part: Maths
   chapters:
