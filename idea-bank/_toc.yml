@@ -15,7 +15,7 @@
   chapters:
   - file: machine-learning/intro
   - file: machine-learning/style_transfer_20201106
-  - file: machine-learning/prob_demo
+  - file: machine-learning/prob-test
 
 - part: Maths
   chapters:
