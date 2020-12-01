@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maths &#8212; IdeaBank</title>
+    <title>bayesian vs frequentist &#8212; IdeaBank</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Starting up" href="../starting-up/intro.html" />
-    <link rel="prev" title="bayesian vs frequentist" href="../machine-learning/prob-test.html" />
+    <link rel="next" title="Maths" href="../maths/intro.html" />
+    <link rel="prev" title="Neural style transfer" href="style_transfer_20201106.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -129,24 +129,24 @@
   Machine learning
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/intro.html">
+  <a class="reference internal" href="intro.html">
    Machine learning intro
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/style_transfer_20201106.html">
+  <a class="reference internal" href="style_transfer_20201106.html">
    Neural style transfer
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/prob-test.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    bayesian vs frequentist
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/prob-test.html#distributions">
+  <a class="reference internal" href="#distributions">
    distributions
   </a>
  </li>
@@ -156,9 +156,9 @@
   Maths
  </span>
 </p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/intro.html">
    Maths
   </a>
  </li>
@@ -214,9 +214,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/maths/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/machine-learning/prob-test.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -234,10 +234,65 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/machine-learning/prob-test.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   bayesian vs frequentist
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concepts">
+     concepts
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bla">
+     bla
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bayes-theorem">
+       bayes’ theorem
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributions">
+   distributions
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -246,13 +301,49 @@
         
               <div>
                 
-  <div class="section" id="maths">
-<h1>Maths<a class="headerlink" href="#maths" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Linear algebra</p></li>
-<li><p>Calculus</p></li>
-<li><p>Other maths for ML</p></li>
-</ul>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Probability theory is nothing but common sense reduced to calculation
+Pierre Laplace (1812)</p>
+</div></blockquote>
+<div class="section" id="bayesian-vs-frequentist">
+<h1>bayesian vs frequentist<a class="headerlink" href="#bayesian-vs-frequentist" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="concepts">
+<h2>concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="bla">
+<h2>bla<a class="headerlink" href="#bla" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 2., 3.],
+       [4., 5., 6.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bayes-theorem">
+<h3>bayes’ theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+p(X=x | Y=y) = \frac{p(X=x, Y=y)}{p(Y=y)} 
+\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="distributions">
+<h1>distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -268,7 +359,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./maths"
+            path: "./machine-learning"
         },
         predefinedOutput: true
     }
@@ -283,8 +374,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../machine-learning/prob-test.html" title="previous page">bayesian vs frequentist</a>
-    <a class='right-next' id="next-link" href="../starting-up/intro.html" title="next page">Starting up</a>
+    <a class='left-prev' id="prev-link" href="style_transfer_20201106.html" title="previous page">Neural style transfer</a>
+    <a class='right-next' id="next-link" href="../maths/intro.html" title="next page">Maths</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
