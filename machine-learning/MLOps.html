@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Software engineering &#8212; IdeaBank</title>
+    <title>MLOps &#8212; IdeaBank</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data engineering intro" href="../data-engineering/intro.html" />
-    <link rel="prev" title="IdeaBank" href="../intro.html" />
+    <link rel="next" title="Maths" href="../maths/intro.html" />
+    <link rel="prev" title="bayesian vs frequentist" href="prob-test.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,9 +100,9 @@
   Software engineering
  </span>
 </p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../software-engineering/intro.html">
    Software engineering
   </a>
  </li>
@@ -131,22 +131,22 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/intro.html">
+  <a class="reference internal" href="intro.html">
    Machine learning intro
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/style_transfer_20201106.html">
+  <a class="reference internal" href="style_transfer_20201106.html">
    Neural style transfer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/prob-test.html">
+  <a class="reference internal" href="prob-test.html">
    bayesian vs frequentist
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/prob-test.html#distributions">
+  <a class="reference internal" href="prob-test.html#distributions">
    distributions
   </a>
  </li>
@@ -156,9 +156,9 @@
   Machine learning in practice
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/MLOps.html">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    MLOps
   </a>
  </li>
@@ -226,7 +226,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/software-engineering/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/machine-learning/MLOps.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -251,6 +251,40 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-mlops">
+   What is MLOps?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-integration">
+   Continuous Integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-delivery">
+   Continuous Delivery
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differences-between-devops-mlops">
+   Differences between DevOps &amp; MLOps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#organisational-ml-maturity">
+   Organisational ML Maturity
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -258,9 +292,58 @@
         
               <div>
                 
-  <div class="section" id="software-engineering">
-<h1>Software engineering<a class="headerlink" href="#software-engineering" title="Permalink to this headline">¶</a></h1>
-<p>Read some stuff about software engineering</p>
+  <div class="section" id="mlops">
+<h1>MLOps<a class="headerlink" href="#mlops" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-mlops">
+<h2>What is MLOps?<a class="headerlink" href="#what-is-mlops" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>MLOps is a <strong>lifecycle management discipline</strong> for ML</p>
+</div></blockquote>
+<p>MLOps borrows several concepts from DevOps:</p>
+<ol class="simple">
+<li><p>Continuous integration</p></li>
+<li><p>Continuous deployment</p></li>
+</ol>
+</div>
+<div class="section" id="continuous-integration">
+<h2>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">¶</a></h2>
+<p>Work is carried out on independent branches and merged back into the main branch once complete.
+This practice encourages small, frequent changes so that WIP does not go stale &amp; developers are less likely to face tortuous merge conflicts.</p>
+<p><img alt="CI" src="../_images/CI.png" /></p>
+</div>
+<div class="section" id="continuous-delivery">
+<h2>Continuous Delivery<a class="headerlink" href="#continuous-delivery" title="Permalink to this headline">¶</a></h2>
+<p>Completed work is released to production as soon as it has passed quality checks, rather than batching up many changes for release on an arbitrary, possibly distant, release date
+This reduces risk by reducing the surface area for debugging if a release has an issue, and minimising the time between developing a bug &amp; discovering it (making it much cheaper to fix).</p>
+<p><img alt="CI" src="../_images/CD.png" /></p>
+<p>To these, it adds the practice of <strong>Continuous Training</strong> to manage model drift.</p>
+</div>
+<div class="section" id="differences-between-devops-mlops">
+<h2>Differences between DevOps &amp; MLOps<a class="headerlink" href="#differences-between-devops-mlops" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>DevOps</p></th>
+<th class="head"><p>MLOps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Test and validate code + components</p></td>
+<td><p>Test and validate code + components, data schemas, data &amp; models</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deploy code and monitor services</p></td>
+<td><p>Deploy model &amp; monitor, retrain and reserve the model</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="organisational-ml-maturity">
+<h2>Organisational ML Maturity<a class="headerlink" href="#organisational-ml-maturity" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Models are trained &amp; deployed manually</p></li>
+<li><p>Models are trained in automated pipelines, but deployment is still manual</p></li>
+<li><p>Training, validation &amp; deployment are all automated</p></li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -276,7 +359,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./software-engineering"
+            path: "./machine-learning"
         },
         predefinedOutput: true
     }
@@ -291,8 +374,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">IdeaBank</a>
-    <a class='right-next' id="next-link" href="../data-engineering/intro.html" title="next page">Data engineering intro</a>
+    <a class='left-prev' id="prev-link" href="prob-test.html" title="previous page">bayesian vs frequentist</a>
+    <a class='right-next' id="next-link" href="../maths/intro.html" title="next page">Maths</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
