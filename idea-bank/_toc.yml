@@ -11,11 +11,15 @@
   - file: data-engineering/intro
   - file: data-engineering/data-modelling
 
-- part: Machine learning
+- part: Machine learning in theory
   chapters:
   - file: machine-learning/intro
   - file: machine-learning/style_transfer_20201106
   - file: machine-learning/prob-test
+
+- part: Machine learning in practice
+  chapters:
+    - file: machine-learning/MLOps
 
 - part: Maths
   chapters:
