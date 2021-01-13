@@ -1,6 +1,4 @@
 IdeaBank
 ============================
 
-> A thought-gutter for a wandering mind.
-
-From me to you.
+> An exercise in slowing down to speed up.
