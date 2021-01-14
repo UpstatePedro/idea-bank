@@ -180,14 +180,14 @@ a*p + b*q
 #### Results of linear combinations
 
 ##### 2D Space
-Consider the possible results of $$a\mathbf{p} + b\mathbf{q}$$, where $$\mathbf{p}$$ & $$\mathbf{q}$$ are each **2-dimensional** vectors
-- All possible values of $$a\mathbf{p}$$ lie on a single line (1 vector can create a 1D object in 2D space)
-- Similarly, all possible values for $$b\mathbf{q}$$ lie on a single line
-- **IF** $$\mathbf{q}$$ does not sit on the line $$a\mathbf{p}$$, then the possible combinations $$a\mathbf{p} + b\mathbf{q}$$ fill the entire 2D plane (2 2D vectors can create a 2D object to fill a 2D space)
+Consider the possible results of $a\mathbf{p} + b\mathbf{q}$, where $\mathbf{p}$ & $\mathbf{q}$ are each **2-dimensional** vectors
+- All possible values of $a\mathbf{p}$ lie on a single line (1 vector can create a 1D object in 2D space)
+- Similarly, all possible values for $b\mathbf{q}$ lie on a single line
+- **IF** $\mathbf{q}$ does not sit on the line $a\mathbf{p}$, then the possible combinations $a\mathbf{p} + b\mathbf{q}$ fill the entire 2D plane (2 2D vectors can create a 2D object to fill a 2D space)
 
 ##### 3D Space
-If we then turn to the possible results of $$a\mathbf{p} + b\mathbf{q} + c\mathbf{r}$$, where $$\mathbf{p}$$ & $$\mathbf{q}$$ & $$\mathbf{r}$$ are each **3-dimensional** vectors
-- All possible values of $$a\mathbf{p}$$ lie on a single line (1 vector can create a 1D object in 3D space). Similarly, all possible values for $$b\mathbf{q}$$ & $$c\mathbf{r}$$ each lie on a single line.
+If we then turn to the possible results of $a\mathbf{p} + b\mathbf{q} + c\mathbf{r}$, where $\mathbf{p}$ & $\mathbf{q}$ & $\mathbf{r}$ are each **3-dimensional** vectors
+- All possible values of $a\mathbf{p}$ lie on a single line (1 vector can create a 1D object in 3D space). Similarly, all possible values for $b\mathbf{q}$ & $c\mathbf{r}$ each lie on a single line.
 - The combination of any two of these 3D vectors can fill a 2D plane in the 3D space.
 - **IF** none of the vectors share the same direction as another, then the possible combinations of all 3 3D vectors fills the entire 3D space (3 3D vectors can create a 3D object to fill a 3D space)
 
@@ -201,16 +201,16 @@ If we then turn to the possible results of $$a\mathbf{p} + b\mathbf{q} + c\mathb
 
 #### Special Linear Combinations
 
-1. Sum: $$1\mathbf{p} + 1\mathbf{q}$$
-1. Difference: $$1\mathbf{p} - 1\mathbf{q}$$
-1. Zero: $$0\mathbf{p} + 0\mathbf{q}$$ (**zero vector**)
-1. Scalar multiple: $$a\mathbf{p} + 0\mathbf{q}$$ (vector $$a\mathbf{p}$$ in the direction of $$\mathbf{p}$$)
+1. Sum: $1\mathbf{p} + 1\mathbf{q}$
+1. Difference: $1\mathbf{p} - 1\mathbf{q}$
+1. Zero: $0\mathbf{p} + 0\mathbf{q}$ (**zero vector**)
+1. Scalar multiple: $a\mathbf{p} + 0\mathbf{q}$ (vector $a\mathbf{p}$ in the direction of $\mathbf{p}$)
 
 > The zero vector is always included in the space of possible outputs
 
 ### Dot product == Inner Product == Element-wise product
 
-The dot product of $$\mathbf{p}$$ and $$\mathbf{q}$$, denoted $$c$$ (a scalar) is given by summing the products of the elements of the two vectors.
+The dot product of $\mathbf{p}$ and $\mathbf{q}$, denoted $c$ (a scalar) is given by summing the products of the elements of the two vectors.
 
 $$
 c = \mathbf{p}\cdot\mathbf{q} = \sum_{d=1}^{D}\mathbf{p}_{d}\mathbf{q}_{d}
@@ -218,7 +218,7 @@ $$
 
 - The **dot product** of 2 vectors will always yield a **scalar** value.
 - If the dot product between two vectors is equal to 0, then they are ***orthogonal***
-- The order of the two vectors does not matter: $$\mathbf{p}\cdot\mathbf{q} = \mathbf{q}\cdot\mathbf{p}$$
+- The order of the two vectors does not matter: $\mathbf{p}\cdot\mathbf{q} = \mathbf{q}\cdot\mathbf{p}$
 
 ### Vector Norm == Vector Length == Vector Magnitude
 
@@ -280,12 +280,12 @@ assert d1 == d2
 ### Unit Vector
 
 - A unit vector has **magnitude** = 1
-- Therefore, if $$\mathbf{p}$$ is a unit vector: $$\mathbf{p} \cdot \mathbf{p} = 1$$
+- Therefore, if $\mathbf{p}$ is a unit vector: $\mathbf{p} \cdot \mathbf{p} = 1$
 
 ### Vector Normalisation
 
 - Normalisation scales a vector so that it has unit length
-- To do so, we divide the vector by its length/magnitude: $$\frac{ \mathbf{v} }{ \left\Vert \mathbf{v} \right\Vert }$$
+- To do so, we divide the vector by its length/magnitude: $\frac{ \mathbf{v} }{ \left\Vert \mathbf{v} \right\Vert }$
 
 ### Cross Product == Vector Product
 
@@ -316,7 +316,7 @@ $$
 \end{bmatrix}
 $$
 
-And it has the property that the cross product is **orthogonal** to *both* $$\mathbf{a}$$ and $$\mathbf{b}$$
+And it has the property that the cross product is **orthogonal** to *both* $\mathbf{a}$ and $\mathbf{b}$
 
 $$
 \mathbf{a}^{T}(\mathbf{a} \times \mathbf{b}) = \mathbf{b}^{T}(\mathbf{a} \times \mathbf{b}) = 0
@@ -344,10 +344,10 @@ $$
 
 ### Null space of a Matrix
 
-The **right null** space of a matrix $$\mathbf{A}$$ consists of the set of vectors $$x$$ for which $$ \mathbf{Ax} = \mathbf{0} $$
+The **right null** space of a matrix $\mathbf{A}$ consists of the set of vectors $x$ for which $ \mathbf{Ax} = \mathbf{0} $
 
-The **left null** space of a matrix $$\mathbf{A}$$ consists of the set of vectors $$x$$ for which $$  x^{T}\mathbf{A} = \mathbf{0}^{T} $$
+The **left null** space of a matrix $\mathbf{A}$ consists of the set of vectors $x$ for which $  x^{T}\mathbf{A} = \mathbf{0}^{T} $
 
 ***What is 0 in this context if we can take it's transpose?***
 
-A square matrix only has a non-trivial null space (ie. not just $$  x = \mathbf{0} $$) if the matrix is singular (non-invertible) & the determinant is therefore 0
+A square matrix only has a non-trivial null space (ie. not just $  x = \mathbf{0} $) if the matrix is singular (non-invertible) & the determinant is therefore 0
