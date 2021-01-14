@@ -30,3 +30,4 @@
 - part: Starting-up
   chapters:
   - file: starting-up/intro
+  - file: starting-up/crossing_the_chasm
