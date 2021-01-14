@@ -2,14 +2,14 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
 
-- part: Software engineering
-  chapters:
-  - file: software-engineering/intro
-  - file: software-engineering/kubeflow
+#- part: Software engineering
+#  chapters:
+#  - file: software-engineering/intro
 
 - part: Data engineering
   chapters:
   - file: data-engineering/intro
+  - file: data-engineering/algorithms
   - file: data-engineering/complexity
 
 - part: Machine learning in theory
@@ -21,13 +21,10 @@
     - file: machine-learning/MLOps
     - file: machine-learning/kubeflow
 
-
 - part: Maths
   chapters:
-  - file: maths/intro
   - file: maths/linear_algebra
 
 - part: Starting-up
   chapters:
-  - file: starting-up/intro
   - file: starting-up/crossing_the_chasm
