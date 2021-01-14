@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kubeflow &#8212; IdeaBank</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maths" href="../maths/intro.html" />
+    <link rel="prev" title="MLOps" href="MLOps.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">IdeaBank</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   IdeaBank
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Software engineering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../software-engineering/intro.html">
+   Software engineering
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data engineering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-engineering/intro.html">
+   Data engineering intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-engineering/complexity.html">
+   Algorithm efficiency / complexity
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Machine learning in theory
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Machine learning intro
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Machine learning in practice
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLOps.html">
+   MLOps
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Kubeflow
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Maths
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/intro.html">
+   Maths
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/linear_algebra.html">
+   Linear algebra
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Starting-up
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../starting-up/intro.html">
+   Starting up
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/machine-learning/kubeflow.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kubeflow-pipelines">
+   Kubeflow pipelines
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-to-use-pipelines">
+     When to use pipelines?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kf-pipelines">
+   KF Pipelines
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#describing-a-pipeline">
+     Describing a pipeline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-kf-components">
+   Working with KF components
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pre-built-components">
+     Pre-built components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lightweight-python-components">
+     Lightweight Python components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-components">
+     Custom components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wrapping-it-up">
+     Wrapping it up
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ci-cd-for-kf-pipelines-with-google-cloud-build">
+   CI/CD for KF pipelines with Google Cloud Build
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-build-builders">
+     Cloud build builders
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-build-configuration">
+     Cloud build configuration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-build-triggers">
+     Cloud build triggers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="kubeflow">
+<h1>Kubeflow<a class="headerlink" href="#kubeflow" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kubeflow-pipelines">
+<h2>Kubeflow pipelines<a class="headerlink" href="#kubeflow-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>Built on the Argo workflow engine: a container-native engine for orchestrating parallel processing jobs in kubernetes.
+Argo workflow engine stores pipelines and the metadata from previous runs.</p>
+<p>Pipelines leverage cluster autoscaling &amp; node auto-provisioning to carry out different steps of the pipeline on appropriate hardware.</p>
+<p>Pipelines can be created via the Kubeflow SDK or the TFX SDK + TFX pipeline templates; both submit to KF using rest api.</p>
+<p>Which SDK to use?</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kubeflow</p></th>
+<th class="head"><p>TFX</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Framework-agnostic, lower-level implementation</p></td>
+<td><p>Higher-level abstraction, but TF-specific</p></td>
+</tr>
+<tr class="row-odd"><td><p>Direct control of K8s resources</p></td>
+<td><p>Prescriptive components (customisable) w pre-defined ML types</p></td>
+</tr>
+<tr class="row-even"><td><p>Enables simple sharing of containerised components</p></td>
+<td><p>Encourages Google best practices for robust / scalable ML workloads</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ideal for fully custom pipelines (and non-TF frameworks)</p></td>
+<td><p>Ideal for E2E TF-focused pipelines with some customisation of pre-processing / training code</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="when-to-use-pipelines">
+<h3>When to use pipelines?<a class="headerlink" href="#when-to-use-pipelines" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Orchestration of workflows</p></li>
+<li><p>Repeatable, reproducible experimentation</p></li>
+<li><p>Sharing, re-use &amp; composition</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="kf-pipelines">
+<h2>KF Pipelines<a class="headerlink" href="#kf-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>KF provides a domain-specific language (DSL) for describing a sequence of interdependent tasks as a DAG using Python.</p>
+<div class="section" id="describing-a-pipeline">
+<h3>Describing a pipeline<a class="headerlink" href="#describing-a-pipeline" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kfp</span> <span class="c1"># Import the pipelines SDK</span>
+
+<span class="nd">@kfp</span><span class="o">.</span><span class="n">dsl</span><span class="o">.</span><span class="n">pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ML Pipeline Name&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A more verbose description of what this pipeline does&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">pipline_method_name</span><span class="p">(</span><span class="n">pipeline_params</span><span class="p">):</span>
+    <span class="c1"># Specify the steps / componenets / operations from which the DAG is composed</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Conditionality between operations can be facilitated using <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">kfp.dsl.Condition(&lt;condition&gt;):</span></code></p>
+</div>
+</div>
+<div class="section" id="working-with-kf-components">
+<h2>Working with KF components<a class="headerlink" href="#working-with-kf-components" title="Permalink to this headline">¶</a></h2>
+<p>There are 3 levels of customisation for working with components:</p>
+<ol class="simple">
+<li><p>Pre-built components: just load the component from a URI &amp; compose your pipeline</p></li>
+<li><p>‘Lightweight’ Python components: implement the operation code in Python, but all containerisation is taken care of BTS</p></li>
+<li><p>Custom components:</p>
+<ul class="simple">
+<li><p>Implement the component code</p></li>
+<li><p>Package into a Docker container</p></li>
+<li><p>Write the component description</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="pre-built-components">
+<h3>Pre-built components<a class="headerlink" href="#pre-built-components" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/kubeflow/pipelines/blob/master/components">Pre-built components GitHub repo</a></p>
+<p>To use a pre-built component in your pipeline:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kfp</span>
+
+<span class="n">URI</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/kubeflow/pipelines/0.2.5/components/gcp/&quot;</span>
+
+<span class="n">component_store</span> <span class="o">=</span> <span class="n">kfp</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">ComponentStore</span><span class="p">(</span>
+   <span class="n">local_search_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="n">url_search_prefixes</span><span class="o">=</span><span class="p">[</span><span class="n">URI</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">bq_query_op</span> <span class="o">=</span> <span class="n">component_store</span><span class="o">.</span><span class="n">load_component</span><span class="p">(</span><span class="s1">&#39;bigquery/query&#39;</span><span class="p">)</span>
+<span class="n">mlengine_training_op</span> <span class="o">=</span> <span class="n">component_store</span><span class="o">.</span><span class="n">load_component</span><span class="p">(</span><span class="s1">&#39;mlengine/train&#39;</span><span class="p">)</span>
+<span class="n">mlengine_deploy_op</span> <span class="o">=</span> <span class="n">component_store</span><span class="o">.</span><span class="n">load_component</span><span class="p">(</span><span class="s1">&#39;mlengine/deploy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Documentation for each pre-built component is available on GitHub.</p>
+<p>PB components can be composed (chained) by using the output from one component as an input for the next.</p>
+</div>
+<div class="section" id="lightweight-python-components">
+<h3>Lightweight Python components<a class="headerlink" href="#lightweight-python-components" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes, we need a little more flexibility than the pre-built components offer, but we’d prefer to avoid the effort of
+building container images for just a few lines of Python code.
+In this case, we can use the <code class="docutils literal notranslate"><span class="pre">func_to_container_op</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kfp</span>
+
+<span class="kn">from</span> <span class="nn">kfp.components</span> <span class="kn">import</span> <span class="n">func_to_container_op</span>
+
+<span class="k">def</span> <span class="nf">my_python_logic</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">run_id</span><span class="p">):</span>
+    <span class="c1"># your logic here</span>
+
+<span class="n">BASE_IMAGE</span> <span class="o">=</span> <span class="c1"># configure the base image you want to use</span>
+
+<span class="n">my_op</span> <span class="o">=</span> <span class="n">func_to_container_op</span><span class="p">(</span>
+   <span class="n">my_python_logic</span><span class="p">,</span>
+   <span class="n">base_image</span><span class="o">=</span><span class="n">BASE_IMAGE</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>And then we can use <code class="docutils literal notranslate"><span class="pre">my_op</span></code> as we would any of the pre-built components.</p>
+<p>This approach is best when we require greater flexibility than the pre-built components allow, but can achieve it with a small
+amount of simple python code.</p>
+</div>
+<div class="section" id="custom-components">
+<h3>Custom components<a class="headerlink" href="#custom-components" title="Permalink to this headline">¶</a></h3>
+<p>This approach is relevant when we need:</p>
+<ul class="simple">
+<li><p>many files to construct the op</p></li>
+<li><p>many dependencies not available in the base images</p></li>
+<li><p>to use logic written in other languages</p></li>
+</ul>
+<p>Step to writing your own component:</p>
+<ol class="simple">
+<li><p>Write your own code (any language)</p></li>
+<li><p>Package this code into a container image using a Dockerfile</p></li>
+<li><p>Build &amp; push the docker image to gcr.io</p></li>
+<li><p>Describe your component in a <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> <a class="reference external" href="https://www.kubeflow.org/docs/pipelines/sdk/component-development/#writing-your-component-definition-file">description file</a></p></li>
+<li><p>Use the description file to load the component into your pipeline</p></li>
+</ol>
+<p>The command specified in the implementation section of the description will be supplied as the entry-point when running the container.</p>
+<p>To make use of the custom component, all you need is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kfp</span>
+<span class="n">custom_component</span> <span class="o">=</span> <span class="n">kfp</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">load_component_from_file</span><span class="p">(</span><span class="n">URI_TO_YAML_DESCRIPTION</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">custom_component</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wrapping-it-up">
+<h3>Wrapping it up<a class="headerlink" href="#wrapping-it-up" title="Permalink to this headline">¶</a></h3>
+<p>Compile &gt;&gt; Upload &gt;&gt; Run</p>
+<p>In order to compile &amp; run a pipline, we must:</p>
+<ol class="simple">
+<li><p>Upload the training container to the registry</p></li>
+<li><p>Push any base containers required for lightweight ops to our registry</p></li>
+<li><p>compile the pipeline with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">dsl-compile</span> <span class="pre">--py</span> <span class="pre">path/to/pipeline.py</span> <span class="pre">--output</span> <span class="pre">filename.yaml</span></code></p></li>
+<li><p>Upload the pipeline to the KF cluster: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">kfp</span> <span class="pre">--endpoint</span> <span class="pre">$ENDPOINT</span> <span class="pre">pipeline</span> <span class="pre">upload</span> <span class="pre">-p</span> <span class="pre">$PIPELINE_NAME</span> <span class="pre">pipeline_name.yaml</span></code></p></li>
+</ol>
+<p>Running our pipelines</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">kfp</span> <span class="pre">--endpoint</span> <span class="pre">$ENDPOINT</span> <span class="pre">run</span> <span class="pre">submit</span> <span class="pre">...</span></code></p>
+</div>
+</div>
+<div class="section" id="ci-cd-for-kf-pipelines-with-google-cloud-build">
+<h2>CI/CD for KF pipelines with Google Cloud Build<a class="headerlink" href="#ci-cd-for-kf-pipelines-with-google-cloud-build" title="Permalink to this headline">¶</a></h2>
+<p><img alt="CI / CD for ML" src="machine-learning/automating_training.svg" /></p>
+<p>For each pipeline, we want a repo where every component container has a self-contained directory; each change results in automated rebuilds
+and a push to the registry.</p>
+<p>Our goal will be to run an appropriate cloud builder each time a trigger condition is met.</p>
+<div class="section" id="cloud-build-builders">
+<h3>Cloud build builders<a class="headerlink" href="#cloud-build-builders" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">builders</span></code> are configuration / provisioning actions which are packaged as docker containers.</p>
+<p>Example actions:</p>
+<ul class="simple">
+<li><p>Building an image from a Dockerfile</p></li>
+<li><p>Pushing an image to a project registry</p></li>
+<li><p>Deploying compute resources</p></li>
+<li><p>Uploading a pipeline to AI Platform pipelines</p></li>
+</ul>
+<p>Builders fall into 1 of 2 categories:</p>
+<ol class="simple">
+<li><p>Standard: pre-packaged config actions</p>
+<ul class="simple">
+<li><p>registry: <code class="docutils literal notranslate"><span class="pre">gcr.io/cloud-builders/</span></code></p></li>
+<li><p>each builder provides a Dockerfile and a script to run when the container is executed (you effectively just provide some arguments to the script)</p></li>
+</ul>
+</li>
+<li><p>Custom: config actions that are packaged by you</p>
+<ul class="simple">
+<li><p>registry: <code class="docutils literal notranslate"><span class="pre">gcr.io/&lt;YOUR_PROJECT&gt;/</span></code></p></li>
+<li><p>you have to write your own Dockerfile &amp; script, and push it to your registry</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="cloud-build-configuration">
+<h3>Cloud build configuration<a class="headerlink" href="#cloud-build-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The cloud build configuration file tells Cloud build which builder to run when a specific trigger is detected.</p>
+<p>Example cloud build config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># cloudbuild.yaml</span>
+<span class="nt">steps</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;gcr.io/cloud-builders/docker&#39;</span> <span class="c1"># URI of the builder&#39;s container image</span>
+  <span class="nt">args</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;build&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-t&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;gcr.io/$PROJECT_ID/$_TRAINER_IMAGE_NAME:$TAG_NAME&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;.&#39;</span><span class="p p-Indicator">]</span> <span class="c1"># args to be passed to the container entry-point</span>
+  <span class="nt">dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$_PIPELINE_FOLDER/trainer_image</span> <span class="c1"># specifies the working directory in the container from which the entry point will be run</span>
+  <span class="nt">env</span><span class="p">:</span> <span class="c1"># These are passed to the container as environment variables</span>
+     <span class="p p-Indicator">-</span> <span class="s">&#39;PYTHON_VERSION=$_PYTHON_VERSION&#39;</span>
+
+<span class="c1"># Running a builder with the config above will build the images locally, but won&#39;t push them to anywhere they can actually be used...</span>
+<span class="c1"># To push them to the registry, we also need to specify:</span>
+
+<span class="nt">Images</span><span class="p">:</span>
+   <span class="p p-Indicator">-</span> <span class="s">&#39;gcr.io/$PROJECT_ID/$_TRAINER_IMAGE_NAME:$TAG_NAME&#39;</span>
+</pre></div>
+</div>
+<p>Triggering a cloud build</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">gcloud</span> <span class="pre">builds</span> <span class="pre">submit</span> <span class="pre">.</span> <span class="pre">--config</span> <span class="pre">cloudbuild.yaml</span> <span class="pre">--substitutions</span> <span class="pre">$SUBSTITUTIONS</span></code></p>
+<p>If we use a relative path for the dir, then changes to the contents of the dir will be shared across all steps executed during the build
+(normally they would not be available to different instances of a container)</p>
+</div>
+<div class="section" id="cloud-build-triggers">
+<h3>Cloud build triggers<a class="headerlink" href="#cloud-build-triggers" title="Permalink to this headline">¶</a></h3>
+<p>Running a builder manually:</p>
+<ol class="simple">
+<li><p>Get a local copy of the cloudbuild.yaml</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">gcloud</span> <span class="pre">bulds</span> <span class="pre">submit</span> <span class="pre">...</span></code></p></li>
+</ol>
+<p>But we can also automate the running of builds given an appropriate trigger :)</p>
+<ol class="simple">
+<li><p>Activate the GCP Cloud Build app in GitHub to work with your repositories</p></li>
+<li><p>Activate your repositories for monitoring in cloud build</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./machine-learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="MLOps.html" title="previous page">MLOps</a>
+    <a class='right-next' id="next-link" href="../maths/intro.html" title="next page">Maths</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UpstatePedro<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

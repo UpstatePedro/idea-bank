@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Maths" href="../maths/intro.html" />
-    <link rel="prev" title="Neural style transfer" href="style_transfer_20201106.html" />
+    <link rel="next" title="Kubeflow" href="kubeflow.html" />
+    <link rel="prev" title="Machine learning intro" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -135,11 +135,6 @@
    Machine learning intro
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="style_transfer_20201106.html">
-   Neural style transfer
-  </a>
- </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -152,6 +147,11 @@
    MLOps
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kubeflow.html">
+   Kubeflow
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -162,6 +162,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../maths/intro.html">
    Maths
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/linear_algebra.html">
+   Linear algebra
   </a>
  </li>
 </ul>
@@ -250,26 +255,40 @@
   <a class="reference internal nav-link" href="#what-is-mlops">
    What is MLOps?
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-integration">
+     Continuous Integration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-delivery">
+     Continuous Delivery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#differences-between-devops-mlops">
+     Differences between DevOps &amp; MLOps
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#organisational-ml-maturity">
+     Organisational ML Maturity
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-integration">
-   Continuous Integration
+  <a class="reference internal nav-link" href="#components-of-the-mlops-lifecycle">
+   Components of the MLOps lifecycle
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-delivery">
-   Continuous Delivery
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#differences-between-devops-mlops">
-   Differences between DevOps &amp; MLOps
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#organisational-ml-maturity">
-   Organisational ML Maturity
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-tuning-serving">
+     Training, tuning &amp; serving
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -294,22 +313,21 @@
 <li><p>Continuous integration</p></li>
 <li><p>Continuous deployment</p></li>
 </ol>
-</div>
 <div class="section" id="continuous-integration">
-<h2>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">¶</a></h2>
+<h3>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">¶</a></h3>
 <p>Work is carried out on independent branches and merged back into the main branch once complete.
 This practice encourages small, frequent changes so that WIP does not go stale &amp; developers are less likely to face tortuous merge conflicts.</p>
 <p><img alt="CI" src="../_images/CI.png" /></p>
 </div>
 <div class="section" id="continuous-delivery">
-<h2>Continuous Delivery<a class="headerlink" href="#continuous-delivery" title="Permalink to this headline">¶</a></h2>
+<h3>Continuous Delivery<a class="headerlink" href="#continuous-delivery" title="Permalink to this headline">¶</a></h3>
 <p>Completed work is released to production as soon as it has passed quality checks, rather than batching up many changes for release on an arbitrary, possibly distant, release date
 This reduces risk by reducing the surface area for debugging if a release has an issue, and minimising the time between developing a bug &amp; discovering it (making it much cheaper to fix).</p>
 <p><img alt="CI" src="../_images/CD.png" /></p>
 <p>To these, it adds the practice of <strong>Continuous Training</strong> to manage model drift.</p>
 </div>
 <div class="section" id="differences-between-devops-mlops">
-<h2>Differences between DevOps &amp; MLOps<a class="headerlink" href="#differences-between-devops-mlops" title="Permalink to this headline">¶</a></h2>
+<h3>Differences between DevOps &amp; MLOps<a class="headerlink" href="#differences-between-devops-mlops" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>DevOps</p></th>
@@ -327,12 +345,38 @@ This reduces risk by reducing the surface area for debugging if a release has an
 </table>
 </div>
 <div class="section" id="organisational-ml-maturity">
-<h2>Organisational ML Maturity<a class="headerlink" href="#organisational-ml-maturity" title="Permalink to this headline">¶</a></h2>
+<h3>Organisational ML Maturity<a class="headerlink" href="#organisational-ml-maturity" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Models are trained &amp; deployed manually</p></li>
 <li><p>Models are trained in automated pipelines, but deployment is still manual</p></li>
 <li><p>Training, validation &amp; deployment are all automated</p></li>
 </ol>
+</div>
+</div>
+<div class="section" id="components-of-the-mlops-lifecycle">
+<h2>Components of the MLOps lifecycle<a class="headerlink" href="#components-of-the-mlops-lifecycle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="training-tuning-serving">
+<h3>Training, tuning &amp; serving<a class="headerlink" href="#training-tuning-serving" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Training</p></li>
+<li><p>Tuning</p></li>
+<li><p>Serving</p></li>
+</ul>
+<p><strong>Reproducible datasets</strong></p>
+<p>deterministic splits
+store data as artifacts in cloud storage</p>
+<p>rather than selecting data points for the cross-validation splits using random sampling, we can achieve reproducibility by
+creating a hash from the values in each data example (which will always return the same result) and sampling values
+Hash a string of all the columns so that the dataset isn’t biased by values for particular columns (eg. dates in a date field)
+FARM_FINGERPRINT returns a signed integer. Take the absolute. Use Modulo to create equal-sized groups.</p>
+<p>How do we stratify using this approach to ensure the splits are balanced?</p>
+<p>Rather than extracting a fixed training &amp; validation split, we should generate a cross-validation &amp; test split, and then
+have a deterministic mechanism for selecting folds from the cross-validation split.</p>
+<p><strong>Tunable models</strong></p>
+<p>Separate hyper-parameter search from final model training</p>
+<p>AI platform optimises its HP search based on the results from previous training runs - so don’t parallelise all runs at once!</p>
+<p>Automate building the image with cloud build</p>
+</div>
 </div>
 </div>
 
@@ -364,8 +408,8 @@ This reduces risk by reducing the surface area for debugging if a release has an
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="style_transfer_20201106.html" title="previous page">Neural style transfer</a>
-    <a class='right-next' id="next-link" href="../maths/intro.html" title="next page">Maths</a>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Machine learning intro</a>
+    <a class='right-next' id="next-link" href="kubeflow.html" title="next page">Kubeflow</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
