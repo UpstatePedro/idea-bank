@@ -446,7 +446,7 @@ p_{N}
 \end{split}\]</div>
 <blockquote>
 <div><p>Notationally, column vectors can be written
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \mathbf{p} =
 (
 p_{1},
@@ -455,7 +455,7 @@ p_{3},
 \dots,
 p_{N}
 )
-\)</span>$
+\)</span>
 but this is NOT the same as a row vector!! <strong>NB.</strong> deliberate use of square brackets Vs parenthesis</p>
 </div></blockquote>
 </div>
@@ -511,8 +511,8 @@ p_{3} - q_{3} \\
 p_{N} - q_{N}
 \end{bmatrix}
 \end{split}\]</div>
-<p>The vector $<span class="math notranslate nohighlight">\(\mathbf{d}\)</span><span class="math notranslate nohighlight">\( between two points \)</span><span class="math notranslate nohighlight">\(\mathbf{a, b}\)</span><span class="math notranslate nohighlight">\( in N-dimensional space (from \)</span><span class="math notranslate nohighlight">\(\mathbf{a}\)</span><span class="math notranslate nohighlight">\( to \)</span><span class="math notranslate nohighlight">\(\mathbf{b}\)</span><span class="math notranslate nohighlight">\() is given by:
-\)</span><span class="math notranslate nohighlight">\(\mathbf{d = b - a}\)</span>$</p>
+<p>The vector <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> between two points <span class="math notranslate nohighlight">\(\mathbf{a, b}\)</span> in N-dimensional space (from <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> to <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>) is given by:
+<span class="math notranslate nohighlight">\(\mathbf{d = b - a}\)</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">q</span>
 
 <span class="o">&gt;&gt;</span> <span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -554,16 +554,13 @@ p_{2} \\
 p_{3} \\
 \vdots \\
 p_{N}
-\end{bmatrix}
-+
-b\begin{bmatrix}
+\end{bmatrix}\end{split}\\+\\\begin{split}b\begin{bmatrix}
 q_{1} \\
 q_{2} \\
 q_{3} \\
 \vdots \\
 q_{N}
-\end{bmatrix}\end{split}\\\begin{split}=
-\begin{bmatrix}
+\end{bmatrix}\end{split}\\=\\\begin{split}\begin{bmatrix}
 ap_{1} + bq_{1} \\
 ap_{2} + bq_{2}\\
 ap_{3} + bq_{3}\\

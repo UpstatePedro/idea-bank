@@ -35,7 +35,7 @@ $$
 
 
 > Notationally, column vectors can be written
-$$
+$
 \mathbf{p} =
 (
 p_{1},
@@ -44,7 +44,7 @@ p_{3},
 \dots,
 p_{N}
 )
-$$
+$
 but this is NOT the same as a row vector!! **NB.** deliberate use of square brackets Vs parenthesis
 
 #### Row vectors
@@ -100,8 +100,8 @@ p_{N} - q_{N}
 \end{bmatrix}
 $$
 
-The vector $$\mathbf{d}$$ between two points $$\mathbf{a, b}$$ in N-dimensional space (from $$\mathbf{a}$$ to $$\mathbf{b}$$) is given by:
-$$\mathbf{d = b - a}$$
+The vector $\mathbf{d}$ between two points $\mathbf{a, b}$ in N-dimensional space (from $\mathbf{a}$ to $\mathbf{b}$) is given by:
+$\mathbf{d = b - a}$
 
 ```python
 p + q
@@ -144,7 +144,9 @@ p_{3} \\
 \vdots \\
 p_{N}
 \end{bmatrix}
+
 +
+
 b\begin{bmatrix}
 q_{1} \\
 q_{2} \\
@@ -154,6 +156,7 @@ q_{N}
 \end{bmatrix}
 
 =
+
 \begin{bmatrix}
 ap_{1} + bq_{1} \\
 ap_{2} + bq_{2}\\
