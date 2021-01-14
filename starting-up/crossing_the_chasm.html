@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book summary: Crossing the Chasm &#8212; IdeaBank</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">IdeaBank</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   IdeaBank
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Software engineering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../software-engineering/intro.html">
+   Software engineering
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data engineering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-engineering/intro.html">
+   Data engineering intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-engineering/complexity.html">
+   Algorithm efficiency / complexity
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Machine learning in theory
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/intro.html">
+   Machine learning intro
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Machine learning in practice
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/MLOps.html">
+   MLOps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/kubeflow.html">
+   Kubeflow
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Maths
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/intro.html">
+   Maths
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/linear_algebra.html">
+   Linear algebra
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Starting-up
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Starting up
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/starting-up/crossing_the_chasm.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-technology-adoption-life-cycle-and-its-inhabitants">
+   The Technology Adoption Life Cycle and its Inhabitants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-chasm">
+   The Chasm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-very-different-buying-profiles">
+     Two very different buying profiles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-chasm-opens">
+     The Chasm opens
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-your-crossing">
+   Making your Crossing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disciplined-focus">
+     Disciplined Focus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#being-a-leader">
+     Being a leader
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choosing-a-target-market">
+   Choosing a target market
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-risk-low-data-decision">
+   High-risk, low-data decision
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#size-of-target">
+   Size of target
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#market-development-strategy">
+   Market Development Strategy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whole-product">
+   Whole Product
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-partners">
+     Working with partners
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#competition-positioning">
+   Competition &amp; Positioning
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="book-summary-crossing-the-chasm">
+<h1>Book summary: Crossing the Chasm<a class="headerlink" href="#book-summary-crossing-the-chasm" title="Permalink to this headline">¶</a></h1>
+<p>by Geoffrey Moore</p>
+<div class="section" id="the-technology-adoption-life-cycle-and-its-inhabitants">
+<h2>The Technology Adoption Life Cycle and its Inhabitants<a class="headerlink" href="#the-technology-adoption-life-cycle-and-its-inhabitants" title="Permalink to this headline">¶</a></h2>
+<p>The technology adoption lifecycle model describes how the profile of the consumers for a technology product changes as it matures, and the relative sizes of these different groups.</p>
+<p>The model groups consumers into 5 psychological / demographic clusters which must be tackled in sequence:</p>
+<ol class="simple">
+<li><p>Innovators</p></li>
+<li><p>Early adopters</p></li>
+<li><p>Early majority</p></li>
+<li><p>Late majority</p></li>
+<li><p>Laggards</p></li>
+</ol>
+<p><img alt="technology adoption lifecycle" src="../_images/tech_adoption_lifecycle.jpg" /></p>
+<blockquote>
+<div><p>Marketing: taking actions to create, grow, maintain, or defend markets.</p>
+</div></blockquote>
+</div>
+<div class="section" id="the-chasm">
+<h2>The Chasm<a class="headerlink" href="#the-chasm" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Chasm</strong> represents the transition from selling to early adopters to the early majority.</p>
+<div class="section" id="two-very-different-buying-profiles">
+<h3>Two very different buying profiles<a class="headerlink" href="#two-very-different-buying-profiles" title="Permalink to this headline">¶</a></h3>
+<p>The <em><strong>early adopter</strong></em> adopts the product as a <strong>change agent</strong>:</p>
+<ul class="simple">
+<li><p>Want an opportunity to gain an advantage over their competition</p></li>
+<li><p>Expect a ‘radical discontinuity’ with their existing processes in order to achieve this</p></li>
+<li><p>Paying for the possibility of gaining an edge: willing to be more involved in product feedback, to accept bugs, glitches, and to work with a less polished product in order to get ahead of the market</p></li>
+</ul>
+<p>The <em><strong>early majority</strong></em>, in contrast, wants to buy a productivity improvement for their existing operations:</p>
+<ul class="simple">
+<li><p>Looking for evolution, not revolution: the product now needs to merge seamlessly with their existing processes to enhance them, rather than causing major disruption</p></li>
+<li><p>Paying for a service rather than R&amp;D: the value should already be demonstrable rather than in the pipeline. No time for bugs, poor usability or incomplete features</p></li>
+<li><p>Expect the service to integrate  with their existing technology base where appropriate</p></li>
+<li><p>Place a very high value on references &amp; support</p></li>
+</ul>
+</div>
+<div class="section" id="the-chasm-opens">
+<h3>The Chasm opens<a class="headerlink" href="#the-chasm-opens" title="Permalink to this headline">¶</a></h3>
+<p>The Chasm arises as a result of the vitally important role that (positive &amp; relevant) references play in buying decisions:</p>
+<ol class="simple">
+<li><p>Members of the early majority <strong>will not buy</strong> without having at least several p+r references (and no negative ones!)</p></li>
+<li><p>The early majority do not consider the early adopters to be good references; they seek references from other members of the early majority</p></li>
+<li><p>So in order to sell effectively to the early majority, we need to already have existing customers from the early majority to provide p+r references!</p></li>
+</ol>
+<p>This need for p+r references is key to how we should define a market (segment):</p>
+<ul class="simple">
+<li><p>A set of actual / potential customers</p></li>
+<li><p>for a set of products / services</p></li>
+<li><p>who have a common set of needs / wants</p></li>
+<li><p>who reference each other when making a buying decision</p></li>
+</ul>
+<blockquote>
+<div><p>So a set of potential customers for a product who share the same needs but do not reference each other when making a buying decision are <strong>not</strong> in the same market segment.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="making-your-crossing">
+<h2>Making your Crossing<a class="headerlink" href="#making-your-crossing" title="Permalink to this headline">¶</a></h2>
+<p>In order to cross the chasm, we must focus exclusively on building a dominant position in 1-2 narrowly bounded segments. This focus is necessary in order to:</p>
+<ol class="simple">
+<li><p>Ensure your organisation’s ability to provide &amp; leverage a ‘whole product’</p></li>
+<li><p>Generate word-of-mouth momentum</p></li>
+<li><p>Create the perception of being a market leader</p></li>
+</ol>
+<p>Cross the chasm by targeting a very specific niche market where you can dominate from the outset. Concentrate all your resources on a very focused target.
+Failure to do so will be like scattering pebbles into an ocean rather than dropping a boulder in a pond - your marketing spend will fail to make waves &amp; generate the word of mouth / appearance of dominance required to convince the early majority pragmatists to buy.</p>
+<p>Failing to operate in a tightly-bound market will mean your marketing messages diffuse too quickly and fail to generate word-of-mouth - leaving the sales force to sell to cold prospects, rather than warm ones.
+This is a classic symptom of young companies leaving the early market, and it is usually interpreted as a letdown in the sales force or a cooling off in demand when it is actually a simple consequence of trying to expand too rapidly and too broadly into too loosely-bounded a market.</p>
+<p>Adjacent markets &amp; the “bowling pin” strategy: target a segment not just because one can “knock it over” but because, in doing so, it will help to knock over the next target segment - propelling us to accelerated growth.</p>
+<p>Sequencing markets in this way can also help to ensure that we get the appropritate references in place for each segment that we want to hit next.</p>
+<div class="section" id="disciplined-focus">
+<h3>Disciplined Focus<a class="headerlink" href="#disciplined-focus" title="Permalink to this headline">¶</a></h3>
+<p>The ‘D-day’ strategy seeks to galvanise the whole organisation by focusing on a highly specific goal that is:</p>
+<ol class="simple">
+<li><p>Readily achievable</p></li>
+<li><p>Can be directly leveraged into long-term success</p></li>
+</ol>
+<blockquote>
+<div><p>Most companies fail to cross the chasm because, confronted with the immensity of opportunity represented by a mainstream market, they lose their focus - chasing every opportunity that, but finding themselves unable to deliver a salable proposition to any true pragmatist buyer.
+Trying to cross the chasm without taking a niche market approach is like trying to light a fire without kindling.</p>
+</div></blockquote>
+<p>Why do so many high-tech leaders fail to follow this advice?</p>
+<p>Often, the claim is made that although a niche marketing strategy is generally best, we cannot afford to do so: we are too short on time or resources to risk being so focused.
+The truth is much simpler: “we are not willing to adopt any discipline that would ever require us to stop pursuing any sale at any time for any reason.”. We are, in other words, not a market-driven company; we are a sales-driven company.</p>
+<blockquote>
+<div><p>The consequences of being sales-driven during the chasm period are fatal.</p>
+</div></blockquote>
+<p>Why? The sole objective for a company during this stage of market development must be to secure a beachhead in a mainstream market; to create a pragmatist customer base that is referenceable (positive &amp; relevant).
+The customer <strong>must</strong> get the “whole product”: if any part of the selling promise is left unfulfilled then that customer is not available for referencing.</p>
+<blockquote>
+<div><p>“Whole product”: the complete set of products &amp; services required to achieve the sales promise.</p>
+</div></blockquote>
+<p>Whole product commitments are resource-intensive &amp; expensive; they need to be made sparingly and strategically - where they can be leveraged across many sales.
+This is only possible when the sales effort is focused on a single niche market.</p>
+<p>Risks in selling to more than one niche market:</p>
+<ul class="simple">
+<li><p>Sales promises take on additional requirements &amp; use-cases</p></li>
+<li><p>Key resources burn out</p></li>
+<li><p>Quality falters</p></li>
+</ul>
+<blockquote>
+<div><p>One of the keys to breaking into a new market is to establish a strong word-of-mouth reputation among buyers.</p>
+</div></blockquote>
+<p>In order for word-of-mouth to develop &amp; spread, we require a critical mass of informed individuals who meet regularly (enough) and reinforce the company / prooduct’s reputation by exchanging views.</p>
+<p>We spend marketing budget to seed this communication process.</p>
+<p>Winning over 1-2 customers in each of 5-10 different segments - ie. the sales-driven approach - cannot create word-of-mouth because those customers will never come together in big enough numbers to trigger the chain reaction that we’re after.</p>
+</div>
+<div class="section" id="being-a-leader">
+<h3>Being a leader<a class="headerlink" href="#being-a-leader" title="Permalink to this headline">¶</a></h3>
+<p>Another reason to adopt the niche approach links back to the profile of the pragmatist buyer; because these customers wish to buy from the market leader (which is more likely to be supported by the market ecosystem), we need to ensure that we target a market where we can be the leader.</p>
+<p>The market segment(s) which you target for your beachhead should be approx. double the sales you expect to generate in the next 2 years (assuming we aim to dominate with 50% market share).</p>
+<blockquote>
+<div><p>When picking your target market,focus on the economic value of the problem it fixes; where is the pain the most acute, who would pay the most to remove it?</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="choosing-a-target-market">
+<h2>Choosing a target market<a class="headerlink" href="#choosing-a-target-market" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="high-risk-low-data-decision">
+<h2>High-risk, low-data decision<a class="headerlink" href="#high-risk-low-data-decision" title="Permalink to this headline">¶</a></h2>
+<p>At this stage of the company’s life, we need to act quickly in order to survive.</p>
+<p>The decision on target segment needs to be based on <em>informed intuition</em>, rather than <em>analytical reason</em>; we are unlikely to have access to <em>all</em> the information required to make a very analytical decision.</p>
+</div>
+<div class="section" id="size-of-target">
+<h2>Size of target<a class="headerlink" href="#size-of-target" title="Permalink to this headline">¶</a></h2>
+<p>Eventually, the question of how much revenue a segment can generate will arise.</p>
+<p>People tend to assume that bigger is better, but this is almost always wrong.</p>
+<p>You’ve got to establish a dominant position (winning at least half of the new orders in that market, preferably more) in order to become the de-factor standard choice for the business problem which you address. If you don’t achieve this, then the pragmatist buyers in the early majority are going to remain reluctant to commit to you.</p>
+<p>NB. you’d expect to be taking orders from other segments whilst attacking your target market.</p>
+<ul class="simple">
+<li><p>Take your total revenue objective for the NTM</p></li>
+<li><p>Halve it to get the revenue objective for your target segment</p></li>
+<li><p>Assuming we take 50% of new orders, the market size (new orders) shouldn’t be much more than twice this number</p></li>
+<li><p>So, the market for new orders in your target segment in the NTM should be roughly equivalent to your revenue target…</p></li>
+</ul>
+<ol class="simple">
+<li><p>Big enough to matter</p></li>
+<li><p>Small enough to lead</p></li>
+<li><p>Good fit with the ‘crown jewels’</p></li>
+</ol>
+</div>
+<div class="section" id="market-development-strategy">
+<h2>Market Development Strategy<a class="headerlink" href="#market-development-strategy" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Target customer</p></li>
+<li><p>Compelling reason to buy</p></li>
+<li><p>Whole product</p></li>
+<li><p>Partners &amp; allies</p></li>
+<li><p>Distribution</p></li>
+<li><p>Pricing</p></li>
+<li><p>Competition</p></li>
+<li><p>Positioning</p></li>
+<li><p>Next target customer..</p></li>
+</ol>
+</div>
+<div class="section" id="whole-product">
+<h2>Whole Product<a class="headerlink" href="#whole-product" title="Permalink to this headline">¶</a></h2>
+<p>Concept originated in Theodore Levitt’s <em>The Marketing Imagination</em></p>
+<p>What do we need to provide to ensure that the target customers can fulfill their compelling reason to buy?</p>
+<blockquote>
+<div><p>Pragmatists evaluate &amp; buy whole products.</p>
+</div></blockquote>
+<p>4 levels of product completeness:</p>
+<ol class="simple">
+<li><p><strong>Generic product</strong> - what was shipped in the box &amp; is covered by the purchase contract</p></li>
+<li><p><strong>Expected product</strong> - the minimum configuration of products &amp; services required for the customer to achieve the buying objective</p></li>
+<li><p><strong>Augmented product</strong> - the product once fleshed out to provide the maximum chance of achieving the buying objective</p></li>
+<li><p><strong>Potential product</strong> - the space into which the product can grow as it develops &amp; as new ancillary products become available</p></li>
+</ol>
+<p>During this phase, make sure that any vendors you partner with to provide the whole product are getting a fair / good deal - this is not the time to play hard-ball / try to squeeze them to improve your economics.</p>
+<div class="section" id="working-with-partners">
+<h3>Working with partners<a class="headerlink" href="#working-with-partners" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Develop partnerships slowly.</p></li>
+<li><p>Don’t institutionalise partnerships until you have credible examples to show that everyone wins.</p></li>
+<li><p>Don’t recruit competing partners to serve the same need - they won’t fully commit in that environment.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="competition-positioning">
+<h2>Competition &amp; Positioning<a class="headerlink" href="#competition-positioning" title="Permalink to this headline">¶</a></h2>
+<p>Pragmatists assess products by evaluating products &amp; vendors within a common category.</p>
+<p>Providing ‘reference competitors’ can help a target customer to quickly &amp; accurately understand your value proposition.</p>
+<p>“Creating the competition” involves identifying two competitors as beacons so that the market can locate your company’s unique value proposition:</p>
+<ol class="simple">
+<li><p><strong>Market alternative</strong>: a vendor that the target customer has been buying from for years. We are offering a new solution to the same problem, but we address a shortcoming in that offering. [Excel &amp; post-it notes!]</p></li>
+<li><p><strong>Product alternative</strong>: a vendor who is harnessing the same disruptive innovation that we are, but in another market, and is positioning itself as a tech leader in that space.</p></li>
+</ol>
+<p>NB. The market alternative helps to delineate the budget that would be repurposed to purchase your product.
+We really want the beachhead segment to have the budget in place to buy your offer.</p>
+<blockquote>
+<div><p>Positioning is the single largest influence on the buying decision.
+Evaluation exercises to review alternatives are often just rationalisations of preestablished positioning.</p>
+</div></blockquote>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./starting-up"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UpstatePedro<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
