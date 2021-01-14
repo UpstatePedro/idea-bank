@@ -251,7 +251,7 @@ LA.norm(p)
 >> 3.7416
 ```
 
-### ($$L_{2}$$) Distance between two points
+### ($L_{2}$) Distance between two points
 
 - Given by the square root of the sum of squared elements:
 
