@@ -5,6 +5,7 @@
 - part: Software engineering
   chapters:
   - file: software-engineering/intro
+  - file: software-engineering/kubeflow
 
 - part: Data engineering
   chapters:
@@ -14,15 +15,17 @@
 - part: Machine learning in theory
   chapters:
   - file: machine-learning/intro
-  - file: machine-learning/style_transfer_20201106
 
 - part: Machine learning in practice
   chapters:
     - file: machine-learning/MLOps
+    - file: machine-learning/kubeflow
+
 
 - part: Maths
   chapters:
   - file: maths/intro
+  - file: maths/linear_algebra
 
 - part: Starting-up
   chapters:
