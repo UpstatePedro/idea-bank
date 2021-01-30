@@ -21,6 +21,9 @@
     sections:
     - file: machine-learning/MLOps
     - file: machine-learning/kubeflow
+  - file: machine-learning/in_theory-intro
+    sections:
+      - file: machine-learning/probability_theory
 
 - part: Maths
   chapters:
