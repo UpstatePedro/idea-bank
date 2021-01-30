@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python data structures &#8212; IdeaBank</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data engineering" href="../../data-engineering/intro.html" />
+    <link rel="prev" title="Running python" href="running_python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">IdeaBank</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   IdeaBank
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Software engineering
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="intro.html">
+   Python
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_python.html">
+     Running python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Python data structures
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data engineering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data-engineering/intro.html">
+   Data engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data-engineering/algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data-engineering/complexity.html">
+   Algorithm efficiency / complexity
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Machine learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../machine-learning/in_practice-intro.html">
+   Machine learning in practice
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../machine-learning/MLOps.html">
+     MLOps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../machine-learning/kubeflow.html">
+     Kubeflow
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Maths
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../maths/linear_algebra.html">
+   Linear algebra
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Starting-up
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../starting-up/crossing_the_chasm.html">
+   Book summary: Crossing the Chasm
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/software-engineering/python_language/python_data_structures.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/software-engineering/python_language/python_data_structures.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     list
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-properties">
+     Key properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance-complexity">
+     Performance / complexity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuple">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tuple
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Key properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#named-tuples">
+     Named tuples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Key properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance">
+     Performance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dict">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dict
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Key properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Performance / complexity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-sources">
+   (Re)sources
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="python-data-structures">
+<h1>Python data structures<a class="headerlink" href="#python-data-structures" title="Permalink to this headline">¶</a></h1>
+<p>This section seeks to understand some of Python’s key built-in data structures.</p>
+<div class="section" id="list">
+<h2><code class="docutils literal notranslate"><span class="pre">list</span></code><a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="key-properties">
+<h3>Key properties<a class="headerlink" href="#key-properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Mutable: contents can change</p></li>
+<li><p>Contents can be of differing types</p></li>
+</ul>
+</div>
+<div class="section" id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<p>The CPython implementation is a variable-length array, rather than a linked-list.
+The list head structure holds:</p>
+<ol class="simple">
+<li><p>a pointer to a contiguous array of references to other objects</p></li>
+<li><p>the current length of the array</p></li>
+</ol>
+<p>This design makes the indexing of a list independent of the size of the array, or the requested index.</p>
+<p>The array is resized when items are appended or removed - with some extra space added during appends to improve the performance of repeated appends.</p>
+</div>
+<div class="section" id="performance-complexity">
+<h3>Performance / complexity<a class="headerlink" href="#performance-complexity" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
+<th class="text-align:left head"><p>Example</p></th>
+<th class="head"><p>Complexity class</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Initialisation</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">list(...)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>depends on the number of elements</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Retrieve by index</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l[i]</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Retrieve slice</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l[a:b]</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(b-a)\)</span></p></td>
+<td><p>l[1:5]:O(l)/l[:]:O(len(l)-0)=O(N)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Write at index</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l[i]</span> <span class="pre">=</span> <span class="pre">0</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Write slice</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l[a:b]</span> <span class="pre">=</span> <span class="pre">...</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>List length</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">len(l)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Append item</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.append(5)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p>(not always)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Pop</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.pop()</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p>same as l.pop(-1), popping at end</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Pop by index</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.pop(i)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>O(N-i): l.pop(0):O(N) (see above)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Extend</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.extend(...)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(...))\)</span></p></td>
+<td><p>depends only on len of extension</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>check ==, !=</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l1</span> <span class="pre">==</span> <span class="pre">l2</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Search</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in/not</span> <span class="pre">in</span> <span class="pre">l</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>linearly searches list</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Copy</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.copy()</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>Same as l[:] which is O(N)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Remove</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.remove(...)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Delete</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">l[i]</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>depends on i; O(N) in worst case</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Reverse</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.reverse()</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Iteration</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">v</span> <span class="pre">in</span> <span class="pre">l:</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>Worst: no return/break in loop</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Sort</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.sort()</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N Log N)\)</span></p></td>
+<td><p>key/reverse mostly doesn’t change</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Multiply</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">k*l</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(k N)\)</span></p></td>
+<td><p>5*l is O(N): len(l)*l is O(N**2)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="tuple">
+<h2><code class="docutils literal notranslate"><span class="pre">tuple</span></code><a class="headerlink" href="#tuple" title="Permalink to this headline">¶</a></h2>
+<p>The tuple in python is an immutable list. As with the list, it is implemented as an array but because it is immutable, it has a fixed size.</p>
+<div class="section" id="id1">
+<h3>Key properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Immutable: once created, the contents of a tuple cannot change (wrt the objects they refer to). To have a tuple with modified contents, we must create a new tuple (but should consider why we’re using a tuple if we need to)</p></li>
+<li><p>Contents can be of different types</p></li>
+<li><p>Contents of tuples can be mutable: a tuple could contain a list as one of its elements</p></li>
+</ul>
+</div>
+<div class="section" id="named-tuples">
+<h3>Named tuples<a class="headerlink" href="#named-tuples" title="Permalink to this headline">¶</a></h3>
+<p>Named tuples allow us to provide labels for the elements of our tuples, and to access values using these labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="c1"># Define the labels for the elements of the tuples you plan to create</span>
+<span class="n">LabelledDataStruct</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;LabelledDataStruct&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;attr2&#39;</span><span class="p">])</span>
+
+<span class="c1"># Create some records</span>
+<span class="n">nt1</span> <span class="o">=</span> <span class="n">LabelledDataStruct</span><span class="p">(</span><span class="s1">&#39;tup-1&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
+<span class="n">nt2</span> <span class="o">=</span> <span class="n">LabelledDataStruct</span><span class="p">(</span><span class="s1">&#39;tup-2&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+
+<span class="c1"># Index values as with normal tuples</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values accessed by indexing: &#39;</span><span class="p">,</span> <span class="n">nt1</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="c1"># And access values using the labels</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values accessed by named attributes: &#39;</span><span class="p">,</span> <span class="n">nt2</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">nt2</span><span class="o">.</span><span class="n">attr2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Values accessed by indexing:  (12, &#39;large&#39;)
+Values accessed by named attributes:  tup-2 small
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="set">
+<h2><code class="docutils literal notranslate"><span class="pre">set</span></code><a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Key properties<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Mutable: you can add / remove elements from a set</p></li>
+<li><p>Contents can be of different types (but more common to have a set of the same types)</p></li>
+<li><p>Contents must be immutable (can’t have a list, could have a tuple)</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Implementation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
+<th class="text-align:left head"><p>Example</p></th>
+<th class="head"><p>Complexity class</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Initialisation</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">set(...)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>Depends on the number of elements</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Set size</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">len(s)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Add item</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.add(5)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Remove item</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l.remove(...)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p>Scales better than list/tuple: <span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Search for item</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in/not</span> <span class="pre">in</span> <span class="pre">s</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p>Scales better than list/tuple: <span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>check ==, !=</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">==</span> <span class="pre">s2</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span> or <span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>False if sets are not of same length</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Is subset</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">&lt;=</span> <span class="pre">s2</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(s1))\)</span></p></td>
+<td><p>Chevron points to the complexity…</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Is superset</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">&gt;=</span> <span class="pre">s2</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(s2))\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Union</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">|</span> <span class="pre">s2</span> </code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(s1)+len(s2))\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Intersection</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">&amp;</span> <span class="pre">s2</span> </code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(s1)+len(s2))\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Difference</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">-</span> <span class="pre">s2</span> </code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(s1)+len(s2))\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Symmetric diff.</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">^</span> <span class="pre">s2</span> </code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(len(s1)+len(s2))\)</span></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="dict">
+<h2><code class="docutils literal notranslate"><span class="pre">dict</span></code><a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Key properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Keys must be immutable (so the hash function returns the same value)</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Implementation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The CPython implementation of <code class="docutils literal notranslate"><span class="pre">dict</span></code> is a <strong>resizable hash table</strong></p>
+<p>The hash function is <strong>locality-insensitive</strong>, so even small differences in the key can result in very different outputs from the hash function.</p>
+<p>Keys are assigned to the hash array by taking the hash function output modulo the size of the hash table(?).</p>
+</div>
+<div class="section" id="id6">
+<h3>Performance / complexity<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
+<th class="text-align:left head"><p>Example</p></th>
+<th class="head"><p>Complexity class</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Initialisation</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">dict(...)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p>depends on the number of inputs</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Retrieve by key</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">d[k]</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Retrieve w get()</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">d.get(k)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Insert new k,v pair</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">d[k]</span> <span class="pre">=</span> <span class="pre">v</span> </code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Delete key</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">d[k]</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>List keys / values</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">d.keys()</span></code> / <code class="docutils literal notranslate"><span class="pre">d.values()</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Iteration</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">d:</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Pop</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">d.pop(k)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>type</p></th>
+<th class="text-align:center head"><p>sequence</p></th>
+<th class="text-align:center head"><p>mutable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>tuple</p></td>
+<td class="text-align:center"><p>yes</p></td>
+<td class="text-align:center"><p>no</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>list</p></td>
+<td class="text-align:center"><p>yes</p></td>
+<td class="text-align:center"><p>yes</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>dict</p></td>
+<td class="text-align:center"><p>no</p></td>
+<td class="text-align:center"><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>set</p></td>
+<td class="text-align:center"><p>no</p></td>
+<td class="text-align:center"><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="re-sources">
+<h2>(Re)sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3.8/faq/design.html#how-are-dictionaries-implemented-in-cpython">Python design docs</a></p>
+<p><a class="reference external" href="https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt">Complexity of Python Operations</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./software-engineering/python_language"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="running_python.html" title="previous page">Running python</a>
+    <a class='right-next' id="next-link" href="../../data-engineering/intro.html" title="next page">Data engineering</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UpstatePedro<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
