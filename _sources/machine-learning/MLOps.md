@@ -14,14 +14,14 @@ MLOps borrows several concepts from DevOps:
 Work is carried out on independent branches and merged back into the main branch once complete.
 This practice encourages small, frequent changes so that WIP does not go stale & developers are less likely to face tortuous merge conflicts. 
 
-![CI](./fixtures/CI.png)
+![CI](assets/CI.png)
 
 ### Continuous Delivery
 
 Completed work is released to production as soon as it has passed quality checks, rather than batching up many changes for release on an arbitrary, possibly distant, release date
 This reduces risk by reducing the surface area for debugging if a release has an issue, and minimising the time between developing a bug & discovering it (making it much cheaper to fix).
 
-![CI](./fixtures/CD.png)
+![CI](assets/CD.png)
 
 To these, it adds the practice of **Continuous Training** to manage model drift.
 
