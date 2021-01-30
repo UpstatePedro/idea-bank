@@ -112,11 +112,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="#resources">
-   Resources
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="complexity.html">
    Algorithm efficiency / complexity
   </a>
@@ -124,31 +119,28 @@
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
-  Machine learning in theory
+  Machine learning
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/intro.html">
-   Machine learning intro
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../machine-learning/in_practice-intro.html">
+   Machine learning in practice
   </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Machine learning in practice
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/MLOps.html">
-   MLOps
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/kubeflow.html">
-   Kubeflow
-  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/MLOps.html">
+     MLOps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/kubeflow.html">
+     Kubeflow
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 <p class="caption collapsible-parent">
@@ -261,154 +253,147 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Algorithms
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-an-algorithm">
+   What is an algorithm?
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-is-an-algorithm">
-     What is an algorithm?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-motivating-example-binary-search">
-       A motivating example: binary search
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#selection-sort">
-     Selection Sort*
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recursion">
-     Recursion
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#structure">
-       Structure
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-call-stack">
-       The call stack
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#divide-conquer">
-     Divide &amp; Conquer
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#quicksort">
-       Quicksort
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-note-on-complexity">
-       A note on complexity
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#parallelism">
-       Parallelism?
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#merge-sort">
-     Merge sort
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hash-tables">
-     Hash tables
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#collisions">
-       Collisions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#performance">
-       Performance
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#load-factors-resizing">
-       Load factors &amp; resizing
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hash-functions">
-       Hash functions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#avg-case-vs-worst-case">
-     Avg-case Vs Worst case
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recap">
-     Recap
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphs-graph-search">
-     Graphs &amp; graph-search
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#graphs">
-       Graphs
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#shortest-path-problems-breadth-first-search-bfs">
-       Shortest path problems &amp; Breadth-first search (BFS)
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#representing-graphs-in-data-structures">
-       Representing graphs in data structures
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#complexity">
-       Complexity
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trees-are-graphs">
-       Trees are graphs
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
-     Dijkstra’s Algorithm
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-of-graph-search">
-     Summary of graph search
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-motivating-example-binary-search">
+     A motivating example: binary search
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selection-sort">
+   Selection Sort*
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recursion">
+   Recursion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structure">
+     Structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-call-stack">
+     The call stack
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#divide-conquer">
+   Divide &amp; Conquer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quicksort">
+     Quicksort
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-complexity">
+     A note on complexity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parallelism">
+     Parallelism?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-sort">
+   Merge sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hash-tables">
+   Hash tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collisions">
+     Collisions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance">
+     Performance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-factors-resizing">
+     Load factors &amp; resizing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-functions">
+     Hash functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#avg-case-vs-worst-case">
+   Avg-case Vs Worst case
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap">
+   Recap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphs-graph-search">
+   Graphs &amp; graph-search
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphs">
+     Graphs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shortest-path-problems-breadth-first-search-bfs">
+     Shortest path problems &amp; Breadth-first search (BFS)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#representing-graphs-in-data-structures">
+     Representing graphs in data structures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complexity">
+     Complexity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trees-are-graphs">
+     Trees are graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
+   Dijkstra’s Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-graph-search">
+   Summary of graph search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources">
    Resources
   </a>
@@ -994,11 +979,11 @@ Combined then, we’re facing <span class="math notranslate nohighlight">\(O(Nod
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="resources">
-<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.manning.com/books/grokking-algorithms">Grokking Algorithms; Aditya Bhargava</a></p>
 <p><a class="reference external" href="https://github.com/elianalopez/Data-Structures-and-Algorithms-Notes-with-Python">Eliana Lopez’s crib sheet</a></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
