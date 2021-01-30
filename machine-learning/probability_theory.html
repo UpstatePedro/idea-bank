@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bayesian vs frequentist &#8212; IdeaBank</title>
+    <title>Probability theory &#8212; IdeaBank</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear algebra" href="../maths/linear_algebra.html" />
+    <link rel="prev" title="Machine learning in theory" href="in_theory-intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -146,7 +148,7 @@
   Machine learning
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="in_practice-intro.html">
    Machine learning in practice
@@ -166,13 +168,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="in_theory-intro.html">
    Machine learning in theory
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="probability_theory.html">
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Probability theory
     </a>
    </li>
@@ -244,7 +246,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/machine-learning/prob-test.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/machine-learning/probability_theory.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -269,7 +271,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/machine-learning/prob-test.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/machine-learning/probability_theory.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -291,33 +293,149 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   bayesian vs frequentist
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty">
+   Uncertainty
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamental-concepts">
+   Fundamental concepts
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#concepts">
-     concepts
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-notation">
+     Basic notation
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bla">
-     bla
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joint-probability">
+     Joint probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#union">
+     Union
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-probability">
+     Conditional probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independence-conditional-independence">
+     Independence &amp; conditional independence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-variables">
+     Random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-random-variables">
+     Discrete random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-random-variables">
+     Continuous random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">
+     Cumulative distribution function (cdf)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-distribution-function-pdf">
+     Probability distribution function (pdf)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#percent-point-function-ppf">
+     Percent point function (ppf)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laws">
+   Laws
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-rule">
+     Sum rule
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#product-rule">
+     Product rule
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chain-rule">
+     Chain rule
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-rule">
+   Bayes’ rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-a-distribution">
+   Properties of a distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments">
+     Moments
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bayes-theorem">
-       bayes’ theorem
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mean">
+       Mean
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variance">
+       Variance
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mode">
+       Mode
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-moments">
+     Conditional moments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covariance">
+       Covariance
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#correlation">
+       Correlation
       </a>
      </li>
     </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distributions">
-   distributions
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#central-limit-theorem">
+   Central limit theorem
   </a>
  </li>
 </ul>
@@ -331,49 +449,99 @@
         
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
+  <div class="section" id="probability-theory">
+<h1>Probability theory<a class="headerlink" href="#probability-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="uncertainty">
+<h2>Uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">¶</a></h2>
+<p>Probability is used to quantify our uncertainty concerning unknown events or phenomena.</p>
+<p>Uncertainty comes in 2 different flavours:</p>
+<ol class="simple">
+<li><p><strong>Epistemic</strong> (also, model uncertainty): originates due to our imperfect understanding of the processes that we are modelling. Colleting more, and better, data can help to reduce this.</p></li>
+<li><p><strong>Aleatoric</strong>: originates in the intrinsic variability of these processes. Collecting more data won’t change this.</p></li>
+</ol>
+<p>ie. we can become extremely confident that our model correctly understands a process, but if it tells us that there’s an 80% chance of outcome A and 20% chance of outcome B, then there is still uncertainty in any prediction that we make.</p>
+</div>
+<div class="section" id="fundamental-concepts">
+<h2>Fundamental concepts<a class="headerlink" href="#fundamental-concepts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-notation">
+<h3>Basic notation<a class="headerlink" href="#basic-notation" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="joint-probability">
+<h3>Joint probability<a class="headerlink" href="#joint-probability" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="union">
+<h3>Union<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="conditional-probability">
+<h3>Conditional probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="independence-conditional-independence">
+<h3>Independence &amp; conditional independence<a class="headerlink" href="#independence-conditional-independence" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="random-variables">
+<h3>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="discrete-random-variables">
+<h3>Discrete random variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="continuous-random-variables">
+<h3>Continuous random variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cumulative-distribution-function-cdf">
+<h3>Cumulative distribution function (cdf)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="probability-distribution-function-pdf">
+<h3>Probability distribution function (pdf)<a class="headerlink" href="#probability-distribution-function-pdf" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="percent-point-function-ppf">
+<h3>Percent point function (ppf)<a class="headerlink" href="#percent-point-function-ppf" title="Permalink to this headline">¶</a></h3>
+<p>Also known as the <em><strong>inverse cdf</strong></em> or <em><strong>quantile function</strong></em></p>
+</div>
+</div>
+<div class="section" id="laws">
+<h2>Laws<a class="headerlink" href="#laws" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sum-rule">
+<h3>Sum rule<a class="headerlink" href="#sum-rule" title="Permalink to this headline">¶</a></h3>
+<p>Also know as the *<em><strong>rule of total probability</strong></em></p>
+</div>
+<div class="section" id="product-rule">
+<h3>Product rule<a class="headerlink" href="#product-rule" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="chain-rule">
+<h3>Chain rule<a class="headerlink" href="#chain-rule" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="bayes-rule">
+<h2>Bayes’ rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="properties-of-a-distribution">
+<h2>Properties of a distribution<a class="headerlink" href="#properties-of-a-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="moments">
+<h3>Moments<a class="headerlink" href="#moments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="mean">
+<h4>Mean<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h4>
+<p>bla</p>
+</div>
+<div class="section" id="variance">
+<h4>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="mode">
+<h4>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="conditional-moments">
+<h3>Conditional moments<a class="headerlink" href="#conditional-moments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="covariance">
+<h4>Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="correlation">
+<h4>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Probability theory is nothing but common sense reduced to calculation
-Pierre Laplace (1812)</p>
-</div></blockquote>
-<div class="section" id="bayesian-vs-frequentist">
-<h1>bayesian vs frequentist<a class="headerlink" href="#bayesian-vs-frequentist" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="concepts">
-<h2>concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="central-limit-theorem">
+<h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="bla">
-<h2>bla<a class="headerlink" href="#bla" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
-<span class="n">a</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 2., 3.],
-       [4., 5., 6.]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="bayes-theorem">
-<h3>bayes’ theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h3>
-<div class="math notranslate nohighlight">
-\[
-p(X=x | Y=y) = \frac{p(X=x, Y=y)}{p(Y=y)} 
-\]</div>
-</div>
-</div>
-</div>
-<div class="section" id="distributions">
-<h1>distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -385,16 +553,16 @@ p(X=x | Y=y) = \frac{p(X=x, Y=y)}{p(Y=y)}
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "idea-bank"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "idea-bank",
             path: "./machine-learning"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'idea-bank'</script>
 
               </div>
               
@@ -404,6 +572,8 @@ p(X=x | Y=y) = \frac{p(X=x, Y=y)}{p(Y=y)}
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="in_theory-intro.html" title="previous page">Machine learning in theory</a>
+    <a class='right-next' id="next-link" href="../maths/linear_algebra.html" title="next page">Linear algebra</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

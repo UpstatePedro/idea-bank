@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kubernetes for ML &#8212; IdeaBank</title>
+    <title>&lt;no title&gt; &#8212; IdeaBank</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -244,7 +244,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/machine-learning/k8s_for_ml.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/machine-learning/intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -273,27 +273,7 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#containers">
-   Containers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#container-images">
-   Container images
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#kubernetes">
-   Kubernetes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-kubernetes-control-plane">
-   The Kubernetes “control-plane”
-  </a>
- </li>
+            <ul class="simple nav section-nav flex-column">
 </ul>
 
         </nav>
@@ -305,98 +285,7 @@
         
               <div>
                 
-  <div class="section" id="kubernetes-for-ml">
-<h1>Kubernetes for ML<a class="headerlink" href="#kubernetes-for-ml" title="Permalink to this headline">¶</a></h1>
-<p>image
-container
-node
-cluster
-pod
-namespace
-service
-ingress
-deployment
-operators
-registry</p>
-<div class="section" id="containers">
-<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h2>
-<p>The traditional approach to deploying an application was to install it on its own server / virtual machine.</p>
-<p><strong>Dedicated servers</strong></p>
-<p>Each server had specific function(s)</p>
-<ul class="simple">
-<li><p>Application code</p></li>
-<li><p>Dependencies</p></li>
-<li><p>Kernel</p></li>
-<li><p>Hardware</p></li>
-</ul>
-<p>Slow to deploy / modify (~weeks)
-Inefficient utilisation
-Not portable</p>
-<p><strong>Virtual machines</strong></p>
-<p>Virtualisation enabled multiple virtual servers to run on the same physical machine.</p>
-<ul class="simple">
-<li><p>Application code</p></li>
-<li><p>Dependencies</p></li>
-<li><p>Kernel</p></li>
-<li><p>Hardware + hypervisor</p></li>
-</ul>
-<p>(hypervisor = software layer that breaks the coupling between the OS and the underlying hardware; enables multiple OS to share the same hardware)</p>
-<p>Faster deployment (~minutes)
-Improved utilisation
-VMs can be imaged &amp; thereby become more portable.</p>
-<p>Boot-time
-Dependencies are not isolated, resources are not isolated. Interactions between applications can cause problems.</p>
-<p>These dependency / isolation issues can be solved by running separate VMs for each application.</p>
-<p>Duplicate OS on each VM, redundancy &amp; slow boot times</p>
-<p>Instead of this, we can containerise:
-virtualise the user space &amp; run a single kernel
-bundles application code &amp; dependencies within each user space to avoid interactions</p>
-<p>containers <strong>don’t</strong> carry a full OS and are therefore lighter weight
-don’t need to boot full VM and initialise OS for each application, so start &amp; stop times are much faster</p>
-</div>
-<div class="section" id="container-images">
-<h2>Container images<a class="headerlink" href="#container-images" title="Permalink to this headline">¶</a></h2>
-<p>Images are the combination of the application and its dependencies</p>
-<p>A container is a running instance of an image.</p>
-<p>Docker provides open-source tooling to create &amp; run containers, but it does not help to orchestrate applications at scale.
-This is what kubernetes is used for.</p>
-</div>
-<div class="section" id="kubernetes">
-<h2>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="the-kubernetes-control-plane">
-<h2>The Kubernetes “control-plane”<a class="headerlink" href="#the-kubernetes-control-plane" title="Permalink to this headline">¶</a></h2>
-<p>In any given k8s cluster, there will be a master node, and worker nodes
-On the master, will be:</p>
-<ul class="simple">
-<li><p>kube-APIserver: handles all commands to view / modify the cluster</p>
-<ul>
-<li><p>All <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> commands are addressed to the api server</p></li>
-</ul>
-</li>
-<li><p>etcd: the cluster’s database: stores all cluster state, including configuration data</p>
-<ul>
-<li><p>Only the api-server ever interacts directly with etcd</p></li>
-</ul>
-</li>
-<li><p>kube-scheduler: selects which node to assign pods to (doesn’t actually launch them)</p></li>
-<li><p>kube-controller-manager: continuously monitors the state of the cluster (through api-server)</p>
-<ul>
-<li><p>many individual k8s objects are maintained by loops of code called “controllers”</p></li>
-</ul>
-</li>
-</ul>
-<p>On all other nodes, you’ll have:</p>
-<ul class="simple">
-<li><p>kubelet</p></li>
-</ul>
-<p>affinity &amp; anti-affinity specs encourage pods to run on the same / different nodes</p>
-<blockquote>
-<div><p>etcd is a highly durable, distributed key-value store</p>
-</div></blockquote>
-</div>
-</div>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
