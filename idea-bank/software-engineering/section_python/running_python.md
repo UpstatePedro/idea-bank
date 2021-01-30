@@ -65,7 +65,7 @@ However, there are (at least) 2 downsides to consider:
 2. Because the interpreter is written in Python, PyPy isn't able to leverage some packages that rely on C-extensions (eg. NumPy) 
 
 
-# Resources
+## Resources
 
 [Learning Python (O'Reilly)](https://www.oreilly.com/library/view/learning-python-5th/9781449355722/)
 [Anthony Shaw's benchmarking results](https://hackernoon.com/which-is-the-fastest-version-of-python-2ae7c61a6b2b)
