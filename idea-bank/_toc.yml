@@ -14,12 +14,10 @@
   - file: data-engineering/algorithms
   - file: data-engineering/complexity
 
-- part: Machine learning in theory
+- part: Machine learning
   chapters:
-  - file: machine-learning/intro
-
-- part: Machine learning in practice
-  chapters:
+  - file: machine-learning/in_practice-intro
+    sections:
     - file: machine-learning/MLOps
     - file: machine-learning/kubeflow
 
