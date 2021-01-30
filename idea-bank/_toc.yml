@@ -4,9 +4,9 @@
 
 - part: Software engineering
   chapters:
-  - file: software-engineering/intro
     sections:
-    - file: software-engineering/running_python
+    - file: software-engineering/python_language/intro
+    - file: software-engineering/python_language/running_python
 
 - part: Data engineering
   chapters:
