@@ -37,7 +37,7 @@ The next time you run this code, Python will check that the source code hasn't c
 
 ### The Python virtual machine (PVM)
 
-A code loop that iterates over byte code instructions and 
+A code loop that iterates over byte code instructions and converts them to binary.
 
 ## Python interpreter implementations
 
