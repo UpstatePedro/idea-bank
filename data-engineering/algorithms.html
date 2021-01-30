@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Algorithms &#8212; IdeaBank</title>
+    <title>Data Structures &amp; Algorithms &#8212; IdeaBank</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -134,7 +134,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Algorithms
+   Data Structures &amp; Algorithms
   </a>
  </li>
  <li class="toctree-l1">
@@ -280,6 +280,55 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arrays-linked-lists">
+   Arrays &amp; Linked Lists
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays">
+     Arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linked-lists">
+     Linked lists
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance">
+     Performance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hash-tables">
+   Hash tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collisions">
+     Collisions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Performance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-factors-resizing">
+     Load factors &amp; resizing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-functions">
+     Hash functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-an-algorithm">
    What is an algorithm?
   </a>
@@ -339,33 +388,6 @@
   <a class="reference internal nav-link" href="#merge-sort">
    Merge sort
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hash-tables">
-   Hash tables
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#collisions">
-     Collisions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#performance">
-     Performance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-factors-resizing">
-     Load factors &amp; resizing
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hash-functions">
-     Hash functions
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#avg-case-vs-worst-case">
@@ -435,9 +457,140 @@
         
               <div>
                 
-  <div class="section" id="algorithms">
-<h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="data-structures-algorithms">
+<h1>Data Structures &amp; Algorithms<a class="headerlink" href="#data-structures-algorithms" title="Permalink to this headline">¶</a></h1>
 <p>Notes from reading <em>Grokking Algorithms</em> by Aditya Bhargava</p>
+<div class="section" id="arrays-linked-lists">
+<h2>Arrays &amp; Linked Lists<a class="headerlink" href="#arrays-linked-lists" title="Permalink to this headline">¶</a></h2>
+<p>When working with data, we often need to work with (ordered) sequences of objects. There is more than one approach structuring this data. Two common approaches are:</p>
+<ol class="simple">
+<li><p>Arrays</p></li>
+<li><p>Linked lists</p></li>
+</ol>
+<div class="section" id="arrays">
+<h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h3>
+<p>When a new array is created, we reserve a contiguous block of memory to house the contents. Each address in the block stores a reference to the object that is placed at the corresponding element of the array.</p>
+<p>Because we have a pre-defined block of memory, we always know which address we need to access to retrieve an element of the array. We therefore get fast reads of the contents of the array, even when we’re asking for arbitrary elements eg. <code class="docutils literal notranslate"><span class="pre">elem</span> <span class="pre">=</span> <span class="pre">l[999]</span></code>.</p>
+<p>However, over time, we may wish to change the contents of our array: for example, as we receive new values in a time series, we may need to add new elements to the end of our array. The memory block that we had reserved may now be full and we therefore need to reserve additional addresses to house all of the elements. If neighbouring addresses are already being used by other programmes, then we will need to provision a new contiguous memory block and relocate the entire array in order to keep all the elements together.</p>
+<p>We can mitigate the cost of having to relocate the array when its size changes by reserving some buffer in the blocks that we request - this way we can add new elements to the array without having to move the whole array.
+BUT this redundancy is also a drain on memory (noone else can use it) and doesn’t completely remove the problem - we can still use up the buffer and find ourselves needing to relocate the array.</p>
+</div>
+<div class="section" id="linked-lists">
+<h3>Linked lists<a class="headerlink" href="#linked-lists" title="Permalink to this headline">¶</a></h3>
+<p>Linked lists allow us to avoid this need for relocating arrays when we add new elements. The elements of a linked list are not stored in a contiguous block - they can each be stored in arbitrary positions on the disk.
+In order to keep track of all these positions, each element is responsible for storing the location of the next element in the LL. In this way, adding a new element is easy: you store it anywhere in memory, and then store it’s location with the previous element. As a result, we never need to worry about having to relocate the whole LL.</p>
+<p>The downside with LLs is that in order to retrieve an element from an arbitrary position in the LL, we still have to start at the beginning and work our way through each element to get there (because each element holds the only record of the address of the next element).</p>
+<p>Thus, LLs are great for scenarios where we want to retrieve each and every element in order. But they’re far from ideal if we are more likely to be requesting individual elements from arbitrary positions in the collection.</p>
+</div>
+<div class="section" id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
+<th class="text-align:center head"><p>Array</p></th>
+<th class="text-align:center head"><p>Linked list</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Insert</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Search</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Delete</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Prefer <strong>arrays</strong> when the contents don’t change size frequently</p></li>
+<li><p>Prefer <strong>arrays</strong> when we often won’t read from the sequence in order, when we’ll typically want to retrieve values from arbitrary slices / indices</p></li>
+<li><p>Prefer <strong>linked lists</strong> when we typically read (all) elements, in order</p></li>
+<li><p>Prefer <strong>linked lists</strong> when we regularly change the size of the collection</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="hash-tables">
+<h2>Hash tables<a class="headerlink" href="#hash-tables" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>AKA hash map, map, dictionary &amp; associative array</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>implementation</p></li>
+<li><p>collisions</p></li>
+<li><p>hash functions</p></li>
+</ul>
+<p>Hash tables map inputs to outputs as key, value pairs. They are composed of:</p>
+<ol class="simple">
+<li><p>Hash function</p></li>
+<li><p>Array (for storage of values)</p></li>
+</ol>
+<p>The input is a sequence of bytes that acts as a key to access the value, and the hash table returns the value each time that key is provided.
+A hash function takes a key as input and returns the index of the array at which the corresponding value is stored. (ie. it doesn’t return the value directly, but it tells us where to store / find it).</p>
+<p>No duplicate keys allowed.</p>
+<div class="section" id="collisions">
+<h3>Collisions<a class="headerlink" href="#collisions" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes a hash function will assign two different keys to the same bucket. This will overwrite values and could cause the hash table to return the wrong value for a key.</p>
+<p>One way around this is to create a linked-list at a slot whenever multiple keys map to it.
+But this can make hash tables inefficient if the collisions are not distributed evenly through our data (we could end up with many data points in a single linked list, and few values in the remaining array slots).</p>
+</div>
+<div class="section" id="id1">
+<h3>Performance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
+<th class="text-align:left head"><p>Avg</p></th>
+<th class="text-align:left head"><p>Worst</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Insert</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Search</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Delete</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Eventually, the table will grow so large that collisions will occur, and the performance rules will break-down.</p>
+</div>
+<div class="section" id="load-factors-resizing">
+<h3>Load factors &amp; resizing<a class="headerlink" href="#load-factors-resizing" title="Permalink to this headline">¶</a></h3>
+<p>The likelihood of collisions is measured with the <strong>load factor</strong>:</p>
+<p>load factor = (Num. items in the hash table) / (Num. slots available)</p>
+<p>As the load factor increases, we may need to add slots to the values array; this is called “resizing”.</p>
+<p>Resizing is often triggered once the load factor exceeds 0.7.</p>
+<p>To resize the values array:</p>
+<ul class="simple">
+<li><p>Create a new array (often double the size)</p></li>
+<li><p>Re-assign all exisiting items to the new array using the hash function</p></li>
+</ul>
+<p>Resizing is expensive, but reading hash tables is still <span class="math notranslate nohighlight">\(O(1)\)</span> once averaged-out</p>
+</div>
+<div class="section" id="hash-functions">
+<h3>Hash functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h3>
+<p>A good hash function distributes values evenly across array slots - this reduces the likelihood of collisions</p>
+<p>An example of a hash function: SHA</p>
+<p>Hash functions must exhibit two properties:</p>
+<ol class="simple">
+<li><p>Consistency: Each time the same key is provided, it should unlock the same value</p></li>
+<li><p>Divergence: Each time a different key is provided, it should return a different array index</p></li>
+</ol>
+<blockquote>
+<div><p>Common hash functions &amp; how they work?</p>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="what-is-an-algorithm">
 <h2>What is an algorithm?<a class="headerlink" href="#what-is-an-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>An algorithm is a set of instructions for accomplishing a task.</p>
@@ -705,83 +858,6 @@ The fact that we’re breaking the problem down into many branching pieces more 
 <div class="section" id="merge-sort">
 <h2>Merge sort<a class="headerlink" href="#merge-sort" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="hash-tables">
-<h2>Hash tables<a class="headerlink" href="#hash-tables" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>AKA hash map, map, dictionary &amp; associative array</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>implementation</p></li>
-<li><p>collisions</p></li>
-<li><p>hash functions</p></li>
-</ul>
-<p>Hash tables map inputs to outputs as key, value pairs. They are composed of:</p>
-<ol class="simple">
-<li><p>Hash function</p></li>
-<li><p>Array (for storage of values)</p></li>
-</ol>
-<p>The input is a sequence of bytes that acts as a key to access the value, and the hash table returns the value each time that key is provided.
-A hash function takes a key as input and returns the index of the array at which the corresponding value is stored. (ie. it doesn’t return the value directly, but it tells us where to store / find it).</p>
-<p>No duplicate keys allowed.</p>
-<div class="section" id="collisions">
-<h3>Collisions<a class="headerlink" href="#collisions" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes a hash function will assign two different keys to the same bucket. This will overwrite values and could cause the hash table to return the wrong value for a key.</p>
-<p>One way around this is to create a linked-list at a slot whenever multiple keys map to it.
-But this can make hash tables inefficient if the collisions are not distributed evenly through our data (we could end up with many data points in a single linked list, and few values in the remaining array slots).</p>
-</div>
-<div class="section" id="performance">
-<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
-<th class="text-align:left head"><p>Avg</p></th>
-<th class="text-align:left head"><p>Worst</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>Insert</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Search</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Delete</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>Eventually, the table will grow so large that collisions will occur, and the performance rules will break-down.</p>
-</div>
-<div class="section" id="load-factors-resizing">
-<h3>Load factors &amp; resizing<a class="headerlink" href="#load-factors-resizing" title="Permalink to this headline">¶</a></h3>
-<p>The likelihood of collisions is measured with the <strong>load factor</strong>:</p>
-<p>load factor = (Num. items in the hash table) / (Num. slots available)</p>
-<p>As the load factor increases, we may need to add slots to the values array; this is called “resizing”.</p>
-<p>Resizing is often triggered once the load factor exceeds 0.7.</p>
-<p>To resize the values array:</p>
-<ul class="simple">
-<li><p>Create a new array (often double the size)</p></li>
-<li><p>Re-assign all exisiting items to the new array using the hash function</p></li>
-</ul>
-<p>Resizing is expensive, but reading hash tables is still <span class="math notranslate nohighlight">\(O(1)\)</span> once averaged-out</p>
-</div>
-<div class="section" id="hash-functions">
-<h3>Hash functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h3>
-<p>A good hash function distributes values evenly across array slots - this reduces the likelihood of collisions</p>
-<p>An example of a hash function: SHA</p>
-<p>Hash functions must exhibit two properties:</p>
-<ol class="simple">
-<li><p>Consistency: Each time the same key is provided, it should unlock the same value</p></li>
-<li><p>Divergence: Each time a different key is provided, it should return a different array index</p></li>
-</ol>
-<blockquote>
-<div><p>Common hash functions &amp; how they work?</p>
-</div></blockquote>
-</div>
-</div>
 <div class="section" id="avg-case-vs-worst-case">
 <h2>Avg-case Vs Worst case<a class="headerlink" href="#avg-case-vs-worst-case" title="Permalink to this headline">¶</a></h2>
 <p>In all the complexity notation, there’s a hidden constant; figuratively and literally…</p>
@@ -808,36 +884,6 @@ For some algorithms, the order of complexity may be higher than others, but <spa
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>Merge sort</p></td>
 <td class="text-align:center"><p></p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Operation</p></th>
-<th class="text-align:center head"><p>Hash table (Avg.)</p></th>
-<th class="text-align:center head"><p>Hash table (Worst)</p></th>
-<th class="text-align:center head"><p>Array</p></th>
-<th class="text-align:center head"><p>Linked list</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>Insert</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Search</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Delete</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -967,8 +1013,8 @@ Combined then, we’re facing <span class="math notranslate nohighlight">\(O(Nod
 <div><p>If we want to consider weights (ie. find the smallest weighted ‘distance’ between two nodes) then we should use Dijkstra’s algorithm.</p>
 </div></blockquote>
 <p>Dijkstra’s algorithm makes the assumption that there is no ‘cheaper’ route to the cheapest first-degree connection from a given node. This is because the first edge you’d have to travel along on any other path would already have a higher cost than the cheapest - so long as ALL weights are positive. If weights can be negative, then a 2nd-degree edge could more than offset the higher cost of the first, and thereby offer a cheaper path.</p>
-<p>* Bellman-Ford Vs Dijikstra?
-* What to do if multiple edges have the same (cheapest) cost?</p>
+<p>* Bellman-Ford Vs Dijikstra?</p>
+<p>* What to do if multiple edges have the same (cheapest) cost?</p>
 <p>Dijikstra’s algorithm fails if:</p>
 <ul class="simple">
 <li><p>The graph is cyclical (undirected graphs are implicitly cyclical)</p></li>
