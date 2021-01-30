@@ -2,9 +2,11 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
 
-#- part: Software engineering
-#  chapters:
-#  - file: software-engineering/intro
+- part: Software engineering
+  chapters:
+  - file: software-engineering/intro
+    sections:
+    - file: software-engineering/running_python
 
 - part: Data engineering
   chapters:
