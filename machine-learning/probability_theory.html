@@ -327,6 +327,13 @@
     <a class="reference internal nav-link" href="#independence-conditional-independence">
      Independence &amp; conditional independence
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#an-example">
+       An example
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#random-variables">
@@ -337,26 +344,35 @@
     <a class="reference internal nav-link" href="#discrete-random-variables">
      Discrete random variables
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-mass-function-pmf">
+       Probability mass function (pmf)
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#continuous-random-variables">
      Continuous random variables
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">
-     Cumulative distribution function (cdf)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-distribution-function-pdf">
-     Probability distribution function (pdf)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#percent-point-function-ppf">
-     Percent point function (ppf)
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">
+       Cumulative distribution function (cdf)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-density-function-pdf">
+       Probability density function (pdf)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#percent-point-function-ppf">
+       Percent point function (ppf)
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -465,37 +481,128 @@
 <h2>Fundamental concepts<a class="headerlink" href="#fundamental-concepts" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="basic-notation">
 <h3>Basic notation<a class="headerlink" href="#basic-notation" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(Pr(A)\)</span> represents the probability of an event <span class="math notranslate nohighlight">\(A\)</span> occurring</p>
+<p><span class="math notranslate nohighlight">\(Pr(\bar{A})\)</span> represents the probability that an event <span class="math notranslate nohighlight">\(A\)</span> will not occur, and is equal to <span class="math notranslate nohighlight">\(1 - Pr(A)\)</span></p>
 </div>
 <div class="section" id="joint-probability">
 <h3>Joint probability<a class="headerlink" href="#joint-probability" title="Permalink to this headline">¶</a></h3>
+<p>If we need to consider the possible occurrence of more than one event, for example events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, then we’re interested in their <strong>joint probability distribution</strong>.</p>
+<p>The probability that they both occur (ie. the joint probability of A &amp; B):</p>
+<p><span class="math notranslate nohighlight">\(Pr(A \wedge b) = Pr(A, B)\)</span></p>
+<p>Under conditions where <span class="math notranslate nohighlight">\(A\)</span> &amp; <span class="math notranslate nohighlight">\(B\)</span> are <strong>independent</strong>, then <span class="math notranslate nohighlight">\(Pr(A, B) = Pr(A)Pr(B)\)</span></p>
 </div>
 <div class="section" id="union">
 <h3>Union<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
+<p>The Union of events <span class="math notranslate nohighlight">\(A\)</span>&amp;<span class="math notranslate nohighlight">\(B\)</span> is the probability that <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> occur, but not both:</p>
+<ul class="simple">
+<li><p>We’ll accept the ocurrence of either <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> to satisfy the criteria, so we can add their probabilities together.</p></li>
+<li><p>But we won’t accept their joint occurrence, so we need to subtract the probability that <strong>both</strong> <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> occur together from the total</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(Pr(A \vee B) = Pr(A) + Pr(B) - Pr(A \wedge B)\)</span></p>
+<blockquote>
+<div><p>If the two events are mutually exclusive (they can’t both occur at the same time) then <span class="math notranslate nohighlight">\(Pr(A \wedge B)\)</span> is <span class="math notranslate nohighlight">\(0\)</span> and can be ignored.</p>
+</div></blockquote>
 </div>
 <div class="section" id="conditional-probability">
 <h3>Conditional probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h3>
+<p>When we’re working with multiple interdependent events, information about the status of one event can tell us something about the status of other over events. We can therefore update our beliefs about these events in light of this information.</p>
+<p>If we know the joint probability of <span class="math notranslate nohighlight">\(A\)</span> &amp; <span class="math notranslate nohighlight">\(B\)</span>, this is the probability of <span class="math notranslate nohighlight">\(A\)</span> <strong>and</strong> <span class="math notranslate nohighlight">\(B\)</span> occurring together and is calculated by multiplying the two distributions together.
+If we also know the  probability distribution of event <span class="math notranslate nohighlight">\(A\)</span>, then dividing the joint probability by <span class="math notranslate nohighlight">\(Pr(A)\)</span> must yield <span class="math notranslate nohighlight">\(Pr(B)\)</span>.</p>
+<p>More formally; the <strong>conditional probability</strong> of event <span class="math notranslate nohighlight">\(B\)</span> occurring, given that event <span class="math notranslate nohighlight">\(A\)</span> occurs, is given as follows:</p>
+<p><span class="math notranslate nohighlight">\(Pr(B|A) \triangleq \frac{Pr(A,B)}{Pr(A)}\)</span></p>
+<p>For example,</p>
+<ul class="simple">
+<li><p>Event <span class="math notranslate nohighlight">\(A\)</span> represents the probability that it rains each morning</p></li>
+<li><p>Event <span class="math notranslate nohighlight">\(B\)</span> represents the probability of there being a traffic jam outside my house in the morning</p></li>
+<li><p>After months of measurements, we believe that the probability of it raining <strong>AND</strong> there being a traffic jam outside my house <span class="math notranslate nohighlight">\(Pr(A, B) = 0.5\)</span></p></li>
+<li><p>If we also know that the probability of it raining on any given morning is <span class="math notranslate nohighlight">\(Pr(A) = 0.7\)</span>, then we can use conditional probability to estimate the probability of a traffic jam specifically on the mornings that it rains:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(Pr(B|A) = \frac{Pr(A, B)}{Pr(A)} = \frac{0.49}{0.7} = 0.7\)</span></p>
+<p>So whilst we believe that the probability of having rain &amp; traffic jams together on any given morning is approx. 50%, as soon as we know that its raining outside, we can update our expectation that there will be a traffic jam to 70%.</p>
+<blockquote>
+<div><p>NB. If <span class="math notranslate nohighlight">\(Pr(A) = 0\)</span>, its occurrence is not possible and <span class="math notranslate nohighlight">\(Pr(B|A)\)</span> would be undefined.</p>
+</div></blockquote>
 </div>
 <div class="section" id="independence-conditional-independence">
 <h3>Independence &amp; conditional independence<a class="headerlink" href="#independence-conditional-independence" title="Permalink to this headline">¶</a></h3>
+<p>If two events are <strong>independent</strong>, then the outcome of one event has no impact on our beliefs about the outcome of the other; our belief about one event does not <em>depend</em> on our beliefs about the other.
+In this case, their joint probability is simply the product of their individual probabilities:</p>
+<p><span class="math notranslate nohighlight">\(Pr(A, B) = Pr(A)Pr(B)\)</span></p>
+<p>If the probability of either event is independent of the other, then the conditional probability of either event given the other will collapse into the probability distribution of the single event. We call this <strong>conditional independence</strong>:</p>
+<p><span class="math notranslate nohighlight">\(Pr(A|B) = Pr(A)\)</span></p>
+<p>In scenarios where an event depends on several others, information on one of these dependent events (an ‘intermediate’ event) can contain all the information we need concerning (some of) the others. In this case, conditioning on the intermediate event allows us to treat the main event as independent of the others.</p>
+<div class="section" id="an-example">
+<h4>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> represent the event ‘the bus will arrive in the next 5 minutes’.</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> is the event ‘the bus can be seen leaving the previous stop’. (once we can see the bus leaving the previous stop, it never takes more than 5 minutes to get to our stop)</p></li>
+<li><p>And <span class="math notranslate nohighlight">\(C\)</span> is the event ‘the screen at the bus stop says the bus will arrive in the next 5 minutes’.</p></li>
+</ul>
+<p>Clearly <span class="math notranslate nohighlight">\(A\)</span> is dependent on <span class="math notranslate nohighlight">\(C\)</span>: if we can’t see the bus but the sign says it will be here in the next 5 minutes, then this influences our beliefs about <span class="math notranslate nohighlight">\(A\)</span>.
+However, as soon as we can see the bus leaving the previous stop then looking at the bus stop sign will no longer influence our beliefs about <span class="math notranslate nohighlight">\(A\)</span>; <span class="math notranslate nohighlight">\(A\)</span> becomes <strong>conditionally independent</strong> of <span class="math notranslate nohighlight">\(C\)</span>, given <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(Pr(A|B,C) = Pr(A|B)\)</span>
+Or, equivalently:
+<span class="math notranslate nohighlight">\(Pr(A,C|B) = Pr(A|B)Pr(C|B)\)</span></p>
+<p>This can be written <span class="math notranslate nohighlight">\(A \perp C|B\)</span></p>
+</div>
 </div>
 <div class="section" id="random-variables">
 <h3>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> represent a variable; a quantity whose value we are interested in.
+If we do not know the value of <span class="math notranslate nohighlight">\(X\)</span> with certainty (ie. there is uncertainty concerning the current value, or how the value will change with time), then we call <span class="math notranslate nohighlight">\(X\)</span> a <strong>random variable</strong>.</p>
+<blockquote>
+<div><p>The <strong>state space</strong> <span class="math notranslate nohighlight">\(\mathcal{X}\)</span>: the set of possible values that <span class="math notranslate nohighlight">\(X\)</span> can take.</p>
+</div></blockquote>
 </div>
 <div class="section" id="discrete-random-variables">
 <h3>Discrete random variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h3>
+<p><strong>Discrete</strong>: the number of possible values that a random variable can take is restricted to a finite set</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Binary classes: 1, 0</p></li>
+<li><p>Categories: ‘small’, ‘medium’, ‘large’</p></li>
+<li><p>Specific set of values: {0, 1, 2, 3, 4, 5}</p></li>
+</ul>
+<div class="section" id="probability-mass-function-pmf">
+<h4>Probability mass function (pmf)<a class="headerlink" href="#probability-mass-function-pmf" title="Permalink to this headline">¶</a></h4>
+<p>The probability that <span class="math notranslate nohighlight">\(X\)</span> takes a specific value <span class="math notranslate nohighlight">\(x\)</span> is denoted <span class="math notranslate nohighlight">\(Pr(X=x)\)</span></p>
+<p>We can treat scenarios where <span class="math notranslate nohighlight">\(X\)</span> takes one of its possible values <span class="math notranslate nohighlight">\(x\)</span> as an event.</p>
+<p>The <strong>probability mass function</strong> is a function which computes the probability of these events for each/any possible value of a <strong>discrete</strong> random variable.</p>
+<p><span class="math notranslate nohighlight">\(p(x) \triangleq Pr(X=x)\)</span></p>
+<p>The <strong>pmf</strong> satisfies 2 properties:</p>
+<ol class="simple">
+<li><p>Always returns a value between 0 &amp; 1 (inclusive): <span class="math notranslate nohighlight">\(0 \leq p(x) \leq 1\)</span></p></li>
+<li><p>The sum of <span class="math notranslate nohighlight">\(p(x)\)</span> across all values in the state space always equals 1: <span class="math notranslate nohighlight">\(\sum_{x \in \mathcal{X}} p(x) = 1\)</span></p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="continuous-random-variables">
 <h3>Continuous random variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">¶</a></h3>
-</div>
+<p><strong>Continuous</strong>: the random variable can take on any of the infinite possible values that sit on the range between two real values (possibly infinite)</p>
 <div class="section" id="cumulative-distribution-function-cdf">
-<h3>Cumulative distribution function (cdf)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this headline">¶</a></h3>
+<h4>Cumulative distribution function (cdf)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this headline">¶</a></h4>
+<p>When working with continuous random variables, it is no longer possible to create a countable set of distinct possible values that the variable can take. The <strong>pmf</strong> therefore does not apply to continuous variables.</p>
+<p>Instead, we can partition the real line into a countable set of intervals and we can define events where <span class="math notranslate nohighlight">\(X\)</span> takes any value within defined intervals.</p>
+<p>The <strong>cumulative distribution function</strong> is a function which computes the probability that <span class="math notranslate nohighlight">\(X\)</span> takes a value equal to, or less than, some possible value <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(P(x) = Pr(X \leq x)\)</span></p>
+<p>The <strong>cdf</strong> satisfies the following properties:</p>
+<ol class="simple">
+<li><p>Always returns a value between 0 &amp; 1 (inclusive): <span class="math notranslate nohighlight">\(0 \leq P(x) \leq 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x)\)</span> across the full interval of possible values equals 1</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x)\)</span> is a <strong>monotonically non-decreasing function</strong></p></li>
+</ol>
+<p>From the <strong>cdf</strong>, it is possible to calculate the probability that <span class="math notranslate nohighlight">\(X\)</span> lies inside any interval:
+<span class="math notranslate nohighlight">\(Pr(a &lt; X \leq b) = P(b) - P(a)\)</span></p>
 </div>
-<div class="section" id="probability-distribution-function-pdf">
-<h3>Probability distribution function (pdf)<a class="headerlink" href="#probability-distribution-function-pdf" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="probability-density-function-pdf">
+<h4>Probability density function (pdf)<a class="headerlink" href="#probability-density-function-pdf" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>pdf</strong> is the derivative of the <strong>cdf</strong></p>
+<p><span class="math notranslate nohighlight">\(p(x) \triangleq \frac{d}{dx}P(x)\)</span></p>
 </div>
 <div class="section" id="percent-point-function-ppf">
-<h3>Percent point function (ppf)<a class="headerlink" href="#percent-point-function-ppf" title="Permalink to this headline">¶</a></h3>
+<h4>Percent point function (ppf)<a class="headerlink" href="#percent-point-function-ppf" title="Permalink to this headline">¶</a></h4>
 <p>Also known as the <em><strong>inverse cdf</strong></em> or <em><strong>quantile function</strong></em></p>
+</div>
 </div>
 </div>
 <div class="section" id="laws">
