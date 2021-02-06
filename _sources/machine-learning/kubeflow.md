@@ -215,3 +215,57 @@ But we can also automate the running of builds given an appropriate trigger :)
 
 1. Activate the GCP Cloud Build app in GitHub to work with your repositories
 2. Activate your repositories for monitoring in cloud build
+
+## Local installation notes
+
+I had a heap of trouble getting a local installation of kubeflow up and running so I could play with the features without needing to deploy (and pay for) a cluster in a cloud.
+
+At the time of running into the issues (late 2020, early 2021), I'm running:
+- OS: Pop!_OS 20.04 LTS (Ubuntu 20.04 equivalent)
+- GPU: Nvidia GTX 2070
+- Memory: 32GB
+
+For this set-up, I wasn't a big fan of the MiniKF approach because I'm already running an ubuntu machine, so having to install another one in a virtual machine seemed unnecesary.
+
+Instead, I really enjoyed getting up and running with microk8s: super-easy to install (with snap) and maintained by the team at [Canonical](https://canonical.com).
+
+In theory, deploying kubeflow in the microk8s environment is as easy as `$ microk8s enable kubeflow`. However, I kept hitting a wall when one of the components (OIDC Gatekeeper) would fail to run.
+There were [some issues](https://github.com/kubeflow/kubeflow/issues/5407) reported around this and the suggested solutions/workarounds either didn't work for me, or didn't look complete.
+
+Eventually though, I tried the edge release and had success deploying the 'lite' flavour of KF. So I'm going to stash a summary of what I did to reduce the risk of running into this again!
+
+```shell
+# Install microk8s from snap, using the 'latest/edge' channel
+# At the time of writing, this installed v1.20.2 from Canonical
+sudo snap install microk8s --classic --channel=latest/edge
+
+# Enable a number of components that kubeflow will be dependent on
+microk8s enable dns dashboard storage gpu
+
+# Enable the kubeflow component, with a few non-default settings:
+# KUBEFLOW_DEBUG: turns on verbose logging, not necessary but helped when I was trying to fix things
+# KUBEFLOW_BUNDLE: 'lite' installs a lighter-weight bundle of KF components
+# KUBEFLOW_AUTH_PASSWORD: set your password for the KF dashboard
+KUBEFLOW_DEBUG=true KUBEFLOW_BUNDLE=lite KUBEFLOW_AUTH_PASSWORD=xxxxxxxx microk8s enable kubeflow
+
+# After a few minutes, you'll hopefully see the following:
+# Congratulations, Kubeflow is now available.
+#
+# The dashboard is available at http://XX.XX.XXX.XX.xip.io
+#
+#    Username: admin
+#    Password: xxxxxxxx
+#
+# To see these values again, run:
+#
+#    microk8s juju config dex-auth static-username
+#    microk8s juju config dex-auth static-password
+```
+
+At this point, KF is running in your microk8s 'cluster', but you may not be able to open the KF dashboard when you open the link they provided in your browser (the "http://XX.XX.XXX.XX.xip.io").
+To sort that out, I also needed to do the following:
+```shell
+sudo apt-get install -qq -y iptables-persistent
+sudo iptables -P FORWARD ACCEPT
+sudo -- sh -c "echo 'XX.XX.XXX.XX\tXX.XX.XXXXX.xip.io' >> /etc/hosts"
+```

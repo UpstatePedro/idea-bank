@@ -349,6 +349,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-installation-notes">
+   Local installation notes
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -489,7 +494,7 @@ amount of simple python code.</p>
 <ol class="simple">
 <li><p>Write your own code (any language)</p></li>
 <li><p>Package this code into a container image using a Dockerfile</p></li>
-<li><p>Build &amp; push the docker image to gcr.io</p></li>
+<li><p>Build &amp; push the docker image to <a class="reference external" href="http://gcr.io">gcr.io</a></p></li>
 <li><p>Describe your component in a <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> <a class="reference external" href="https://www.kubeflow.org/docs/pipelines/sdk/component-development/#writing-your-component-definition-file">description file</a></p></li>
 <li><p>Use the description file to load the component into your pipeline</p></li>
 </ol>
@@ -583,6 +588,55 @@ and a push to the registry.</p>
 <li><p>Activate the GCP Cloud Build app in GitHub to work with your repositories</p></li>
 <li><p>Activate your repositories for monitoring in cloud build</p></li>
 </ol>
+</div>
+</div>
+<div class="section" id="local-installation-notes">
+<h2>Local installation notes<a class="headerlink" href="#local-installation-notes" title="Permalink to this headline">¶</a></h2>
+<p>I had a heap of trouble getting a local installation of kubeflow up and running so I could play with the features without needing to deploy (and pay for) a cluster in a cloud.</p>
+<p>At the time of running into the issues (late 2020, early 2021), I’m running:</p>
+<ul class="simple">
+<li><p>OS: Pop!_OS 20.04 LTS (Ubuntu 20.04 equivalent)</p></li>
+<li><p>GPU: Nvidia GTX 2070</p></li>
+<li><p>Memory: 32GB</p></li>
+</ul>
+<p>For this set-up, I wasn’t a big fan of the MiniKF approach because I’m already running an ubuntu machine, so having to install another one in a virtual machine seemed unnecesary.</p>
+<p>Instead, I really enjoyed getting up and running with microk8s: super-easy to install (with snap) and maintained by the team at <a class="reference external" href="https://canonical.com">Canonical</a>.</p>
+<p>In theory, deploying kubeflow in the microk8s environment is as easy as <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">microk8s</span> <span class="pre">enable</span> <span class="pre">kubeflow</span></code>. However, I kept hitting a wall when one of the components (OIDC Gatekeeper) would fail to run.
+There were <a class="reference external" href="https://github.com/kubeflow/kubeflow/issues/5407">some issues</a> reported around this and the suggested solutions/workarounds either didn’t work for me, or didn’t look complete.</p>
+<p>Eventually though, I tried the edge release and had success deploying the ‘lite’ flavour of KF. So I’m going to stash a summary of what I did to reduce the risk of running into this again!</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install microk8s from snap, using the &#39;latest/edge&#39; channel</span>
+<span class="c1"># At the time of writing, this installed v1.20.2 from Canonical</span>
+sudo snap install microk8s --classic --channel<span class="o">=</span>latest/edge
+
+<span class="c1"># Enable a number of components that kubeflow will be dependent on</span>
+microk8s <span class="nb">enable</span> dns dashboard storage gpu
+
+<span class="c1"># Enable the kubeflow component, with a few non-default settings:</span>
+<span class="c1"># KUBEFLOW_DEBUG: turns on verbose logging, not necessary but helped when I was trying to fix things</span>
+<span class="c1"># KUBEFLOW_BUNDLE: &#39;lite&#39; installs a lighter-weight bundle of KF components</span>
+<span class="c1"># KUBEFLOW_AUTH_PASSWORD: set your password for the KF dashboard</span>
+<span class="nv">KUBEFLOW_DEBUG</span><span class="o">=</span><span class="nb">true</span> <span class="nv">KUBEFLOW_BUNDLE</span><span class="o">=</span>lite <span class="nv">KUBEFLOW_AUTH_PASSWORD</span><span class="o">=</span>xxxxxxxx microk8s <span class="nb">enable</span> kubeflow
+
+<span class="c1"># After a few minutes, you&#39;ll hopefully see the following:</span>
+<span class="c1"># Congratulations, Kubeflow is now available.</span>
+<span class="c1">#</span>
+<span class="c1"># The dashboard is available at http://XX.XX.XXX.XX.xip.io</span>
+<span class="c1">#</span>
+<span class="c1">#    Username: admin</span>
+<span class="c1">#    Password: xxxxxxxx</span>
+<span class="c1">#</span>
+<span class="c1"># To see these values again, run:</span>
+<span class="c1">#</span>
+<span class="c1">#    microk8s juju config dex-auth static-username</span>
+<span class="c1">#    microk8s juju config dex-auth static-password</span>
+</pre></div>
+</div>
+<p>At this point, KF is running in your microk8s ‘cluster’, but you may not be able to open the KF dashboard when you open the link they provided in your browser (the “<a class="reference external" href="http://XX.XX.XXX.XX.xip.io">http://XX.XX.XXX.XX.xip.io</a>”).
+To sort that out, I also needed to do the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -qq -y iptables-persistent
+sudo iptables -P FORWARD ACCEPT
+sudo -- sh -c <span class="s2">&quot;echo &#39;XX.XX.XXX.XX\tXX.XX.XXXXX.xip.io&#39; &gt;&gt; /etc/hosts&quot;</span>
+</pre></div>
 </div>
 </div>
 </div>
