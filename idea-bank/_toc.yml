@@ -17,13 +17,17 @@
 
 - part: Machine learning
   chapters:
+  - file: machine-learning/in_theory-intro
+    sections:
+      - file: machine-learning/probability_theory
+      - file: machine-learning/supervised_learning
+      - file: machine-learning/parametric_learning
+      - file: machine-learning/kernel_learning
   - file: machine-learning/in_practice-intro
     sections:
     - file: machine-learning/MLOps
     - file: machine-learning/kubeflow
-  - file: machine-learning/in_theory-intro
-    sections:
-      - file: machine-learning/probability_theory
+
 
 - part: Maths
   chapters:
