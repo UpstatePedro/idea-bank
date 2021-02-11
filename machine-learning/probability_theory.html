@@ -416,6 +416,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence">
+   Independence
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unconditionally-independent">
+     Unconditionally independent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionally-independent">
+     Conditionally independent
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#properties-of-a-distribution">
    Properties of a distribution
   </a>
@@ -466,6 +483,11 @@
    Central limit theorem
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-sources">
+   (Re)sources
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -479,6 +501,7 @@
                 
   <div class="section" id="probability">
 <h1>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
+<p>Notes from Kevin Murphy’s <a class="reference external" href="https://probml.github.io/pml-book/">“Probabilistic Machine Learning: An Introduction”</a> <span id="id1">[<a class="reference internal" href="#id3"><span>1</span></a>]</span></p>
 <div class="section" id="uncertainty">
 <h2>Uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">¶</a></h2>
 <p>Probability is used to quantify our uncertainty concerning unknown events or phenomena.</p>
@@ -811,7 +834,10 @@ Well, remember that we’ve assumed we’re dealing with <strong>conditionally i
 <p>Bayes rule combines the definition of conditional probability with the product &amp; sum rules to give:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><span class="math notranslate nohighlight">\(p(Y=y|X=x) = \frac{p(X=x,Y=y)}{p(X=x)} = \frac{p(Y=y)p(X=x|Y=y)}{\sum_{y'}p(Y=y')p(X=x|Y=y')}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+p(Y=y|X=x) = \frac{p(X=x,Y=y)}{p(X=x)} = \frac{p(Y=y)p(X=x|Y=y)}{\sum_{y'}p(Y=y')p(X=x|Y=y')}
+\]</div>
 </div>
 <p>Where</p>
 <ul class="simple">
@@ -820,6 +846,25 @@ Well, remember that we’ve assumed we’re dealing with <strong>conditionally i
 <li><p>and the resulting <strong>posterior</strong> distribution <span class="math notranslate nohighlight">\(p(y|x)\)</span> represents our updated beliefs about the state of the system after seeing <span class="math notranslate nohighlight">\(x\)</span></p></li>
 <li><p>(and the denominator which is a constant to ensure that everything adds up to 1)</p></li>
 </ul>
+</div>
+<div class="section" id="independence">
+<h2>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h2>
+<p>What does it mean for two variables to be independent from one another?</p>
+<div class="section" id="unconditionally-independent">
+<h3>Unconditionally independent<a class="headerlink" href="#unconditionally-independent" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If two variables are <strong>unconditionally independent</strong> (also known as <strong>marginally independent</strong>), then their joint distribution is the product of the two marginal distributions for each variable:</p>
+<div class="math notranslate nohighlight">
+\[
+p(X,Y) = p(X)p(Y)
+\]</div>
+</div>
+</div>
+<div class="section" id="conditionally-independent">
+<h3>Conditionally independent<a class="headerlink" href="#conditionally-independent" title="Permalink to this headline">¶</a></h3>
+<p>However,</p>
+</div>
 </div>
 <div class="section" id="properties-of-a-distribution">
 <h2>Properties of a distribution<a class="headerlink" href="#properties-of-a-distribution" title="Permalink to this headline">¶</a></h2>
@@ -848,6 +893,15 @@ Well, remember that we’ve assumed we’re dealing with <strong>conditionally i
 </div>
 <div class="section" id="central-limit-theorem">
 <h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="re-sources">
+<h2>(Re)sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Kevin P. Murphy. <em>Probabilistic Machine Learning: An introduction</em>. MIT Press, 2021. URL: <a class="reference external" href="probml.ai">probml.ai</a>.</p>
+</dd>
+</dl>
+</p>
 </div>
 </div>
 
