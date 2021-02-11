@@ -569,12 +569,12 @@ In this case, their joint probability is simply the product of their individual 
 <div class="section" id="an-example">
 <h4>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> represent the event ‘the bus will arrive in the next 5 minutes’.</p></li>
-<li><p><span class="math notranslate nohighlight">\(B\)</span> is the event ‘the bus can be seen leaving the previous stop’. (once we can see the bus leaving the previous stop, it never takes more than 5 minutes to get to our stop)</p></li>
-<li><p>And <span class="math notranslate nohighlight">\(C\)</span> is the event ‘the screen at the bus stop says the bus will arrive in the next 5 minutes’.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> represent the event ‘the bus is arriving at the stop outside my house’.</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> is the event ‘I can see the bus arriving through the window’.</p></li>
+<li><p>And <span class="math notranslate nohighlight">\(C\)</span> is the event ‘I receive a text notification to say that the bus is arriving at the stop’.</p></li>
 </ul>
-<p>Clearly <span class="math notranslate nohighlight">\(A\)</span> is dependent on <span class="math notranslate nohighlight">\(C\)</span>: if we can’t see the bus but the sign says it will be here in the next 5 minutes, then this influences our beliefs about <span class="math notranslate nohighlight">\(A\)</span>.
-However, as soon as we can see the bus leaving the previous stop then looking at the bus stop sign will no longer influence our beliefs about <span class="math notranslate nohighlight">\(A\)</span>; <span class="math notranslate nohighlight">\(A\)</span> becomes <strong>conditionally independent</strong> of <span class="math notranslate nohighlight">\(C\)</span>, given <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(Pr(A)\)</span> is dependent on <span class="math notranslate nohighlight">\(C\)</span> if we haven’t looked out of the window: if we haven’t pulled back the curtains to take a look, then our expectations about whether the bus is here yet will be influenced by whether or not we’ve received our text notification (<span class="math notranslate nohighlight">\(A\)</span>).
+However, as soon as we look out the window, the receipt/absence of a text notification will no longer influence our beliefs about <span class="math notranslate nohighlight">\(A\)</span>; <span class="math notranslate nohighlight">\(A\)</span> becomes <strong>conditionally independent</strong> of <span class="math notranslate nohighlight">\(C\)</span>, given <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(Pr(A|B,C) = Pr(A|B)\)</span>
 Or, equivalently:
 <span class="math notranslate nohighlight">\(Pr(A,C|B) = Pr(A|B)Pr(C|B)\)</span></p>
@@ -863,7 +863,9 @@ p(X,Y) = p(X)p(Y)
 </div>
 <div class="section" id="conditionally-independent">
 <h3>Conditionally independent<a class="headerlink" href="#conditionally-independent" title="Permalink to this headline">¶</a></h3>
-<p>However,</p>
+<p>However, there is often some degree of interaction between variables such that the value of one influences the likely distribution of values of the other.</p>
+<p>Two variables <span class="math notranslate nohighlight">\(X\)</span> &amp; <span class="math notranslate nohighlight">\(Y\)</span> are <strong>conditionally independent</strong> when the influence between them is mediated by one or more other variables (<span class="math notranslate nohighlight">\(Z\)</span>…). Due to this influence being mediated, if we know the value of <span class="math notranslate nohighlight">\(Z\)</span> then the influence of <span class="math notranslate nohighlight">\(X\)</span> on <span class="math notranslate nohighlight">\(p(Y)\)</span> will be removed.</p>
+<p>We can use <strong>graphical models</strong> to define complex joint distributions.</p>
 </div>
 </div>
 <div class="section" id="properties-of-a-distribution">
