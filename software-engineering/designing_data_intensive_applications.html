@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book summary: Designing Data-Intensive Applications (O’Reilly) &#8212; IdeaBank</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Structures &amp; Algorithms" href="../data-engineering/algorithms.html" />
+    <link rel="prev" title="Python data structures" href="python_language/python_data_structures.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">IdeaBank</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   IdeaBank
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Software engineering
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="python_language/intro.html">
+   Python
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_language/running_python.html">
+     Running python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_language/python_data_structures.html">
+     Python data structures
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Book summary: Designing Data-Intensive Applications (O’Reilly)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data engineering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-engineering/algorithms.html">
+   Data Structures &amp; Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-engineering/complexity.html">
+   Algorithm efficiency / complexity
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Machine learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../machine-learning/in_theory-intro.html">
+   Machine learning in theory
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/probability_theory.html">
+     Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/learning_paradigms.html">
+     Learning paradigms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/parametric_learning.html">
+     Parametric learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/kernel_learning.html">
+     Kernel learning
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../machine-learning/in_practice-intro.html">
+   Machine learning in practice
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/MLOps.html">
+     MLOps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/kubeflow.html">
+     Kubeflow
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Maths
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../maths/linear_algebra.html">
+   Linear algebra
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Starting-up
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../starting-up/crossing_the_chasm.html">
+   Book summary: Crossing the Chasm
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/software-engineering/designing_data_intensive_applications.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preface">
+   Preface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structure-of-the-book">
+   Structure of the book:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-one-foundations-of-data-systems">
+   Part one: Foundations of Data Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-1-reliable-scalable-and-maintainable-applications">
+     Chapter 1: Reliable, Scalable, and Maintainable Applications
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reliability">
+       Reliability
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scalability">
+       Scalability
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#maintainability">
+       Maintainability
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#summary">
+       Summary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-2-data-models-and-query-languages">
+     Chapter 2: Data Models and Query Languages
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#relational-vs-document-models">
+       Relational Vs Document models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-3">
+     Chapter 3:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-4">
+     Chapter 4:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-two-distributed-data-systems">
+   Part two: Distributed data systems
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="book-summary-designing-data-intensive-applications-o-reilly">
+<h1>Book summary: Designing Data-Intensive Applications (O’Reilly)<a class="headerlink" href="#book-summary-designing-data-intensive-applications-o-reilly" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preface">
+<h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
+<p>Trends affecting the way we build (data-intensive web) applications:</p>
+<ul class="simple">
+<li><p>Massive increase in the volume of data</p></li>
+<li><p>Parallel execution becoming more commonplace networks are getting faster &amp; CPU clock speeds are stabilising</p></li>
+<li><p>Serverless paradigm</p></li>
+<li><p>Applications are expected to be highly available</p></li>
+</ul>
+<p>We refer to an application as “data-intensive” if data is the primary challenge; quantity / complexity / speed.</p>
+<p>Applications where CPU cycles are the bottleneck are “compute-intensive”.</p>
+<p>New tools to help data-intensive applications:</p>
+<ul class="simple">
+<li><p>NoSQL databases</p></li>
+<li><p>Message queues</p></li>
+<li><p>Caches</p></li>
+<li><p>Search indices</p></li>
+<li><p>Batch &amp; stream processing frameworks</p></li>
+</ul>
+<p>The purpose of this book is to <em><strong>find useful ways of thinking about data systems - not just how they work.</strong></em></p>
+</div>
+<div class="section" id="structure-of-the-book">
+<h2>Structure of the book:<a class="headerlink" href="#structure-of-the-book" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Fundamental ideas of designing data-intensive apps</p>
+<ol class="simple">
+<li><p>What are we trying to achieve?</p>
+<ol class="simple">
+<li><p>Reliability</p></li>
+<li><p>Scalability</p></li>
+<li><p>Maintainability</p></li>
+</ol>
+</li>
+<li><p>Different data models &amp; query languages</p></li>
+<li><p>Storage engines</p></li>
+<li><p>Data encoding</p></li>
+</ol>
+</li>
+<li><p>Distributed systems</p>
+<ol class="simple">
+<li><p>Replication</p></li>
+<li><p>Partitioning / sharding</p></li>
+<li><p>Transactions</p></li>
+<li><p>Problems with distributed systems</p></li>
+<li><p>Achieving consistency / consensus</p></li>
+</ol>
+</li>
+<li><p>Derived data</p>
+<ol class="simple">
+<li><p>Batch processing</p></li>
+<li><p>Stream processing</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="part-one-foundations-of-data-systems">
+<h2>Part one: Foundations of Data Systems<a class="headerlink" href="#part-one-foundations-of-data-systems" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Designing%20Data-Intensive%20Applications%20(O'Reilly)%20b3a0d07c5c654d448ecbe36ac16e4322/DDIA.png" src="software-engineering/Designing%20Data-Intensive%20Applications%20(O%27Reilly)%20b3a0d07c5c654d448ecbe36ac16e4322/DDIA.png" /></p>
+<div class="section" id="chapter-1-reliable-scalable-and-maintainable-applications">
+<h3>Chapter 1: Reliable, Scalable, and Maintainable Applications<a class="headerlink" href="#chapter-1-reliable-scalable-and-maintainable-applications" title="Permalink to this headline">¶</a></h3>
+<p>DDIAs are typically built from common building-blocks:</p>
+<ol class="simple">
+<li><p>Databases: store date to be retrieved later</p></li>
+<li><p>Caches: remember the results of expensive operations, speed up reads</p></li>
+<li><p>Search indices: enable the data to be searched / filtered in useful ways</p></li>
+<li><p>Stream-processing: send messages to other processes, to be handled asynchronously</p></li>
+<li><p>Batch-processing: periodically process accumulated data</p></li>
+</ol>
+<p>These are the general components from which we can fashion our own special-purpose ‘data systems’.</p>
+<p>There are three characteristics that we must consider when designing data/software systems:</p>
+<ol class="simple">
+<li><p><strong>Reliability</strong>: the system should continue to work <em><strong>correctly</strong></em> even in the face of <em><strong>adversity</strong></em></p></li>
+<li><p><strong>Scalability</strong>: the system should be capable of <em><strong>growing</strong></em> gracefully</p></li>
+<li><p><strong>Maintainability</strong>: it should be possible to work <em><strong>productively</strong></em> on the system - both maintaining its current behaviours, and modifying them</p></li>
+</ol>
+<div class="section" id="reliability">
+<h4>Reliability<a class="headerlink" href="#reliability" title="Permalink to this headline">¶</a></h4>
+<p>A reliable system:</p>
+<ul class="simple">
+<li><p>behaves consistently &amp; as the user expects</p></li>
+<li><p>is tolerant of user-errors of unexpected usage</p></li>
+<li><p>performs at an acceptable level for the required use-case, under the expected load</p></li>
+<li><p>prevents unauthorized access &amp; abuse</p></li>
+</ul>
+<p>We can consider these items together to mean “working correctly”</p>
+<p>Risks that threaten the system’s ability to continue working correctly are called <strong>faults</strong>. A system that is robust to faults is known as <strong>fault-tolerant</strong> or <strong>resilient</strong>.</p>
+<p>Robust systems continue to work correctly even when faults occur (ie. a system component’s behaviour deviates from its spec). If a system stops working correctly, we refer to this as <strong>a failure</strong>.</p>
+<p>Many critical bugs are actually a result of poor error handling. Counter-intuitively, we can increase the fault-tolerance of a system by triggering faults deliberately to ensure that systems are designed in a fault-tolerant way, and are continuously tested as such - better to do this on your own terms that find out it doesn’t work when it really matters.</p>
+<p>We therefore generally prefer to engineer to <em><strong>tolerate faults</strong></em> instead of trying to prevent them.</p>
+<p>This isn’t true in areas such as security.</p>
+<p><strong>System outages are predominantly caused by human error</strong>: One study of large internet services found that
+configuration errors by operators were the leading cause of outages, whereas hard‐
+ware faults (servers or network) played a role in only 10–25% of outages</p>
+<p>There is often a trade-off between reliability, development cost &amp; operational cost.</p>
+</div>
+<div class="section" id="scalability">
+<h4>Scalability<a class="headerlink" href="#scalability" title="Permalink to this headline">¶</a></h4>
+<p><em><strong>How does the reliability of the system change as the load changes?</strong></em></p>
+<p>The load of a system is measured using <em><strong>load parameters</strong></em> - parameters that help to describe how intensively the system is being used. These are specific to the architecture of the system.</p>
+<p>eg.s:</p>
+<ul class="simple">
+<li><p>Requests per second</p></li>
+<li><p>Ratio of reads to writes on the DB</p></li>
+<li><p>Number of concurrent users</p></li>
+<li><p>Hit rate on a cache</p></li>
+</ul>
+<p><strong>Describing performance</strong></p>
+<p>There are a couple of ways that we can approach the question of how increased load affects the system performance:</p>
+<ol class="simple">
+<li><p>When a load parameter increases and system resources are held constant, how does system performance change?</p></li>
+<li><p>When a load parameter increases, how much do system resources need to increase in order to keep system performance constant?</p></li>
+</ol>
+<blockquote>
+<div><p>I prefer the latter, because this is generally what we want to achieve (keeping system performance constant, rather than system resources)</p>
+</div></blockquote>
+<p>But in either example, we need to be able to describe performance of the system…</p>
+<ul class="simple">
+<li><p>Response time</p></li>
+<li><p>Throughput</p></li>
+</ul>
+<p>Look at performance metrics as a distribution and report in percentiles, rather than just looking at the mean.</p>
+<p>eg. p50, p95, p99</p>
+<p>NB. Backend systems often require that the user make multiple calls in order to complete a single task. In this case, the request time can never be faster than the slowest call. As the number of calls required to complete the task increases, the probability that one of the calls will be ‘slow’ increases, and so a higher proportion of users end up with slow response times. This is known as <strong>tail latency amplification</strong>.</p>
+<p><strong>Coping with growth in load</strong></p>
+<p>Expect to change your architecture with every order of magnitude increase in load, if not more frequently.</p>
+<p>Approaches:</p>
+<ul class="simple">
+<li><p>Vertical scaling: moving onto higher spec machines</p></li>
+<li><p>Horizontal scaling: spreading the load across a larger number of machines</p></li>
+</ul>
+<p>Distributing load across multiple machines is called <em><strong>shared-nothing</strong></em> architecture.</p>
+<p>Scaling services across many machines is much easier if the service is stateless.</p>
+<p>An architecture that scales well will need to be designed based on sound assumptions about which operations will be common or rare, and how they will grow.</p>
+</div>
+<div class="section" id="maintainability">
+<h4>Maintainability<a class="headerlink" href="#maintainability" title="Permalink to this headline">¶</a></h4>
+<p>The majority of the cost of building software is not in its initial development, but in its ongoing maintenance (both fixes &amp; modifications).</p>
+<p>We should therefore design software so as to minimize pain during maintenance. Three design principles can help us to this end:</p>
+<ol class="simple">
+<li><p><strong>Operability</strong>: Make it easy for the ops team to keep the system running smoothly</p></li>
+<li><p><strong>Simplicity</strong>: Make it easy for new engineers &amp; a future you to understand the system</p></li>
+<li><p><strong>Evolvability</strong>: Make it easy to make changes to the system</p></li>
+</ol>
+<p><strong>Operability</strong></p>
+<blockquote>
+<div><p>“good ops can often work around the limitations of bad software, but good software cannot run reliably with bad ops”</p>
+</div></blockquote>
+<p>Ops teams are generally responsible for:</p>
+<ul class="simple">
+<li><p>Monitoring system health &amp; responding to issues</p></li>
+<li><p>Debugging system failures &amp; performance issues</p></li>
+<li><p>Security patching &amp; keeping dependency versions up to date</p></li>
+<li><p>Keeping on top of interactions between systems</p></li>
+<li><p>Capacity planning</p></li>
+<li><p>CI / CD practices + tools</p></li>
+<li><p>Complex maintenance</p></li>
+<li><p>Defining processes to keep ops predictable &amp; the production env stable</p></li>
+</ul>
+<p><strong>Simplicity</strong></p>
+<p>As software projects grow, they often become complex; symptoms of which include:</p>
+<ul class="simple">
+<li><p>explosion of the state space</p></li>
+<li><p>tight coupling of modules</p></li>
+<li><p>tangled dependencies</p></li>
+<li><p>inconsistent naming &amp; terminology</p></li>
+<li><p>performance hacks</p></li>
+<li><p>special cases</p></li>
+</ul>
+<p>Complexity makes maintainability difficult, and that makes development slower, more expensive, and riskier.</p>
+<p><strong>Evolvability</strong></p>
+<p>System requirements will change over time.</p>
+<p>The ease with which changes to system requirements can be accommodated is closely linked to simplicity and abstractions.</p>
+</div>
+<div class="section" id="summary">
+<h4>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h4>
+<p>In order to be useful / valuable, applications need to meet a range of requirements. There are two categories that we can split requirements across:</p>
+<ul class="simple">
+<li><p>Functional: the behaviours that the application enables</p></li>
+<li><p>Non-functional: properties of the application</p>
+<ul>
+<li><p>Reliability</p></li>
+<li><p>Scalability</p></li>
+<li><p>Maintainability</p></li>
+<li><p>Compliance</p></li>
+<li><p>Compatibility</p></li>
+<li><p>Security</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="chapter-2-data-models-and-query-languages">
+<h3>Chapter 2: Data Models and Query Languages<a class="headerlink" href="#chapter-2-data-models-and-query-languages" title="Permalink to this headline">¶</a></h3>
+<p>Most applications are comprised of graduated layers of abstraction.</p>
+<p>These layers are vital to the productivity of everyone who works across them; facilitating developer efficiency and enabling the ongoing evolution of the system. Each layer provides a contract to its users via its AP which is underpinned by a clean data model - enabling it to work in higher-level concepts and thereby hide some of the complexity of the lower levels.</p>
+<p>Each layer of abstraction therefore comes with its own data models, and the importance of these data models cannot be understated: not only are they a necessary tool for the abstraction to work, but they also define how we think about our solutions to new problems; what is considered possible and what is not.</p>
+<p>There are multiple kinds of data model; each with its own trade-offs.</p>
+<p>Choosing a data model is often a decision that sits at the very foundation of our application and can therefore be expensive / difficult to change later. Given how profoundly it affects how our application behaves and performs, we at least need to understand the trade-offs inherent to several common data model paradigms:</p>
+<ol class="simple">
+<li><p>Relational</p></li>
+<li><p>Document</p></li>
+<li><p>Graph</p></li>
+</ol>
+<div class="section" id="relational-vs-document-models">
+<h4>Relational Vs Document models<a class="headerlink" href="#relational-vs-document-models" title="Permalink to this headline">¶</a></h4>
+<p>Edgar Codd proposed the relational data model in 1970.</p>
+<p>A relation is what we refer to as a <code class="docutils literal notranslate"><span class="pre">table</span></code> in SQL.</p>
+<p>Relational databases grew quickly as a result of strong demand for transactional &amp; batch data processing through the 60s &amp; 70s.</p>
+<p>Alternatives did arise - network model, hierarchical model - but the relational model dominated.</p>
+<p><strong>NoSQL</strong></p>
+<p>NoSQL arose in the 2010s. The name is a bucket for anything that isn’t relational and covers a multitude of sins (as well as some good ideas!).</p>
+<p>There are a number of use-cases that different NoSQL databases have sought to address:</p>
+<ul class="simple">
+<li><p>Scalability to very large datasets</p></li>
+<li><p>Very high write throughput</p></li>
+<li><p>Preference for open-source software, over commercial database products</p></li>
+<li><p>Specialized query operations that don’t play to the relational model’s strengths</p></li>
+<li><p>A desire for less rigid schemas</p></li>
+</ul>
+<p>Objects Vs Relations</p>
+<p>With the rise of popularity in OOP langauges, the object data structures that the languages work with don’t always fit neatly into the relational model - requiring ‘awkward’ translations between application data and the database (ie. another layer of software): ORMs.</p>
+<p>The mismatch between the two is sometimes called an <code class="docutils literal notranslate"><span class="pre">impedence</span> <span class="pre">mismatch</span></code>.</p>
+<p>In scenarios where each object that we’re working with is:</p>
+<ul class="simple">
+<li><p>a largely self-contained blob</p></li>
+<li><p>heavily user-defined structure / content</p></li>
+</ul>
+<p>Then a JSON-based document structure <em>might</em> be more suitable.</p>
+<blockquote>
+<div><p>The lack of a schema in the document model is often cited as an advantage, but this flexibility is easily abused and can end up causing untold chaos</p>
+</div></blockquote>
+<p>The JSON-style representation in the document model can provide better locality: the data lives together rather than being scattered across multiple tables that need to be joined.</p>
+<ul class="simple">
+<li><p>This makes queries on individual documents more efficient</p></li>
+<li><p>BUT when storing data that is repeated across many documents, this data can easily fall out of alignment</p></li>
+</ul>
+<p>How much of the data is shared across many instances and needs to be kept in sync across them all, and how much is relevent to only one entity?</p>
+<p>How do we typically access the data? Can we access what we typically need without much pain, or does it grind to a halt because we’re joining many tables together?</p>
+<p>Do we know the possible values in advance, or do we rely on users to provide them? Are they static or constantly changing?</p>
+<p>Benefits of relations:</p>
+<ul class="simple">
+<li><p>remove ambiguity</p></li>
+<li><p>consistency</p></li>
+<li><p>easy to update</p></li>
+<li><p>localisation (translation to local language)</p></li>
+<li><p>search is easier</p></li>
+</ul>
+<p>Normalisation enables us to manage a single copy of each piece of information</p>
+<p>many-to-one relations work well for relational data, but not well for documents</p>
+<p>document DBs often have poor support for joins. This often requires making multiple queries to the DB and then do the joins in the application code instead, which is rarely performant (we try to do as much in the DB as possible!)</p>
+<p>It’s also worth bearing in mind that applications have a tendency to drift over time. We might be able to avoid needing joins in the inital version, but over time new features tend to make the application more interconnected, and we may therefore find ourselves making more and more joins.</p>
+<p>The difficulty of representing many-to-many relations in NoSQL is older than the current wave of document-oriented DBs.</p>
+<p>An alternative to the relational model - the network model - was prevalent in the 70s. It was the major contender in proposing a solution to the many-to-many problem.</p>
+<p>The network model was a generalisation of the hierarchical model (which adopted a tree-structure with single lineage) that enabled record to have multiple parents. This enabled M2M relations to be modelled.</p>
+<p>The links between records in the network were not foreign keys, but more like pointers in a programming language (on-disk). Records were accessed by following a path from a root record, along these links; called the <code class="docutils literal notranslate"><span class="pre">access</span> <span class="pre">path</span></code>, this was a bit like traversing a linked list</p>
+</div>
+</div>
+<div class="section" id="chapter-3">
+<h3>Chapter 3:<a class="headerlink" href="#chapter-3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="chapter-4">
+<h3>Chapter 4:<a class="headerlink" href="#chapter-4" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="part-two-distributed-data-systems">
+<h2>Part two: Distributed data systems<a class="headerlink" href="#part-two-distributed-data-systems" title="Permalink to this headline">¶</a></h2>
+<p>Part 1 focused on data systems that reside on a single node.</p>
+<p>Part 2 asks how our thinking should change when we deal with data within the context of distributed systems.</p>
+<p>Reasons to distribute data:</p>
+<ol class="simple">
+<li><p>Scalability</p></li>
+<li><p>Fault tolerance/High availability</p></li>
+<li><p>Latency</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./software-engineering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python_language/python_data_structures.html" title="previous page">Python data structures</a>
+    <a class='right-next' id="next-link" href="../data-engineering/algorithms.html" title="next page">Data Structures &amp; Algorithms</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UpstatePedro<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-189305832-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
