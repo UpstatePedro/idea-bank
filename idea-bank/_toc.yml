@@ -6,8 +6,9 @@
   chapters:
   - file: software-engineering/python_language/intro
     sections:
-    - file: software-engineering/python_language/running_python
-    - file: software-engineering/python_language/python_data_structures
+      - file: software-engineering/python_language/running_python
+      - file: software-engineering/python_language/python_data_structures
+  - file: software-engineering/designing_data_intensive_applications
 
 - part: Data engineering
   chapters:
