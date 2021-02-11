@@ -411,28 +411,6 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#laws">
-   Laws
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sum-rule">
-     Sum rule
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#product-rule">
-     Product rule
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chain-rule">
-     Chain rule
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bayes-rule">
    Bayes’ rule
   </a>
@@ -826,21 +804,20 @@ Well, remember that we’ve assumed we’re dealing with <strong>conditionally i
 </div>
 </div>
 </div>
-<div class="section" id="laws">
-<h2>Laws<a class="headerlink" href="#laws" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="sum-rule">
-<h3>Sum rule<a class="headerlink" href="#sum-rule" title="Permalink to this headline">¶</a></h3>
-<p>Also know as the *<em><strong>rule of total probability</strong></em></p>
-</div>
-<div class="section" id="product-rule">
-<h3>Product rule<a class="headerlink" href="#product-rule" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="chain-rule">
-<h3>Chain rule<a class="headerlink" href="#chain-rule" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
 <div class="section" id="bayes-rule">
 <h2>Bayes’ rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h2>
+<p>Bayes rule combines the definition of conditional probability with the product &amp; sum rules to give:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><span class="math notranslate nohighlight">\(p(Y=y|X=x) = \frac{p(X=x,Y=y)}{p(X=x)} = \frac{p(Y=y)p(X=x|Y=y)}{\sum_{y'}p(Y=y')p(X=x|Y=y')}\)</span></p>
+</div>
+<p>Where</p>
+<ul class="simple">
+<li><p>the <strong>prior</strong> <span class="math notranslate nohighlight">\(p(y)\)</span> represents our prior beliefs about the state of the system</p></li>
+<li><p>the <strong>likelihood</strong> <span class="math notranslate nohighlight">\(p(x|y)\)</span> represents our model of the observation process</p></li>
+<li><p>and the resulting <strong>posterior</strong> distribution <span class="math notranslate nohighlight">\(p(y|x)\)</span> represents our updated beliefs about the state of the system after seeing <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p>(and the denominator which is a constant to ensure that everything adds up to 1)</p></li>
+</ul>
 </div>
 <div class="section" id="properties-of-a-distribution">
 <h2>Properties of a distribution<a class="headerlink" href="#properties-of-a-distribution" title="Permalink to this headline">¶</a></h2>
