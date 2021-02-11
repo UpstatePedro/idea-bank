@@ -309,8 +309,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fundamental-concepts">
-   Fundamental concepts
+  <a class="reference internal nav-link" href="#binary-events">
+   Binary Events
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -345,11 +345,13 @@
      </li>
     </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-variables">
-     Random variables
-    </a>
-   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-random-variables">
+   Single random variables
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#discrete-random-variables">
      Discrete random variables
@@ -383,6 +385,28 @@
       </a>
      </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-random-variables">
+   Multiple random variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joint-distribution">
+     Joint distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marginal-distribution">
+     Marginal distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-distribution">
+     Conditional distribution
+    </a>
    </li>
   </ul>
  </li>
@@ -487,8 +511,8 @@
 </ol>
 <p>ie. we can become extremely confident that our model correctly understands a process, but if it tells us that there’s an 80% chance of outcome A and 20% chance of outcome B, then there is still uncertainty in any prediction that we make.</p>
 </div>
-<div class="section" id="fundamental-concepts">
-<h2>Fundamental concepts<a class="headerlink" href="#fundamental-concepts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="binary-events">
+<h2>Binary Events<a class="headerlink" href="#binary-events" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="basic-notation">
 <h3>Basic notation<a class="headerlink" href="#basic-notation" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(Pr(A)\)</span> represents the probability of an event <span class="math notranslate nohighlight">\(A\)</span> occurring</p>
@@ -556,14 +580,14 @@ Or, equivalently:
 <p>This can be written <span class="math notranslate nohighlight">\(A \perp C|B\)</span></p>
 </div>
 </div>
-<div class="section" id="random-variables">
-<h3>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="single-random-variables">
+<h2>Single random variables<a class="headerlink" href="#single-random-variables" title="Permalink to this headline">¶</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> represent a variable; a quantity whose value we are interested in.
 If we do not know the value of <span class="math notranslate nohighlight">\(X\)</span> with certainty (ie. there is uncertainty concerning the current value, or how the value will change with time), then we call <span class="math notranslate nohighlight">\(X\)</span> a <strong>random variable</strong>.</p>
 <blockquote>
 <div><p>The <strong>state space</strong> <span class="math notranslate nohighlight">\(\mathcal{X}\)</span>: the set of possible values that <span class="math notranslate nohighlight">\(X\)</span> can take.</p>
 </div></blockquote>
-</div>
 <div class="section" id="discrete-random-variables">
 <h3>Discrete random variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h3>
 <p><strong>Discrete</strong>: the number of possible values that a random variable can take is restricted to a finite set</p>
@@ -715,9 +739,8 @@ if (outputEl) {{
 The <strong>ppf</strong> exists for <strong>cdf</strong>s that are strictly monotonically increasing.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><span class="math notranslate nohighlight">\(a = b + c\)</span></p>
+<p>The <strong>ppf</strong>, <span class="math notranslate nohighlight">\(P^{-1}(q)\)</span>, returns the value <span class="math notranslate nohighlight">\(x_{q}\)</span> for which <span class="math notranslate nohighlight">\(p(X \leq x_{q}) = q\)</span></p>
 </div>
-<p><span class="math notranslate nohighlight">\(P^{-1}(q)\)</span> returns the value <span class="math notranslate nohighlight">\(x_{q}\)</span> for which <span class="math notranslate nohighlight">\(p(X \leq x_{q}) = q\)</span></p>
 <p><span class="math notranslate nohighlight">\(x_{q}\)</span> is referred to as the <span class="math notranslate nohighlight">\(q\)</span>’th quantile of <span class="math notranslate nohighlight">\(P\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P^{-1}(0.99)\)</span> is the 99th percentile</p></li>
@@ -726,6 +749,80 @@ The <strong>ppf</strong> exists for <strong>cdf</strong>s that are strictly mono
 <li><p><span class="math notranslate nohighlight">\(P^{-1}(0.25)\)</span> is the lower quartile</p></li>
 <li><p><span class="math notranslate nohighlight">\(P^{-1}(0.10)\)</span> is the bottom decile</p></li>
 </ul>
+<p>Thinking in confidence intervals:
+If we want a confidence interval, eg. 90%, then we want the point on the cdf to the left of which sits 5% of the probability mass, and the point to the right of which sits 5% of the probability mass (10% excluded in total), then we want (<span class="math notranslate nohighlight">\(P^{-1}(0.05)\)</span>, <span class="math notranslate nohighlight">\(P^{-1}(0.95)\)</span>)</p>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-random-variables">
+<h2>Multiple random variables<a class="headerlink" href="#multiple-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>We’ll now start to consider the values of multiple random variables at the same time.</p>
+<div class="section" id="joint-distribution">
+<h3>Joint distribution<a class="headerlink" href="#joint-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Take two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>The <strong>joint distribution</strong> defines the probability with which variables <span class="math notranslate nohighlight">\(X\)</span> &amp; <span class="math notranslate nohighlight">\(Y\)</span> take any possible combination of values: <span class="math notranslate nohighlight">\(p(x, y) = p(X=x, Y=y)\)</span></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p></p></th>
+<th class="text-align:right head"><p><strong>Y = 1</strong></p></th>
+<th class="text-align:right head"><p><strong>Y = 2</strong></p></th>
+<th class="text-align:right head"><p><strong>Y = 3</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><strong>X = 1</strong></p></td>
+<td class="text-align:right"><p>0.1</p></td>
+<td class="text-align:right"><p>0.05</p></td>
+<td class="text-align:right"><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><strong>X = 2</strong></p></td>
+<td class="text-align:right"><p>0.15</p></td>
+<td class="text-align:right"><p>0.1</p></td>
+<td class="text-align:right"><p>0.18</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><strong>X = 3</strong></p></td>
+<td class="text-align:right"><p>0.3</p></td>
+<td class="text-align:right"><p>0.1</p></td>
+<td class="text-align:right"><p>0.02</p></td>
+</tr>
+</tbody>
+</table>
+<p>If two variables are <strong>conditionally independent</strong>, we can represent *<strong>the joint distribution of the two variables</strong> as <em><strong>the product of the two marginal distributions</strong></em>.</p>
+<p>If both variables can only take a finite number of values, then it’s possible to <em><strong>factorise</strong></em> the 2D table of their joint distribution into the product of 2 x 1D vectors.</p>
+</div>
+<div class="section" id="marginal-distribution">
+<h3>Marginal distribution<a class="headerlink" href="#marginal-distribution" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>marginal distribution</strong> is defined as $<span class="math notranslate nohighlight">\(p(X=x) = \sum_{y}p(X=x,Y=y)\)</span>$</p>
+<p>This is also known as the <strong>sum rule</strong> or the <strong>rule of total probability</strong>.</p>
+</div>
+<p>What’s the intuition here? Well, we know that if we add up the probabilities for every possible scenario, ie. all possible values of both <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, then it will sum to 1:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{x}\sum_{y}p(X=x,Y=y) = 1\)</span></p>
+<p>So if we want to know the probability that <span class="math notranslate nohighlight">\(X\)</span> takes a specific value (<span class="math notranslate nohighlight">\(X=x\)</span>), then we need to add up the probabilities for all scenarios where this is the case. In the joint distribution table above, this would be equivalent to adding up the probabilities for a single row of the table where we hold the value of <span class="math notranslate nohighlight">\(X\)</span> constant, and consider all possible values of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>Thus, we consider <span class="math notranslate nohighlight">\(p(X=x,Y=y)\)</span> for all values of <span class="math notranslate nohighlight">\(Y\)</span>, which gets us to: <span class="math notranslate nohighlight">\(\sum_{y}p(X=x,Y=y)\)</span>.</p>
+</div>
+<div class="section" id="conditional-distribution">
+<h3>Conditional distribution<a class="headerlink" href="#conditional-distribution" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+p(Y=y|X=x) = \frac{p(X=x,Y=y)}{p(X=x)}
+\]</div>
+<p>Which is equivalent to:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<div class="math notranslate nohighlight">
+\[
+p(x,y) = p(x)p(y|x)
+\]</div>
+<p>Also known as the <strong>product rule</strong>.</p>
+</div>
+<p>But in reality, we’re often dealing with many more than just two variables. How can we apply this to situations with more variables?
+Well, remember that we’ve assumed we’re dealing with <strong>conditionally independent</strong> variables, and that we also said the joint distribution of conditionally independent variables can be found by taking the product of marginal distributions. So if we now want to know <span class="math notranslate nohighlight">\(p(x,y,z)\)</span> then we’re going to need to add another marginal distribution to the product; ie. <span class="math notranslate nohighlight">\(p(z|x,y)\)</span> to give us <span class="math notranslate nohighlight">\(p(x,y,z) = p(x)p(y|x)p(z|x,y)\)</span>.</p>
+<p>This can be extended to an arbitrary number of variables, to give us the <strong>chain rule</strong> of probability, which generates a joint distribution from a collection of conditional distributions:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><span class="math notranslate nohighlight">\(p(\textbf{x}_{1:D}) = p(x_{1})p(x_{2}|p_{1})p(x_{3}|p_{1},p_{2})p(x_{4}|p_{1},p_{2},p_{3})...p(x_{D}|\textbf{x}_{1:D-1})\)</span></p>
 </div>
 </div>
 </div>
