@@ -1,4 +1,4 @@
-# Book summary: Designing Data-Intensive Applications (O'Reilly)
+# Book summary: Designing Data-Intensive Applications (WIP)
 
 ## Preface
 
@@ -23,7 +23,7 @@ New tools to help data-intensive applications:
 
 The purpose of this book is to ***find useful ways of thinking about data systems - not just how they work.***
 
-## Structure of the book:
+### Structure of the book:
 
 1. Fundamental ideas of designing data-intensive apps
     1. What are we trying to achieve?
@@ -44,8 +44,6 @@ The purpose of this book is to ***find useful ways of thinking about data system
     2. Stream processing
 
 ## Part one: Foundations of Data Systems
-
-![Designing%20Data-Intensive%20Applications%20(O'Reilly)%20b3a0d07c5c654d448ecbe36ac16e4322/DDIA.png](Designing%20Data-Intensive%20Applications%20(O'Reilly)%20b3a0d07c5c654d448ecbe36ac16e4322/DDIA.png)
 
 ### Chapter 1: Reliable, Scalable, and Maintainable Applications
 
