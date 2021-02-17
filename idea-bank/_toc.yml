@@ -15,7 +15,7 @@
   - file: data-engineering/algorithms
   - file: data-engineering/complexity
 
-- part: Machine learning
+- part: Machine learning (in theory)
   chapters:
   - file: machine-learning/in_theory-intro
     sections:
@@ -23,10 +23,13 @@
       - file: machine-learning/learning_paradigms
       - file: machine-learning/parametric_learning
       - file: machine-learning/kernel_learning
+
+- part: Machine learning (in practice)
+  chapters:
   - file: machine-learning/in_practice-intro
     sections:
-    - file: machine-learning/MLOps
-    - file: machine-learning/kubeflow
+      - file: machine-learning/MLOps
+      - file: machine-learning/kubeflow
 
 - part: Maths
   chapters:
