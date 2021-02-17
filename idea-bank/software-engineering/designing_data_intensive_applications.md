@@ -295,6 +295,328 @@ Part 2 asks how our thinking should change when we deal with data within the con
 
 Reasons to distribute data:
 
-1. Scalability
-2. Fault tolerance/High availability
-3. Latency
+1. Scalability: large loads can exceed the capacity of a single node
+2. Fault tolerance/High availability: redundancy protects us in the event that 1+ nodes fail
+3. Latency: distributed consumption of the data can't always be satisfied (performantly) from a single node / location
+
+### Scaling to larger loads
+
+If our *only* consideration is the ability to handle larger loads, then there are two broad categories of approach we can consider:
+
+1. Vertical scaling: use larger machines
+1. Horizontal scaling: use more machines
+
+#### Vertical scaling
+
+##### Shared-memory architecture
+
+A single instance of an operating system can run with many CPUs, RAM chips & disks and be considered a single machine. With very high-speed networks in modern clouds, these components of the 'machine' don't necessarily have to be co-located.
+Vertical scaling in a *shared-memory architecture* involves adding more CPU, more RAM or more disk to a single node.
+
+This increases the machine's capacity for work and can therefore address **scalability** issues.
+Individual components (disks, memory modules, CPUs) can be hot-swapped, providing some additional fault-tolerance, but a single node configuration is by-definition in a single location (zone, region etc.) AND if the node as a whole fails, there is no backup.
+
+*Shared-memory architecture* is expensive to scale; sourcing a machine with double the CPU, RAM & disk capacity will often cost more than double, and likely won't be able to do double the work. Node productivity (capacity / cost) therefore grows less than linearly.
+[why is this, where are the economies of scale?]
+
+##### Shared-disk architecture
+
+The *shared-disk architecture* shares a single instance of disk storage across multiple machines (multiple independent CPUs + RAMs).
+It is often used for data warehousing workloads, but scalability is limited by:
+- contention\*
+- locking limit overheads\*
+
+#### Horizontal scaling
+
+##### Shared-nothing architecture
+
+The *shared-nothing arhitecture* is composed of arbitrarily-many nodes (machine / VM) that each have their own independent CPU, RAM & storage.
+The nodes are coordinated across a network only using software.
+
+This architecture mitigates the cost issues mentioned earlier because there is greater flexibility to configure individual nodes according to economics.
+Because all coordination is done via software, over the network, it is easier to geographically distribute resources, and thereby address availability & latency concerns.
+
+Shared-nothing architectures can be extremely powerful, but they also impose new constraints & trade-offs on the system that the engineer needs to be aware of.
+
+### Distributing data across multiple nodes
+
+There are two common approaches to distributing data across a multi-node deployment:
+
+1. Replication: data is duplicated across multiple nodes, providing redundancy
+1. Partitioning: data is split into smaller components and assigned to different nodes (also called ***sharding***)
+
+These techniques are not mutually exclusive.
+
+### The structure of Part II
+
+Chapter 5 discusses replication
+Chapter 6 discusses partitioning
+Chapter 7 discusses transactions
+Chapters 8 & 9 discuss the fundamental limitations of distributed systems
+
+```{important}
+**R**eplicate for **r**obustness / **r**eliability
+
+**P**artition for **p**erformance at scale
+```
+
+### Chapter 5: Replication
+
+```{important}
+**Replication** involves storing multiple copies of the same data across multiple machines that are connected over a network.
+
+Each node that stores a copy of the database is called a **replica**
+```
+
+What are the benefits of replication:
+1. Latency reduction by storing data closer to your (distributed) users
+1. Availability increases as the redundancy in the system ensures that the service can continue to run if/when components fail
+1. Scalability improvements as additional machines are able to respond to requests
+
+```{note}
+Presumably, the redundancy also mitigates the risk of catastrophic data loss (similar to high availability, but different)
+```
+
+Replication is difficult to the extent that the data changes over time.
+The key issue with replicated databases is that every change needs to be propagated to every replica
+
+Considerations for replication:
+- Synchronous Vs asynchronous
+- How to handle failed replicas
+
+There are 3 popular algorithms for replicating changes across nodes:
+1. Single-leader
+1. Multi-leader
+1. Leaderless
+
+> Almost all distributed databases uses one of these approaches.
+
+#### Leader-based replication
+
+Also known as **active/passive** or **master/slave** replication.
+
+- One replica is assigned the role of **leader** / **master** / **primary**
+- All write requests must go through the leader, which writes to its storage first
+- All other replicas are assigned the role of **follower** / **read replica** / **slave** / **secondary**
+- Each write on the **primary** is propagated to all **secondaries** via the **replication log** / **change stream**
+- Each **secondary** is responsible for taking this log and applying all the changes to its own copy of the data (in the same order)
+
+Leader-based replication is supported out-of-the-box by most RDBMS and a number of NoSQL DBs (MongoDB +).
+It is also used by a number of applications that are not databases, but which rely on them. Eg. distributed message brokers such as Kafka & RabbitMQ.
+
+##### Synchronous Vs asynchronous replication
+
+Synchronous replication: the leader waits for followers to confirm they have applied the write before reporting a success on the original write request.
+
+Pros:
+- Guarantees consistency across replicas
+- Guarantees redundancy (ie. if master fails)
+
+Cons:
+- Synchronous replication is *normally* fast (sub-second), but having to wait for slow replication can degrade system performance due to:
+    - Recovering from a failure
+    - Network issues
+    - Operating at full capacity
+- In the event of network or follower-failure, the database can be completely blocked from writing until the follower is back online
+
+Asynchronous replication: the leader propagates the change to followers but does not wait for them to confirm that they have been successfully applied before reporting a success on the the original write request.
+
+With synchronous replication, a single node outage can cause the whole system to fail. As a result, synchronous replication is normally too risky to use for all replicas.
+When RDBMS offer synchronous replication, this normally means that a single node will replicated synchronously and any others will be asynchronous. (also called **semi-synchronous**)
+
+##### Node failure
+
+When a follower fails and subsequently recovers:
+- Complete processing the writes already received from the leader prior to failure
+- Request & process all data changes that have occured whilst the follower was offline from the leader
+- Resume normal follower behaviour
+
+When a leader fails:
+- Reassign leadership to another node (AKA **failover**)
+
+NB. failover raises the question of what to do about changes that were accepted by the leader before failure, but which were not replicated across the followers.
+When the follower comes back online, there may be inconsistencies between the old & new leaders' data.
+It's common for the failed leader's unreplicated changes to be discarded, but this may violate users' **durability** expectations. 
+
+##### Replication logs
+
+1. Statement-based: log each SQL statement executed
+1. Write-ahead log (WAL) shipping: sequence of bytes containing all DB writes
+
+
+
+**Single-leader replication**: a single node - the leader - receives **all** write requests and handles them independently. These changes are then propagated to all other nodes - the followers.
+Read requests can be sent to one of multiple nodes, but without a guarantee that all nodes will always be up-to-date (consistent) with the leader.
+
+**Multi-leader replication**: write requests can be handled by any one of several leaders. Changes are propagated between leaders and to followers.
+\* how to prevent inconsistent changes across diff leaders?
+
+**Leaderless replication**: write requests go to multiple nodes, and read requests are served by multiple nodes in parallel - responses are compared to detect & correct inconsistencies.
+
+ ```{list-table}
+:header-rows: 1
+:name: replication
+
+* - Single-leader
+  - Multi-leader
+  - Leaderless
+* - (+) Easy to understand
+  - (/) More difficult to reason about
+  - (-) Most difficult to reason about
+* - (+) No conflict resolution to handle, stronger consistency guarantees
+  - (/) Some conflict resolution complexity, weaker consistency guarantees
+  - (-) Most complex conflict resolution, weakest consistency guarantees
+* - (-) Less robust to node failures & network issues
+  - (/) More robust to node failures & network issues
+  - (+) Most robust to node failutres & network issues
+```
+
+### Chapter 6: Partitioning
+
+```{important}
+
+**Partitioning** involves breaking a dataset into chunks that live in different locations in the distributed environment.
+
+```
+
+It is required when datasets are very large (high volume) or have very high read throughput (high velocity).
+
+Partitioning is known under a range of other pseudonyms:
+
+| Database      | Partitioning pseudonym    |
+| :------:      | :--------------------:    |
+| MongoDB       | Sharding                  |
+| Elasticsearch | Sharding                  |
+| SolrCloud     | Sharding                  |
+| HBase         | region                    |
+| Cassandra     | vnode                     |
+
+- Each record typically belongs to exactly one partition
+- The ability to place different partitions on separate nodes enables greater scalability
+    - Greater scalability in storage by distributing across many disks
+    - Greater scalability in query load by distributing across many processors
+- Partitioning of data is relevant to both transactional and analytics processing
+
+
+
+Replication and partitioning can be combined to leverage the advantages of both.
+
+Choosing a style of replication is largely independent of the style of partitioning.
+
+In order for partitioning to improve performance scalability, it's important that each node in the cluster do its fair 
+share of the work: storing a fair share of the data & services a fair share of the queries. As a result, we need to think 
+carefully about how we allocate data across partitions.
+
+> **skew**: a situation where there is an uneven distribution of data or queries across nodes
+
+> **hot-spot**: a partition with a disproportionately high query load
+
+Random allocation of records to nodes/partitions would achieve even loads, but makes it difficult to track down each record
+
+There are two common approaches to partitioning:
+1. Key-range partitioning
+1. Hash partitioning
+
+#### Key-range partitioning
+
+- Keys are sorted
+- A range of keys are assigned to each partition
+
+Advantages:
+- Maintains key ordering and thereby enables efficient range queries
+
+Disadvantages:
+- More prone to **hot-spots** if key ranges are not queried uniformly
+
+#### Hash partitioning
+
+- Assign a range of hashes to a partition
+- Apply a hash function to each key to determine its partition membership
+
+Advantages:
+- Distributes load evenly
+
+Disadvantages:
+- Destroys ordering of keys
+
+#### Secondary indexes
+
+```{important}
+A secondary index does not uniquely identify a record, but offers a way to search for ocurrences of a specific value.
+```
+
+1. Local indexes
+   - Writes update only one partition
+    - Reads require a scatter/gather across all partitions
+1. Global indexes
+    - Writes may require several partitions to be updated
+    - Reads can be served from a single partition
+
+#### Routing
+
+Changes in partitions over time introduces the problem of knowing which node to route writes / queries to over time.
+
+Many distributed data systems use a coordination service (eg. ZooKeeper) to provide a centralised reference of which partitions are held on which nodes.
+
+### Chapter 7: Transactions
+
+```{important}
+A transaction is a mechanism to allow an application to group a series of reads / writes together into a logical unit.
+```
+
+Either the whole transaction succeeds, or the whole transaction fails (and EVERYHING in the transaction rolls back to its original state)
+
+```{important}
+The **ACID** acronym summarises the safety guarantees provided by the use of transactions:
+
+- **A**tomicity
+- **C**onsistency
+- **I**solation
+- **D**urability
+```
+
+#### Atomicity
+
+If a series of changes are included in an *atomic* transaction, then either all of them will be applied successfully or 
+they will all fail to be applied - there is no possibility of partial completion.
+If the transaction "fails" during the execution of the transaction, then any changes that have been carried out so far will be reversed. 
+
+The word "atom" derives from Greek "atomos", which means irreducible / uncuttable. In the same way, an atomic transaction cannot be broken down into smaller parts that can succeed / fail independently of one another.
+
+#### Consistency
+
+The word "consistency" wears a lot of hats...
+
+In the context of ACID, ***consistency*** refers to the transaction's ability to maintain the integrity of the database.
+
+Importantly, the property of consistency is something that transactions support, rather than guarantee: it's up to the application developers to use transaction in a way that maintains consistency. 
+
+#### Isolation
+
+
+
+#### Durability
+
+
+
+### Chapter 8: The trouble with distributed systems
+
+
+
+### Chapter 9: Consistency & consensus
+
+
+
+
+## Part three: Derived data
+
+
+### Chapter 10: Batch processing
+
+
+
+### Chapter 11: Stream processing
+
+
+
+### Chapter 12: The future of data systems 
