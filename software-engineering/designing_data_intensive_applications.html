@@ -43,11 +43,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,6 +52,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Structures &amp; Algorithms" href="../data-engineering/algorithms.html" />
@@ -363,6 +361,169 @@
   <a class="reference internal nav-link" href="#part-two-distributed-data-systems">
    Part two: Distributed data systems
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scaling-to-larger-loads">
+     Scaling to larger loads
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vertical-scaling">
+       Vertical scaling
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shared-memory-architecture">
+         Shared-memory architecture
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shared-disk-architecture">
+         Shared-disk architecture
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#horizontal-scaling">
+       Horizontal scaling
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shared-nothing-architecture">
+         Shared-nothing architecture
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distributing-data-across-multiple-nodes">
+     Distributing data across multiple nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-structure-of-part-ii">
+     The structure of Part II
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-5-replication">
+     Chapter 5: Replication
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#leader-based-replication">
+       Leader-based replication
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#synchronous-vs-asynchronous-replication">
+         Synchronous Vs asynchronous replication
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#node-failure">
+         Node failure
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#replication-logs">
+         Replication logs
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-6-partitioning">
+     Chapter 6: Partitioning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#key-range-partitioning">
+       Key-range partitioning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hash-partitioning">
+       Hash partitioning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#secondary-indexes">
+       Secondary indexes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#routing">
+       Routing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-7-transactions">
+     Chapter 7: Transactions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#atomicity">
+       Atomicity
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#consistency">
+       Consistency
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#isolation">
+       Isolation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#durability">
+       Durability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-8-the-trouble-with-distributed-systems">
+     Chapter 8: The trouble with distributed systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-9-consistency-consensus">
+     Chapter 9: Consistency &amp; consensus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-three-derived-data">
+   Part three: Derived data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-10-batch-processing">
+     Chapter 10: Batch processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-11-stream-processing">
+     Chapter 11: Stream processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-12-the-future-of-data-systems">
+     Chapter 12: The future of data systems
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -646,10 +807,340 @@ ware faults (servers or network) played a role in only 10–25% of outages</p>
 <p>Part 2 asks how our thinking should change when we deal with data within the context of distributed systems.</p>
 <p>Reasons to distribute data:</p>
 <ol class="simple">
-<li><p>Scalability</p></li>
-<li><p>Fault tolerance/High availability</p></li>
-<li><p>Latency</p></li>
+<li><p>Scalability: large loads can exceed the capacity of a single node</p></li>
+<li><p>Fault tolerance/High availability: redundancy protects us in the event that 1+ nodes fail</p></li>
+<li><p>Latency: distributed consumption of the data can’t always be satisfied (performantly) from a single node / location</p></li>
 </ol>
+<div class="section" id="scaling-to-larger-loads">
+<h3>Scaling to larger loads<a class="headerlink" href="#scaling-to-larger-loads" title="Permalink to this headline">¶</a></h3>
+<p>If our <em>only</em> consideration is the ability to handle larger loads, then there are two broad categories of approach we can consider:</p>
+<ol class="simple">
+<li><p>Vertical scaling: use larger machines</p></li>
+<li><p>Horizontal scaling: use more machines</p></li>
+</ol>
+<div class="section" id="vertical-scaling">
+<h4>Vertical scaling<a class="headerlink" href="#vertical-scaling" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="shared-memory-architecture">
+<h5>Shared-memory architecture<a class="headerlink" href="#shared-memory-architecture" title="Permalink to this headline">¶</a></h5>
+<p>A single instance of an operating system can run with many CPUs, RAM chips &amp; disks and be considered a single machine. With very high-speed networks in modern clouds, these components of the ‘machine’ don’t necessarily have to be co-located.
+Vertical scaling in a <em>shared-memory architecture</em> involves adding more CPU, more RAM or more disk to a single node.</p>
+<p>This increases the machine’s capacity for work and can therefore address <strong>scalability</strong> issues.
+Individual components (disks, memory modules, CPUs) can be hot-swapped, providing some additional fault-tolerance, but a single node configuration is by-definition in a single location (zone, region etc.) AND if the node as a whole fails, there is no backup.</p>
+<p><em>Shared-memory architecture</em> is expensive to scale; sourcing a machine with double the CPU, RAM &amp; disk capacity will often cost more than double, and likely won’t be able to do double the work. Node productivity (capacity / cost) therefore grows less than linearly.
+[why is this, where are the economies of scale?]</p>
+</div>
+<div class="section" id="shared-disk-architecture">
+<h5>Shared-disk architecture<a class="headerlink" href="#shared-disk-architecture" title="Permalink to this headline">¶</a></h5>
+<p>The <em>shared-disk architecture</em> shares a single instance of disk storage across multiple machines (multiple independent CPUs + RAMs).
+It is often used for data warehousing workloads, but scalability is limited by:</p>
+<ul class="simple">
+<li><p>contention*</p></li>
+<li><p>locking limit overheads*</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="horizontal-scaling">
+<h4>Horizontal scaling<a class="headerlink" href="#horizontal-scaling" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="shared-nothing-architecture">
+<h5>Shared-nothing architecture<a class="headerlink" href="#shared-nothing-architecture" title="Permalink to this headline">¶</a></h5>
+<p>The <em>shared-nothing arhitecture</em> is composed of arbitrarily-many nodes (machine / VM) that each have their own independent CPU, RAM &amp; storage.
+The nodes are coordinated across a network only using software.</p>
+<p>This architecture mitigates the cost issues mentioned earlier because there is greater flexibility to configure individual nodes according to economics.
+Because all coordination is done via software, over the network, it is easier to geographically distribute resources, and thereby address availability &amp; latency concerns.</p>
+<p>Shared-nothing architectures can be extremely powerful, but they also impose new constraints &amp; trade-offs on the system that the engineer needs to be aware of.</p>
+</div>
+</div>
+</div>
+<div class="section" id="distributing-data-across-multiple-nodes">
+<h3>Distributing data across multiple nodes<a class="headerlink" href="#distributing-data-across-multiple-nodes" title="Permalink to this headline">¶</a></h3>
+<p>There are two common approaches to distributing data across a multi-node deployment:</p>
+<ol class="simple">
+<li><p>Replication: data is duplicated across multiple nodes, providing redundancy</p></li>
+<li><p>Partitioning: data is split into smaller components and assigned to different nodes (also called <em><strong>sharding</strong></em>)</p></li>
+</ol>
+<p>These techniques are not mutually exclusive.</p>
+</div>
+<div class="section" id="the-structure-of-part-ii">
+<h3>The structure of Part II<a class="headerlink" href="#the-structure-of-part-ii" title="Permalink to this headline">¶</a></h3>
+<p>Chapter 5 discusses replication
+Chapter 6 discusses partitioning
+Chapter 7 discusses transactions
+Chapters 8 &amp; 9 discuss the fundamental limitations of distributed systems</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>R</strong>eplicate for <strong>r</strong>obustness / <strong>r</strong>eliability</p>
+<p><strong>P</strong>artition for <strong>p</strong>erformance at scale</p>
+</div>
+</div>
+<div class="section" id="chapter-5-replication">
+<h3>Chapter 5: Replication<a class="headerlink" href="#chapter-5-replication" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Replication</strong> involves storing multiple copies of the same data across multiple machines that are connected over a network.</p>
+<p>Each node that stores a copy of the database is called a <strong>replica</strong></p>
+</div>
+<p>What are the benefits of replication:</p>
+<ol class="simple">
+<li><p>Latency reduction by storing data closer to your (distributed) users</p></li>
+<li><p>Availability increases as the redundancy in the system ensures that the service can continue to run if/when components fail</p></li>
+<li><p>Scalability improvements as additional machines are able to respond to requests</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Presumably, the redundancy also mitigates the risk of catastrophic data loss (similar to high availability, but different)</p>
+</div>
+<p>Replication is difficult to the extent that the data changes over time.
+The key issue with replicated databases is that every change needs to be propagated to every replica</p>
+<p>Considerations for replication:</p>
+<ul class="simple">
+<li><p>Synchronous Vs asynchronous</p></li>
+<li><p>How to handle failed replicas</p></li>
+</ul>
+<p>There are 3 popular algorithms for replicating changes across nodes:</p>
+<ol class="simple">
+<li><p>Single-leader</p></li>
+<li><p>Multi-leader</p></li>
+<li><p>Leaderless</p></li>
+</ol>
+<blockquote>
+<div><p>Almost all distributed databases uses one of these approaches.</p>
+</div></blockquote>
+<div class="section" id="leader-based-replication">
+<h4>Leader-based replication<a class="headerlink" href="#leader-based-replication" title="Permalink to this headline">¶</a></h4>
+<p>Also known as <strong>active/passive</strong> or <strong>master/slave</strong> replication.</p>
+<ul class="simple">
+<li><p>One replica is assigned the role of <strong>leader</strong> / <strong>master</strong> / <strong>primary</strong></p></li>
+<li><p>All write requests must go through the leader, which writes to its storage first</p></li>
+<li><p>All other replicas are assigned the role of <strong>follower</strong> / <strong>read replica</strong> / <strong>slave</strong> / <strong>secondary</strong></p></li>
+<li><p>Each write on the <strong>primary</strong> is propagated to all <strong>secondaries</strong> via the <strong>replication log</strong> / <strong>change stream</strong></p></li>
+<li><p>Each <strong>secondary</strong> is responsible for taking this log and applying all the changes to its own copy of the data (in the same order)</p></li>
+</ul>
+<p>Leader-based replication is supported out-of-the-box by most RDBMS and a number of NoSQL DBs (MongoDB +).
+It is also used by a number of applications that are not databases, but which rely on them. Eg. distributed message brokers such as Kafka &amp; RabbitMQ.</p>
+<div class="section" id="synchronous-vs-asynchronous-replication">
+<h5>Synchronous Vs asynchronous replication<a class="headerlink" href="#synchronous-vs-asynchronous-replication" title="Permalink to this headline">¶</a></h5>
+<p>Synchronous replication: the leader waits for followers to confirm they have applied the write before reporting a success on the original write request.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li><p>Guarantees consistency across replicas</p></li>
+<li><p>Guarantees redundancy (ie. if master fails)</p></li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li><p>Synchronous replication is <em>normally</em> fast (sub-second), but having to wait for slow replication can degrade system performance due to:</p>
+<ul>
+<li><p>Recovering from a failure</p></li>
+<li><p>Network issues</p></li>
+<li><p>Operating at full capacity</p></li>
+</ul>
+</li>
+<li><p>In the event of network or follower-failure, the database can be completely blocked from writing until the follower is back online</p></li>
+</ul>
+<p>Asynchronous replication: the leader propagates the change to followers but does not wait for them to confirm that they have been successfully applied before reporting a success on the the original write request.</p>
+<p>With synchronous replication, a single node outage can cause the whole system to fail. As a result, synchronous replication is normally too risky to use for all replicas.
+When RDBMS offer synchronous replication, this normally means that a single node will replicated synchronously and any others will be asynchronous. (also called <strong>semi-synchronous</strong>)</p>
+</div>
+<div class="section" id="node-failure">
+<h5>Node failure<a class="headerlink" href="#node-failure" title="Permalink to this headline">¶</a></h5>
+<p>When a follower fails and subsequently recovers:</p>
+<ul class="simple">
+<li><p>Complete processing the writes already received from the leader prior to failure</p></li>
+<li><p>Request &amp; process all data changes that have occured whilst the follower was offline from the leader</p></li>
+<li><p>Resume normal follower behaviour</p></li>
+</ul>
+<p>When a leader fails:</p>
+<ul class="simple">
+<li><p>Reassign leadership to another node (AKA <strong>failover</strong>)</p></li>
+</ul>
+<p>NB. failover raises the question of what to do about changes that were accepted by the leader before failure, but which were not replicated across the followers.
+When the follower comes back online, there may be inconsistencies between the old &amp; new leaders’ data.
+It’s common for the failed leader’s unreplicated changes to be discarded, but this may violate users’ <strong>durability</strong> expectations.</p>
+</div>
+<div class="section" id="replication-logs">
+<h5>Replication logs<a class="headerlink" href="#replication-logs" title="Permalink to this headline">¶</a></h5>
+<ol class="simple">
+<li><p>Statement-based: log each SQL statement executed</p></li>
+<li><p>Write-ahead log (WAL) shipping: sequence of bytes containing all DB writes</p></li>
+</ol>
+<p><strong>Single-leader replication</strong>: a single node - the leader - receives <strong>all</strong> write requests and handles them independently. These changes are then propagated to all other nodes - the followers.
+Read requests can be sent to one of multiple nodes, but without a guarantee that all nodes will always be up-to-date (consistent) with the leader.</p>
+<p><strong>Multi-leader replication</strong>: write requests can be handled by any one of several leaders. Changes are propagated between leaders and to followers.
+* how to prevent inconsistent changes across diff leaders?</p>
+<p><strong>Leaderless replication</strong>: write requests go to multiple nodes, and read requests are served by multiple nodes in parallel - responses are compared to detect &amp; correct inconsistencies.</p>
+</div>
+</div>
+</div>
+<div class="section" id="chapter-6-partitioning">
+<h3>Chapter 6: Partitioning<a class="headerlink" href="#chapter-6-partitioning" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Partitioning</strong> involves breaking a dataset into chunks that live in different locations in the distributed environment.</p>
+</div>
+<p>It is required when datasets are very large (high volume) or have very high read throughput (high velocity).</p>
+<p>Partitioning is known under a range of other pseudonyms:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Database</p></th>
+<th class="text-align:center head"><p>Partitioning pseudonym</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>MongoDB</p></td>
+<td class="text-align:center"><p>Sharding</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Elasticsearch</p></td>
+<td class="text-align:center"><p>Sharding</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>SolrCloud</p></td>
+<td class="text-align:center"><p>Sharding</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>HBase</p></td>
+<td class="text-align:center"><p>region</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Cassandra</p></td>
+<td class="text-align:center"><p>vnode</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Each record typically belongs to exactly one partition</p></li>
+<li><p>The ability to place different partitions on separate nodes enables greater scalability</p>
+<ul>
+<li><p>Greater scalability in storage by distributing across many disks</p></li>
+<li><p>Greater scalability in query load by distributing across many processors</p></li>
+</ul>
+</li>
+<li><p>Partitioning of data is relevant to both transactional and analytics processing</p></li>
+</ul>
+<p>Replication and partitioning can be combined to leverage the advantages of both.</p>
+<p>Choosing a style of replication is largely independent of the style of partitioning.</p>
+<p>In order for partitioning to improve performance scalability, it’s important that each node in the cluster do its fair
+share of the work: storing a fair share of the data &amp; services a fair share of the queries. As a result, we need to think
+carefully about how we allocate data across partitions.</p>
+<blockquote>
+<div><p><strong>skew</strong>: a situation where there is an uneven distribution of data or queries across nodes</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>hot-spot</strong>: a partition with a disproportionately high query load</p>
+</div></blockquote>
+<p>Random allocation of records to nodes/partitions would achieve even loads, but makes it difficult to track down each record</p>
+<p>There are two common approaches to partitioning:</p>
+<ol class="simple">
+<li><p>Key-range partitioning</p></li>
+<li><p>Hash partitioning</p></li>
+</ol>
+<div class="section" id="key-range-partitioning">
+<h4>Key-range partitioning<a class="headerlink" href="#key-range-partitioning" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Keys are sorted</p></li>
+<li><p>A range of keys are assigned to each partition</p></li>
+</ul>
+<p>Advantages:</p>
+<ul class="simple">
+<li><p>Maintains key ordering and thereby enables efficient range queries</p></li>
+</ul>
+<p>Disadvantages:</p>
+<ul class="simple">
+<li><p>More prone to <strong>hot-spots</strong> if key ranges are not queried uniformly</p></li>
+</ul>
+</div>
+<div class="section" id="hash-partitioning">
+<h4>Hash partitioning<a class="headerlink" href="#hash-partitioning" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Assign a range of hashes to a partition</p></li>
+<li><p>Apply a hash function to each key to determine its partition membership</p></li>
+</ul>
+<p>Advantages:</p>
+<ul class="simple">
+<li><p>Distributes load evenly</p></li>
+</ul>
+<p>Disadvantages:</p>
+<ul class="simple">
+<li><p>Destroys ordering of keys</p></li>
+</ul>
+</div>
+<div class="section" id="secondary-indexes">
+<h4>Secondary indexes<a class="headerlink" href="#secondary-indexes" title="Permalink to this headline">¶</a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A secondary index does not uniquely identify a record, but offers a way to search for ocurrences of a specific value.</p>
+</div>
+<ol class="simple">
+<li><p>Local indexes</p>
+<ul class="simple">
+<li><p>Writes update only one partition</p></li>
+<li><p>Reads require a scatter/gather across all partitions</p></li>
+</ul>
+</li>
+<li><p>Global indexes</p>
+<ul class="simple">
+<li><p>Writes may require several partitions to be updated</p></li>
+<li><p>Reads can be served from a single partition</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="routing">
+<h4>Routing<a class="headerlink" href="#routing" title="Permalink to this headline">¶</a></h4>
+<p>Changes in partitions over time introduces the problem of knowing which node to route writes / queries to over time.</p>
+<p>Many distributed data systems use a coordination service (eg. ZooKeeper) to provide a centralised reference of which partitions are held on which nodes.</p>
+</div>
+</div>
+<div class="section" id="chapter-7-transactions">
+<h3>Chapter 7: Transactions<a class="headerlink" href="#chapter-7-transactions" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A transaction is a mechanism to allow an application to group a series of reads / writes together into a logical unit.</p>
+</div>
+<p>Either the whole transaction succeeds, or the whole transaction fails (and EVERYHING in the transaction rolls back to its original state)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>ACID</strong> acronym summarises the safety guarantees provided by the use of transactions:</p>
+<ul class="simple">
+<li><p><strong>A</strong>tomicity</p></li>
+<li><p><strong>C</strong>onsistency</p></li>
+<li><p><strong>I</strong>solation</p></li>
+<li><p><strong>D</strong>urability</p></li>
+</ul>
+</div>
+<div class="section" id="atomicity">
+<h4>Atomicity<a class="headerlink" href="#atomicity" title="Permalink to this headline">¶</a></h4>
+<p>If a series of changes are included in an <em>atomic</em> transaction, then either all of them will be applied successfully or
+they will all fail to be applied - there is no possibility of partial completion.
+If the transaction “fails” during the execution of the transaction, then any changes that have been carried out so far will be reversed.</p>
+<p>The word “atom” derives from Greek “atomos”, which means irreducible / uncuttable. In the same way, an atomic transaction cannot be broken down into smaller parts that can succeed / fail independently of one another.</p>
+</div>
+<div class="section" id="consistency">
+<h4>Consistency<a class="headerlink" href="#consistency" title="Permalink to this headline">¶</a></h4>
+<p>The word “consistency” wears a lot of hats…</p>
+<p>In the context of ACID, <em><strong>consistency</strong></em> refers to the transaction’s ability to maintain the integrity of the database.</p>
+<p>Importantly, the property of consistency is something that transactions support, rather than guarantee: it’s up to the application developers to use transaction in a way that maintains consistency.</p>
+</div>
+<div class="section" id="isolation">
+<h4>Isolation<a class="headerlink" href="#isolation" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="durability">
+<h4>Durability<a class="headerlink" href="#durability" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="chapter-8-the-trouble-with-distributed-systems">
+<h3>Chapter 8: The trouble with distributed systems<a class="headerlink" href="#chapter-8-the-trouble-with-distributed-systems" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="chapter-9-consistency-consensus">
+<h3>Chapter 9: Consistency &amp; consensus<a class="headerlink" href="#chapter-9-consistency-consensus" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="part-three-derived-data">
+<h2>Part three: Derived data<a class="headerlink" href="#part-three-derived-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="chapter-10-batch-processing">
+<h3>Chapter 10: Batch processing<a class="headerlink" href="#chapter-10-batch-processing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="chapter-11-stream-processing">
+<h3>Chapter 11: Stream processing<a class="headerlink" href="#chapter-11-stream-processing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="chapter-12-the-future-of-data-systems">
+<h3>Chapter 12: The future of data systems<a class="headerlink" href="#chapter-12-the-future-of-data-systems" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
