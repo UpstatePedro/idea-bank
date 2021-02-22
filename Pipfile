@@ -16,6 +16,7 @@ tensorflow = "*"
 tensorflow-hub = "*"
 nb-mermaid = "*"
 jupyter = "*"
+scikit-learn = "*"
 
 [requires]
 python_version = "3.8"
