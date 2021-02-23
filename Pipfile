@@ -4,19 +4,17 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-jupyterlab = "*"
-plotly = "*"
-ipywidgets = ">=7.5"
-ipykernel = "*"
 
 [packages]
+jupyterlab = "*"
+plotly = "*"
 jupyter-book = "*"
 cookiecutter = "*"
 tensorflow = "*"
 tensorflow-hub = "*"
 nb-mermaid = "*"
-jupyter = "*"
 scikit-learn = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.8"
