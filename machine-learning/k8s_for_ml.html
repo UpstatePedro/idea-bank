@@ -300,19 +300,36 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#containers">
-   Containers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#container-images">
-   Container images
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#kubernetes">
    Kubernetes
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-background-on-containerisation">
+   Some background on containerisation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kubernetes-objects">
+   Kubernetes objects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-k8s-object-model">
+     The K8s object model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k8s-object-kinds">
+     K8s object kinds
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pods">
+     Pods
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-kubernetes-control-plane">
@@ -332,31 +349,33 @@
                 
   <div class="section" id="kubernetes-for-ml">
 <h1>Kubernetes for ML<a class="headerlink" href="#kubernetes-for-ml" title="Permalink to this headline">¶</a></h1>
-<p>image
-container
-node
-cluster
-pod
-namespace
-service
-ingress
-deployment
-operators
-registry</p>
-<div class="section" id="containers">
-<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h2>
-<p>The traditional approach to deploying an application was to install it on its own server / virtual machine.</p>
+<div class="section" id="kubernetes">
+<h2>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h2>
+<p>Kubernetes (k8s) is a <em><strong>container orchestration engine</strong></em>. It manages &amp; simplifies the automatic deployment, monitoring, scaling &amp; management of containerised applications to a computing cluster.</p>
+<p>Key aspects of the k8s operating philosophy:</p>
+<ol class="simple">
+<li><p>K8s object model: k8s defines a raft of abstractions for thinking about &amp; defining how we want our application deployments to behave</p></li>
+<li><p>Declarative management: k8s follows a declarative programming paradigm whereby users define their target state and k8s is responsible for ensuring that the system reflects this as closely as possible at all times</p></li>
+</ol>
+</div>
+<div class="section" id="some-background-on-containerisation">
+<h2>Some background on containerisation<a class="headerlink" href="#some-background-on-containerisation" title="Permalink to this headline">¶</a></h2>
 <p><strong>Dedicated servers</strong></p>
-<p>Each server had specific function(s)</p>
+<p>The traditional approach to deploying an application was to install it on its own server / virtual machine.</p>
+<p>Each server was run for a specific function(s) with:</p>
 <ul class="simple">
 <li><p>Application code</p></li>
 <li><p>Dependencies</p></li>
 <li><p>Kernel</p></li>
 <li><p>Hardware</p></li>
 </ul>
-<p>Slow to deploy / modify (~weeks)
-Inefficient utilisation
-Not portable</p>
+<p>This was:</p>
+<ul class="simple">
+<li><p>Slow to deploy / modify (~weeks)</p></li>
+<li><p>Inefficient utilisation or resource</p></li>
+<li><p>Not portable</p></li>
+</ul>
+<p><img alt="Single server deployment" src="machine-learning/assets/singleserver.svg" /></p>
 <p><strong>Virtual machines</strong></p>
 <p>Virtualisation enabled multiple virtual servers to run on the same physical machine.</p>
 <ul class="simple">
@@ -366,59 +385,121 @@ Not portable</p>
 <li><p>Hardware + hypervisor</p></li>
 </ul>
 <p>(hypervisor = software layer that breaks the coupling between the OS and the underlying hardware; enables multiple OS to share the same hardware)</p>
-<p>Faster deployment (~minutes)
-Improved utilisation
-VMs can be imaged &amp; thereby become more portable.</p>
-<p>Boot-time
-Dependencies are not isolated, resources are not isolated. Interactions between applications can cause problems.</p>
-<p>These dependency / isolation issues can be solved by running separate VMs for each application.</p>
-<p>Duplicate OS on each VM, redundancy &amp; slow boot times</p>
-<p>Instead of this, we can containerise:
-virtualise the user space &amp; run a single kernel
-bundles application code &amp; dependencies within each user space to avoid interactions</p>
-<p>containers <strong>don’t</strong> carry a full OS and are therefore lighter weight
-don’t need to boot full VM and initialise OS for each application, so start &amp; stop times are much faster</p>
-</div>
-<div class="section" id="container-images">
-<h2>Container images<a class="headerlink" href="#container-images" title="Permalink to this headline">¶</a></h2>
-<p>Images are the combination of the application and its dependencies</p>
+<p>Improvement:</p>
+<ul class="simple">
+<li><p>Faster deployment (~minutes)</p></li>
+<li><p>Improved utilisation</p></li>
+<li><p>VMs can be imaged &amp; thereby become more portable</p></li>
+</ul>
+<p>Remaining shortcomings:</p>
+<ul class="simple">
+<li><p>Slow boot-time</p></li>
+<li><p>Dependencies are not isolated, resources are not isolated. Interactions between applications running on the same physical machine can cause problems.</p></li>
+</ul>
+<p>These dependency / isolation issues can be solved by running separate VMs for each application.
+Duplicate OS on each VM, redundancy &amp; slow boot times</p>
+<p><img alt="Virtual machine deployment" src="machine-learning/assets/virtualmachine.svg" /></p>
+<p><strong>Containers</strong></p>
+<p>Instead of this, we can containerise:</p>
+<ul class="simple">
+<li><p>virtualise the user space &amp; run a single kernel</p></li>
+<li><p>bundle application code &amp; dependencies within each user space to avoid interactions between the code / dependencies in each space</p></li>
+</ul>
+<p><img alt="Containerised deployments" src="machine-learning/assets/containerisation.svg" /></p>
+<p>Containers <strong>don’t</strong> carry a full OS and are therefore lighter weight.
+They also don’t need to boot a full VM and initialise OS for each application, so start &amp; stop times are much faster.</p>
+<p>Images are the combination of an application and its dependencies</p>
 <p>A container is a running instance of an image.</p>
-<p>Docker provides open-source tooling to create &amp; run containers, but it does not help to orchestrate applications at scale.
-This is what kubernetes is used for.</p>
+<p>Docker provides open-source tooling to create &amp; run containers, but it does not help to orchestrate applications at scale.</p>
+<blockquote>
+<div><p>This is what kubernetes is used for.</p>
+</div></blockquote>
 </div>
-<div class="section" id="kubernetes">
-<h2>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kubernetes-objects">
+<h2>Kubernetes objects<a class="headerlink" href="#kubernetes-objects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-k8s-object-model">
+<h3>The K8s object model<a class="headerlink" href="#the-k8s-object-model" title="Permalink to this headline">¶</a></h3>
+<p>Anything that K8s manages is represented by an object. Each object has a <em>‘kind’</em> - ie. the object’s <em>type</em> in K8s vernacular.</p>
+<p>For each object, there are two key aspects to the object’s state:</p>
+<ul class="simple">
+<li><p><strong>Object spec</strong>: desired state</p></li>
+<li><p><strong>Object status</strong>: current state</p></li>
+</ul>
+<p>The K8s <em><strong>control plane</strong></em> is responsible for running a loop to compare the status of each object against its spec, and taking corrective action where they differ.</p>
+</div>
+<div class="section" id="k8s-object-kinds">
+<h3>K8s object kinds<a class="headerlink" href="#k8s-object-kinds" title="Permalink to this headline">¶</a></h3>
+<p>pod
+namespace
+service
+ingress
+deployment
+operators
+registry</p>
+</div>
+<div class="section" id="pods">
+<h3>Pods<a class="headerlink" href="#pods" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Smallest <em>deployable</em> entity in K8s (you can’t deploy a standalone container outside of a pod)</p></li>
+<li><p>1 or more container (tightly coupled ie. share network &amp; storage)</p></li>
+<li><p>Each pod has a unique IP address in the cluster</p></li>
+<li><p>Containers in a pod can communicate over localhost</p></li>
+<li><p>Pods are not self-healing; we need to use other objects to achieve this</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="the-kubernetes-control-plane">
 <h2>The Kubernetes “control-plane”<a class="headerlink" href="#the-kubernetes-control-plane" title="Permalink to this headline">¶</a></h2>
-<p>In any given k8s cluster, there will be a master node, and worker nodes
-On the master, will be:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>Kubernetes control plane</strong> is a collection of processes that collaborate to perform kubernetes’ role as orchestrator of the cluster.</p>
+</div>
+<p><img alt="The k8s control plane" src="machine-learning/assets/k8s.svg" /></p>
+<p>In any given k8s cluster, there will be a master node, and worker nodes.</p>
+<blockquote>
+<div><p>Kubernetes is ‘given’ a cluster to work with, it doesn’t independently provision/remove nodes. Managed services (like GKE) can do this in addition to offering k8s orchestration.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Node pools are also a GKE concept</p>
+</div></blockquote>
+<p>On the master, will be:</p>
 <ul class="simple">
-<li><p>kube-APIserver: handles all commands to view / modify the cluster</p>
+<li><p>kube-apiserver: handles all commands to view / modify the cluster</p>
 <ul>
 <li><p>All <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> commands are addressed to the api server</p></li>
 </ul>
 </li>
 <li><p>etcd: the cluster’s database: stores all cluster state, including configuration data</p>
 <ul>
-<li><p>Only the api-server ever interacts directly with etcd</p></li>
+<li><p>Only the apiserver ever interacts directly with etcd</p></li>
 </ul>
 </li>
-<li><p>kube-scheduler: selects which node to assign pods to (doesn’t actually launch them)</p></li>
-<li><p>kube-controller-manager: continuously monitors the state of the cluster (through api-server)</p>
+<li><p>kube-scheduler: selects which node to assign pods to by writing the node name to the pod object (but doesn’t actually launch them)</p></li>
+<li><p>kube-controller-manager: continuously monitors the state of the cluster (through apiserver)</p>
 <ul>
 <li><p>many individual k8s objects are maintained by loops of code called “controllers”</p></li>
+<li><p>certain types of controllers are used to manage workloads</p></li>
 </ul>
 </li>
 </ul>
+<p>A cloud-specific controller manager can also be added to interact with the services &amp; resources that are specific to particular cloud provider.</p>
 <p>On all other nodes, you’ll have:</p>
 <ul class="simple">
-<li><p>kubelet</p></li>
+<li><p>kubelet: effectively the k8s agent on each node</p>
+<ul>
+<li><p>starts pods using the container runtime (containerd (runtime component of Docker) in the case of GKE)</p></li>
+<li><p>monitors pods throughout their lifecycle</p></li>
 </ul>
-<p>affinity &amp; anti-affinity specs encourage pods to run on the same / different nodes</p>
+</li>
+<li><p>kube-proxy: maintains network connectivity between pods in the cluster</p></li>
+</ul>
+<blockquote>
+<div><p><strong>affinity</strong> &amp; <strong>anti-affinity</strong> specs encourage pods to run on the same / different nodes</p>
+</div></blockquote>
 <blockquote>
 <div><p>etcd is a highly durable, distributed key-value store</p>
 </div></blockquote>
+<p>GKE abstracts away the master node; the user just gets an IP address for the cluster &amp; directs all kubectl commands to that IP.</p>
 </div>
 </div>
 
