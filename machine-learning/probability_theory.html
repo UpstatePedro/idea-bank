@@ -929,6 +929,14 @@ p(X,Y) = p(X)p(Y)
 </div>
 <div class="section" id="variance">
 <h4>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>variance</strong> is a measure of the dispersion of a distribution. It is often denoted <span class="math notranslate nohighlight">\(\sigma^{2}\)</span>.</p>
+<p>Intuitively, the variance seeks to measure the typical deviation from the mean value of a distribution.</p>
+<p>It is defined as follows:</p>
+<p><span class="math notranslate nohighlight">\(
+\mathbb{V}[X] \triangleq \mathbb{E}[(X - \mu)^{2}] = \int (x - \mu)^{2} p(x) \mathrm{d}x \\
+&amp;= \int x^{2} p(x) \mathrm{d}x + \mu^{2} \int p(x) \mathrm{d}x - 2\mu \int xp(x) \mathrm{d}x \\
+&amp;= \mathbb{E}[X^{2}] - \mu^{2}
+\)</span></p>
 </div>
 <div class="section" id="mode">
 <h4>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h4>
