@@ -941,11 +941,16 @@ p(X,Y) = p(X)p(Y)
 <p>It is defined as follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbb{V}[X] \triangleq \mathbb{E}[(X - \mu)^{2}] = \int (x - \mu)^{2} p(x) \mathrm{d}x \\
+\mathbb{V}[X] \triangleq \mathbb{E}[(X - \mu)^{2}] \\
+&amp;= \int (x - \mu)^{2} p(x) \mathrm{d}x \\
 &amp;= \int x^{2} p(x) \mathrm{d}x + \mu^{2} \int p(x) \mathrm{d}x - 2\mu \int xp(x) \mathrm{d}x \\
 &amp;= \mathbb{E}[X^{2}] - \mu^{2}
 \end{split}\]</div>
 <p>This also gives us the result <span class="math notranslate nohighlight">\(\mathbb{E}[X^{2}] = \mu^{2} + \sigma^{2}\)</span></p>
+<p>We can also say the following about the variance of a transformed random variable:</p>
+<p><span class="math notranslate nohighlight">\(
+\mathbb{V}[aX + b] = a^{2}\mathbb{V}[X]
+\)</span></p>
 <div class="section" id="standard-deviation">
 <h5>Standard deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this headline">¶</a></h5>
 <p>The standard deviation (<span class="math notranslate nohighlight">\(\sigma\)</span>) is the square root of the variance.</p>
@@ -958,6 +963,11 @@ std[X] \triangleq \sqrt{\mathbb{V}[X]} = \sigma
 </div>
 <div class="section" id="mode">
 <h4>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h4>
+<p>The mode of a distribution is the value that is most likely to occur; the value with the highest probability density / mass.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\DeclareMathOperator*{\argmax}{argmax}\\x^{*} = \argmax_x p(x)
+\end{aligned}\end{align} \]</div>
 </div>
 </div>
 <div class="section" id="conditional-moments">
