@@ -508,6 +508,11 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simpson-s-paradox">
+     Simpson’s paradox
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -975,14 +980,58 @@ std[X] \triangleq \sqrt{\mathbb{V}[X]} = \sigma
 <h3>Conditional moments<a class="headerlink" href="#conditional-moments" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="covariance">
 <h4>Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h4>
+<p>The covariance between two random variables (<span class="math notranslate nohighlight">\(X\)</span> &amp; <span class="math notranslate nohighlight">\(Y\)</span>) measures the degree to which they are linearly related.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Cov[X, Y]
+&amp;\triangleq \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \\
+&amp;= \mathbb{E}[XY] - \mathbb{E}[X] \mathbb{E}[Y]
+\end{split}\]</div>
+<p>Values can range between negative &amp; positive infinity - depending on the domain of each variable.</p>
 </div>
 <div class="section" id="correlation">
 <h4>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h4>
+<p>Correlation normalises the covariance between two variables to a finite range.</p>
+<p>The <strong>pearson correlation coefficient</strong> normalises the covariance between two continuous variables to the range <span class="math notranslate nohighlight">\([-1, 1]\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(
+corr[X,Y] \triangleq \frac{Cov[X, Y]}{\sqrt{\mathbb{V}[X]\mathbb{V}[Y]}}
+\)</span></p>
+<p>The correlation coefficient measures the degree of linearity between two variables.</p>
+<div class="highlight-important notranslate"><div class="highlight"><pre><span></span>If two variables are independent, then the covariance (and therefore correlation) will be $0$.
+Thus, independence implies they are uncorrelated.
+However, the converse is not true: if two variables are uncorrelated, it does not follow that they are independent. For example, they may have a non-linear relationship which results in high dependence, but low/no correlation (which only measures linear dependence).
+
+**mutual information** is a more general measure of dependence between random variables; if mutual information is zero, then the variables are independent.
+</pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="simpson-s-paradox">
+<h3>Simpson’s paradox<a class="headerlink" href="#simpson-s-paradox" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="central-limit-theorem">
 <h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Imagine we have <span class="math notranslate nohighlight">\(N\)</span> random variables with pdf’s <span class="math notranslate nohighlight">\(p_{n}(x)\)</span> (ie. continuous).</p>
+<p>Each variable has mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^{2}\)</span>.</p>
+<p>The variables are not necessarily Gaussian (but could be).</p>
+<p>Each variable is assumed <strong>iid</strong>.</p>
+<p>We now consider a property of the sampling distribution. For example, we could sum the values sampled across each variables:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{N} = \sum_{n=1}^{N} X_{n}
+\]</div>
+<p>As N increases, the distribution of this sum quantity will approach:</p>
+<div class="math notranslate nohighlight">
+\[
+p(S_{N} = u) = \frac{1}{\sqrt{2 \pi N \sigma^{2}}} \exp (- \frac{(u - N\mu)^{2}}{2N \sigma^{2}})
+\]</div>
+<p>The distribution of the quantity below therefore converges on the standard normal:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{N} \triangleq \frac{S_{N} - N\mu}{\sigma \sqrt{N}} = \frac{\overline{X} - \mu}{\frac{\sigma}{\sqrt{N}}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{X} = \frac{S_{N}}{N}\)</span></p>
 </div>
 <div class="section" id="re-sources">
 <h2>(Re)sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
